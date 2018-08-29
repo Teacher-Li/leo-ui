@@ -1,0 +1,136 @@
+/*!
+* Nice
+* Author: Leo
+*/
+
+.leo-form {
+  @divide: 8px;
+  @hight: 48px;
+  @width: 100px;
+
+  .required {
+    content: "*";
+    line-height: 1;
+    margin-right: 2px;
+    color: @error-color;
+    display: inline-block;
+  }
+  .label-width(@width) {
+    .leo-form-item {
+      padding-left: @width;
+      .leo-form-label {
+        width: @width;
+      }
+    }
+  }
+
+  &[required] {
+    .leo-form-item {
+      .leo-form-label::before {
+        .required()
+      }
+    }
+  }
+  &[inline] {
+    .leo-form-item {
+      display: inline-block;
+    }
+  }
+
+  &[label-width="80"] {
+    .label-width(80px)
+  }
+  &[label-width="90"] {
+    .label-width(90px)
+  }
+  &[label-width="110"] {
+    .label-width(110px)
+  }
+  &[label-width="120"] {
+    .label-width(120px)
+  }
+
+  &[label-position="left"] {
+    .leo-form-item {
+      .leo-form-label {
+        text-align: left;
+      }
+    }
+  }
+  &[label-position="right-top"] {
+    .leo-form-item {
+      .leo-form-label {
+        top: @divide;
+        transform: translateY(0);
+      }
+    }
+  }
+  &[label-position="top"] {
+    .leo-form-item {
+      padding-left: 0;
+      .leo-form-label {
+        display: block;
+        position: static;
+        padding: 0 0 6px;
+        text-align: left;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .leo-form-item {
+    position: relative;
+    padding: @divide 0 @divide @width;
+    &.leo-form-btn {
+
+    }
+
+    .leo-form-label {
+      left: 0;
+      top: 50%;
+      width: @width;
+      text-align: right;
+      position: absolute;
+      padding-right: 20px;
+      transform: translateY(-50%);
+      &[required]::before {
+        .required()
+      }
+    }
+    .leo-form-value {
+      width: 100%;
+      display: block;
+      &.leo-form-input {
+        padding: 0 @divide;
+        height: @hight - 2 * @divide;
+        border-radius: @border-radius-small;
+        border: 1px solid @input-border-color;
+        transition: border @transition-time ease-in-out;
+        &:hover {
+          border-color: @input-hover-border-color;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: @input-focus-shadow;
+          border-color: @input-hover-border-color;
+        }
+        &[disabled] {
+          cursor: not-allowed;
+          color: @input-disabled-color;
+          background-color: @input-disabled-bg;
+          &:hover {
+            border-color: @input-border-color;
+          }
+        }
+      }
+      &.leo-form-span {
+        line-height: @hight - 2 * @divide;
+        border-radius: @border-radius-small;
+        &.bg {
+          padding: 0 @divide + 1;
+          background-color: @background-color-base;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+/*!
+* Nice
+* Author: Leo
+*/
+
+.leo-btn {
+  @height: 32px;
+
+  .btn(@color) {
+    color: @color;
+    border-color: @color;
+    &[bg],
+    &:hover {
+      color: #fff;
+      background-color: @color;
+    }
+    &[bg]:hover {
+      border-color: tint(@color, 25%);
+      background-color: tint(@color, 25%);
+    }
+    &[bg][shadow] {
+      margin-bottom: 2px;
+      height: @height - 2;
+      line-height: @height - 4;
+      box-shadow: 0 2px 0 0 shade(@color, 20%), 2px 5px 3px #ccc;
+      &[disabled] {
+        height: @height !important;
+        margin-bottom: 0 !important;
+        box-shadow: none !important;
+        line-height: @height - 2 !important;
+      }
+    }
+  }
+
+  height: @height;
+  padding: 0 15px;
+  cursor: pointer;
+  text-align: center;
+  border: @border-base;
+  display: inline-block;
+  line-height: @height - 2;
+  border-radius: @border-radius-small;
+  transition: all @transition-time ease-in-out;
+  &:hover {
+    color: @btn-hover-color-base;
+    border-color: @btn-hover-color-base;
+    background-color: @btn-hover-bg-base;
+  }
+
+  &[dashed] {
+    border-style: dashed;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  &[round] {
+    border-radius: @height;
+  }
+  &[long] {
+    width: 100%;
+  }
+  &[color="primary"] {
+    .btn(@primary-color)
+  }
+  &[color="info"] {
+    .btn(@info-color)
+  }
+  &[color="success"] {
+    .btn(@success-color)
+  }
+  &[color="warning"] {
+    .btn(@warning-color)
+  }
+  &[color="error"] {
+    .btn(@error-color)
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    color: @btn-disabled-color !important;
+    border-color: @btn-disabled-color !important;
+    background-color: @body-background !important;
+  }
+}
