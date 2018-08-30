@@ -1,13 +1,13 @@
 <template>
-  <div class="header">
-    <div class="header-inner">
-      <img src="../assets/logo.png" alt="">
+    <div class="header">
+        <div class="header-inner">
+            <img src="../assets/logo.png" alt="">
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-  export default {
+    export default {
 
-  }
+    }
 </script>
