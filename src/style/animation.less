@@ -1,0 +1,57 @@
+/*!
+* Category: transition
+*/
+
+.leo-animation {
+  position: relative;
+
+  &[direction="top"] {
+    .leo-animation-shove-enter {
+      transform: translateY(100%);
+    }
+    .leo-animation-shove-leave-active {
+      transform: translateY(-100%);
+    }
+  }
+  &[direction="right"] {
+    .leo-animation-shove-enter {
+      transform: translateX(-100%);
+    }
+    .leo-animation-shove-leave-active {
+      transform: translateX(100%);
+    }
+  }
+  &[direction="bottom"] {
+    .leo-animation-shove-enter {
+      transform: translateY(-100%);
+    }
+    .leo-animation-shove-leave-active {
+      transform: translateY(100%);
+    }
+  }
+
+  .leo-animation-shove-enter-active,
+  .leo-animation-shove-leave-active {
+    transition: all @animation-time;
+  }
+  .leo-animation-shove-enter,
+  .leo-animation-shove-leave-active {
+    opacity: 0;
+  }
+  .leo-animation-shove-enter {
+    transform: translateX(100%);
+  }
+  .leo-animation-shove-leave-active {
+    transform: translateX(-100%);
+  }
+
+  & > * {
+    position: absolute;
+  }
+  & > .leo-btn {
+    & + .leo-btn {
+      margin-left: 0;
+    }
+  }
+}
+

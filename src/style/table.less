@@ -2,13 +2,13 @@
 * Category: table
 */
 
-.leo-table {
-  @height: 36px;
+@table-td-height: 36px;
 
+.leo-table {
   @keyframes newData {
     0% {
       opacity: .1;
-      transform: translateY(-@height);
+      transform: translateY(-@table-td-height);
       background-color: tint(@success-color, 90%);
     }
     15% {
@@ -37,11 +37,9 @@
   .leo-table-head {
     box-shadow: @shadow-card;
     background-color: @table-th-bg;
-    transition: transform @transition-time;
   }
   .leo-table-body {
     overflow-y: auto;
-    transition: transform @transition-time;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -73,8 +71,8 @@
       }
       &.old {
         color: @error-color;
-        animation: oldData 3s infinite;
         text-decoration: line-through;
+        animation: oldData 3s infinite;
         a {
            color: @error-color;
         }
@@ -94,9 +92,9 @@
     th,
     td {
       padding: 0 10px;
-      height: @height;
       white-space: nowrap;
-      line-height: @height;
+      height: @table-td-height;
+      line-height: @table-td-height;
       .leo-table-checkbox {
         color: #fff;
         width: 14px;

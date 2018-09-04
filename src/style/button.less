@@ -2,17 +2,55 @@
 * Category: button
 */
 
-.leo-btn-group {
-  @height: 32px;
+@btn-height: 32px;
+@btn-height-mini: 24px;
+@btn-height-small: 28px;
+@btn-height-large: 36px;
 
-  .border-color(@color) {
+// 按钮组
+.leo-btn-group {
+  .btnSize(@height: @btn-height) {
+    &[round] {
+      .leo-btn {
+        &:first-child {
+          border-top-left-radius: @height;
+          border-bottom-left-radius: @height;
+        }
+        &:last-child {
+          border-top-right-radius: @height;
+          border-bottom-right-radius: @height;
+        }
+      }
+    }
+    &[color="primary"] {
+      .btnColor(@height, @primary-color)
+    }
+    &[color="info"] {
+      .btnColor(@height, @info-color)
+    }
+    &[color="success"] {
+      .btnColor(@height, @success-color)
+    }
+    &[color="warning"] {
+      .btnColor(@height, @warning-color)
+    }
+    &[color="error"] {
+      .btnColor(@height, @error-color)
+    }
+
+    .leo-btn {
+      height: @height;
+      line-height: @height - 2;
+    }
+  }
+  .btnColor(@height, @color) {
     &[bg] {
       &[shadow] {
         &[disabled] {
           .leo-btn {
-            height: @height !important;
             margin-bottom: 0 !important;
             box-shadow: none !important;
+            height: @height !important;
             line-height: @height - 2 !important;
           }
         }
@@ -43,7 +81,9 @@
     }
     .leo-btn {
       color: @color;
+      height: @height;
       border-color: @color;
+      line-height: @height - 2;
       &:hover {
         color: #fff;
         background-color: @color;
@@ -60,18 +100,6 @@
       }
     }
   }
-  &[round] {
-    .leo-btn {
-      &:first-child {
-        border-top-left-radius: @height;
-        border-bottom-left-radius: @height;
-      }
-      &:last-child {
-        border-top-right-radius: @height;
-        border-bottom-right-radius: @height;
-      }
-    }
-  }
   &[long] {
     width: 100%;
     display: flex;
@@ -79,20 +107,20 @@
       flex: 1;
     }
   }
-  &[color="primary"] {
-    .border-color(@primary-color)
+
+  .btnSize();
+  &[size="mini"] {
+    .btnSize(@btn-height-mini);
+
+    .leo-btn {
+      padding: 0 10px;
+    }
   }
-  &[color="info"] {
-    .border-color(@info-color)
+  &[size="small"] {
+    .btnSize(@btn-height-small);
   }
-  &[color="success"] {
-    .border-color(@success-color)
-  }
-  &[color="warning"] {
-    .border-color(@warning-color)
-  }
-  &[color="error"] {
-    .border-color(@error-color)
+  &[size="large"] {
+    .btnSize(@btn-height-large);
   }
   &[disabled] {
     .leo-btn {
@@ -107,7 +135,8 @@
     float: left;
     border-radius: 0;
     position: relative;
-    &:hover {
+    &:hover,
+    &.active {
       z-index: 2;
     }
     &:first-child {
@@ -128,18 +157,44 @@
   }
 }
 
+// 单个按钮
 .leo-btn {
-  @height: 32px;
-
-  .btn(@color) {
+  .btnSize(@height: @btn-height) {
+    height: @height;
+    line-height: @height - 2;
+    &[round] {
+      border-radius: @height;
+    }
+    &[color="primary"] {
+      .btnColor(@height, @primary-color)
+    }
+    &[color="info"] {
+      .btnColor(@height, @info-color)
+    }
+    &[color="success"] {
+      .btnColor(@height, @success-color)
+    }
+    &[color="warning"] {
+      .btnColor(@height, @warning-color)
+    }
+    &[color="error"] {
+      .btnColor(@height, @error-color)
+    }
+  }
+  .btnColor(@height, @color) {
     color: @color;
     border-color: @color;
-    &[bg],
     &:hover {
+      color: #fff;
+      border-color: @color;
+      background-color: @color;
+    }
+    &[bg] {
       color: #fff;
       background-color: @color;
     }
     &[bg]:hover {
+      z-index: 0;
       border-color: tint(@color, 25%);
       background-color: tint(@color, 25%);
     }
@@ -149,24 +204,25 @@
       line-height: @height - 4;
       box-shadow: 0 2px 0 0 shade(@color, 20%), 2px 5px 3px #ccc;
       &[disabled] {
-        height: @height !important;
         margin-bottom: 0 !important;
         box-shadow: none !important;
+        height: @height !important;
         line-height: @height - 2 !important;
       }
     }
   }
 
-  height: @height;
   padding: 0 15px;
   cursor: pointer;
   text-align: center;
+  height: @btn-height;
   border: @border-base;
   display: inline-block;
-  line-height: @height - 2;
+  line-height: @btn-height - 2;
   border-radius: @border-radius-small;
   transition: all @transition-time ease-in-out;
-  &:hover {
+  &:hover,
+  &.active {
     color: @btn-hover-color-base;
     border-color: @btn-hover-color-base;
     background-color: @btn-hover-bg-base;
@@ -178,26 +234,26 @@
       background-color: transparent;
     }
   }
-  &[round] {
-    border-radius: @height;
+  &[text] {
+    border-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
   }
   &[long] {
     width: 100%;
   }
-  &[color="primary"] {
-    .btn(@primary-color)
+
+  .btnSize();
+  &[size="mini"] {
+    padding: 0 10px;
+    .btnSize(@btn-height-mini);
   }
-  &[color="info"] {
-    .btn(@info-color)
+  &[size="small"] {
+    .btnSize(@btn-height-small);
   }
-  &[color="success"] {
-    .btn(@success-color)
-  }
-  &[color="warning"] {
-    .btn(@warning-color)
-  }
-  &[color="error"] {
-    .btn(@error-color)
+  &[size="large"] {
+    .btnSize(@btn-height-large);
   }
   &[disabled] {
     cursor: not-allowed;

@@ -22,7 +22,8 @@
                 list: [
                     { key: 'button', label: 'Button 按钮', url: '/button' },
                     { key: 'form', label: 'Form 表单', url: '/form' },
-                    { key: 'table', label: 'Table 表格', url: '/table' }
+                    { key: 'table', label: 'Table 表格', url: '/table' },
+                    { key: 'animation', label: 'Animation 动画', url: '/animation' }
                 ]
             }
         }

@@ -2,12 +2,12 @@
 * Category: form
 */
 
-.leo-form {
-  @divide: 8px;
-  @hight: 48px;
-  @width: 100px;
+@form-item-divide: 8px;
+@form-item-hight: 48px;
+@form-label-width: 100px;
 
-  .required {
+.leo-form {
+  .required() {
     content: "*";
     line-height: 1;
     margin-right: 2px;
@@ -59,7 +59,7 @@
   &[label-position="right-top"] {
     .leo-form-item {
       .leo-form-label {
-        top: @divide;
+        top: @form-item-divide;
         transform: translateY(0);
       }
     }
@@ -79,7 +79,7 @@
 
   .leo-form-item {
     position: relative;
-    padding: @divide 0 @divide @width;
+    padding: @form-item-divide 0 @form-item-divide @form-label-width;
     &.leo-form-btn {
 
     }
@@ -87,10 +87,10 @@
     .leo-form-label {
       left: 0;
       top: 50%;
-      width: @width;
       text-align: right;
       position: absolute;
       padding-right: 20px;
+      width: @form-label-width;
       transform: translateY(-50%);
       &[required]::before {
         .required()
@@ -100,11 +100,11 @@
       width: 100%;
       display: block;
       &.leo-form-input {
-        padding: 0 @divide;
-        height: @hight - 2 * @divide;
+        padding: 0 @form-item-divide;
         border-radius: @border-radius-small;
         border: 1px solid @input-border-color;
         transition: border @transition-time ease-in-out;
+        height: @form-item-hight - 2 * @form-item-divide;
         &:hover {
           border-color: @input-hover-border-color;
         }
@@ -123,10 +123,10 @@
         }
       }
       &.leo-form-span {
-        line-height: @hight - 2 * @divide;
         border-radius: @border-radius-small;
+        line-height: @form-item-hight - 2 * @form-item-divide;
         &.bg {
-          padding: 0 @divide + 1;
+          padding: 0 @form-item-divide + 1;
           background-color: @background-color-base;
         }
       }

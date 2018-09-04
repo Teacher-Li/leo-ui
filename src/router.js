@@ -5,6 +5,7 @@ import NotFound from "./views/NotFound.vue";
 import Button from "./views/Button.vue";
 import Form from "./views/Form.vue";
 import Table from "./views/Table.vue";
+import Animation from "./views/Animation.vue";
 
 Vue.use(Router);
 
@@ -16,6 +17,7 @@ export default new Router({
         {path: '/', redirect: '/button'},
         {path: '/button', name: 'Button', component: Button},
         {path: '/form', name: 'Form', component: Form},
-        {path: '/table', name: 'Table', component: Table}
+        {path: '/table', name: 'Table', component: Table},
+        {path: '/animation', name: 'Animation', component: Animation}
     ]
 });
