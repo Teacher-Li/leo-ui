@@ -16,7 +16,7 @@
                     <div class="card" vertical>
                         <div class="demo">
                             <div class="leo-table">
-                                <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                     <div class="leo-table-head">
                                         <table>
                                             <colgroup>
@@ -65,7 +65,7 @@
                     <div class="card" vertical>
                         <div class="demo">
                             <div class="leo-table">
-                                <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                     <div class="leo-table-head">
                                         <table>
                                             <colgroup>
@@ -117,7 +117,7 @@
                     <div class="card" vertical>
                         <div class="demo">
                             <div class="leo-table" v-drag>
-                                <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                     <div class="leo-table-head">
                                         <table>
                                             <colgroup>
@@ -167,7 +167,7 @@
                     <div class="card" vertical>
                         <div class="demo">
                             <div class="leo-table">
-                                <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                     <div class="leo-table-head">
                                         <table>
                                             <colgroup>
@@ -271,7 +271,7 @@
                 visible4: false,
 
                 html1: `<div class="leo-table">
-                            <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                 <div class="leo-table-head">
                                     <table>
                                         <colgroup>
@@ -300,7 +300,7 @@
                         </div>`,
 
                 html2: `<div class="leo-table">
-                            <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                 <div class="leo-table-head">
                                     <table>
                                         <colgroup>
@@ -331,7 +331,7 @@
                         </div>`,
 
                 html3: `<div class="leo-table" v-drag>
-                            <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                 <div class="leo-table-head">
                                     <table>
                                         <colgroup>
@@ -360,7 +360,7 @@
                         </div>`,
 
                 html4: `<div class="leo-table">
-                            <div class="leo-table-wrapper" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                 <div class="leo-table-head">
                                     <table>
                                         <colgroup>

@@ -2,7 +2,7 @@
 * Category: common
 */
 
-.arrows(@degree, @width, @color) {
+.arrows(@degree, @width) {
   .rotate(@degree) {
     transform+_: rotate(-@degree) translate(-50%);
   }
@@ -17,17 +17,17 @@
     height: 0;
     content: "";
     position: absolute;
-    border-style: solid;
     transform-origin: 0 2px;
+    border: 1px solid transparent;
     transition: transform @transition-time;
   }
   &::before {
+    border-top-color: inherit;
     border-width: @width @width 0 @width;
-    border-color: @color transparent;
   }
   &::after {
+    border-top-color: #fff;
     border-width: @width - 2 @width - 2 0 @width - 2;
-    border-color: #fff transparent;
   }
 }
 
@@ -184,15 +184,16 @@
             }
           }
           .more {
-            .arrows(0deg, 8px, @primary-color);
+            .arrows(0deg, 8px);
 
             bottom: 0;
             width: 100%;
             height: 24px;
             cursor: pointer;
             position: absolute;
+            color: @primary-color;
             &.open {
-              .arrows(180deg, 8px, @primary-color);
+              .arrows(180deg, 8px);
             }
           }
         }
