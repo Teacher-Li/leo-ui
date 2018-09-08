@@ -3,9 +3,8 @@
         <img width="200" src="https://raw.githubusercontent.com/lihaomu/leo/master/src/assets/logo.png">
     </a>
 </p>
-<h2 align="center">Vue CLI 3</h2>
+<h1 align="center">Vue CLI 3</h1>
 
-# Leo
 ## Project setup
 ```
 npm install
