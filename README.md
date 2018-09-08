@@ -1,7 +1,5 @@
 <p align="center">
-    <a href="https://cn.vuejs.org">
-        <img width="200" src="https://raw.githubusercontent.com/lihaomu/leo/master/src/assets/logo.png">
-    </a>
+    <img width="200" src="https://raw.githubusercontent.com/lihaomu/leo/master/src/assets/logo.png">
 </p>
 <h1 align="center">Vue CLI 3</h1>
 
