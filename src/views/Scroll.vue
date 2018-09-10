@@ -209,6 +209,8 @@
                                             : el.addEventListener('mousewheel', scroll);
 
                                         function scroll(e) {
+                                            e.preventDefault();
+
                                             let self = vnode.context;
                                             let delta = e.wheelDelta ? (e.wheelDelta / 120) : (- e.detail / 3);
 
@@ -253,6 +255,8 @@
                         : el.addEventListener('mousewheel', scroll);
 
                     function scroll(e) {
+                        e.preventDefault();
+
                         let self = vnode.context;
                         let delta = e.wheelDelta ? (e.wheelDelta / 120) : (- e.detail / 3);
 

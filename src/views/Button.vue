@@ -54,9 +54,9 @@
                             </div>
                         </div>
                         <div class="code">
-                            <textarea type="text" :value="code1" id="code1"></textarea>
-                            <a @click="copy($event, 'code1')">Copy</a>
-                            <pre>                    {{ code1 }}</pre>
+                            <textarea type="text" :value="html1" id="html1"></textarea>
+                            <a @click="copy($event, 'html1')">Copy</a>
+                            <pre>                    {{ html1 }}</pre>
                         </div>
                     </div>
                     <div class="card">
@@ -79,9 +79,9 @@
                             </div>
                         </div>
                         <div class="code">
-                            <textarea type="text" :value="code2" id="code2"></textarea>
-                            <a @click="copy($event, 'code2')">Copy</a>
-                            <pre>                    {{ code2 }}</pre>
+                            <textarea type="text" :value="html2" id="html2"></textarea>
+                            <a @click="copy($event, 'html2')">Copy</a>
+                            <pre>                    {{ html2 }}</pre>
                         </div>
                     </div>
                     <div class="card">
@@ -100,9 +100,9 @@
                             </div>
                         </div>
                         <div class="code">
-                            <textarea type="text" :value="code3" id="code3"></textarea>
-                            <a @click="copy($event, 'code3')">Copy</a>
-                            <pre>                    {{ code3 }}</pre>
+                            <textarea type="text" :value="html3" id="html3"></textarea>
+                            <a @click="copy($event, 'html3')">Copy</a>
+                            <pre>                    {{ html3 }}</pre>
                         </div>
                     </div>
                     <div class="card">
@@ -148,9 +148,9 @@
                             </div>
                         </div>
                         <div class="code">
-                            <textarea type="text" :value="code4" id="code4"></textarea>
-                            <a @click="copy($event, 'code4')">Copy</a>
-                            <pre>                    {{ code4 }}</pre>
+                            <textarea type="text" :value="html4" id="html4"></textarea>
+                            <a @click="copy($event, 'html4')">Copy</a>
+                            <pre>                    {{ html4 }}</pre>
                         </div>
                     </div>
                     <div class="card" vertical>
@@ -190,19 +190,19 @@
                                 通过设置 <code>size</code> 为 <code>large</code> 和 <code>small</code> 以及 <code>mini</code> 将按钮设置为大和小尺寸，不设置为默认（中）尺寸。
                             </div>
                         </div>
-                        <div class="code" :class="{ visible : visible1 }">
+                        <div class="code" :class="{ visible : visible5 }">
                             <div class="html">
-                                <textarea type="text" :value="html1" id="html1"></textarea>
-                                <a @click="copy($event, 'html1')">Copy</a>
-                                <pre>                    {{ html1 }}</pre>
+                                <textarea type="text" :value="html5" id="html5"></textarea>
+                                <a @click="copy($event, 'html5')">Copy</a>
+                                <pre>                    {{ html5 }}</pre>
                             </div>
                             <div class="js">
-                                <textarea type="text" :value="java1" id="java1"></textarea>
-                                <a @click="copy($event, 'java1')">Copy</a>
-                                <pre>                    {{ java1 }}</pre>
+                                <textarea type="text" :value="java5" id="java5"></textarea>
+                                <a @click="copy($event, 'java5')">Copy</a>
+                                <pre>                    {{ java5 }}</pre>
                             </div>
                         </div>
-                        <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+                        <div class="more" :class="{ open: visible5 }" @click="visible5 = !visible5"></div>
                     </div>
                 </div>
             </div>
@@ -223,9 +223,9 @@
         data() {
             return {
                 size: 'default',
-                visible1: false,
+                visible5: false,
 
-                code1: `<div class="leo-btn">default</div>
+                html1: `<div class="leo-btn">default</div>
                         <div class="leo-btn" color="primary">primary</div>
                         <div class="leo-btn" color="info">info</div>
                         <div class="leo-btn" color="success">success</div>
@@ -253,7 +253,7 @@
                         <div class="leo-btn" color="warning" bg round shadow>warning</div>
                         <div class="leo-btn" color="error" bg shadow>error</div>`,
 
-                code2: `<div class="leo-btn" dashed style="width: 200px">default</div>
+                html2: `<div class="leo-btn" dashed style="width: 200px">default</div>
                         <br><br>
                         <div class="leo-btn" color="primary" long>primary</div>
                         <br><br>
@@ -265,7 +265,7 @@
                         <br><br>
                         <div class="leo-btn" color="error" bg round shadow long>error</div>`,
 
-                code3: `<div class="leo-btn" dashed style="width: 200px">default</div>
+                html3: `<div class="leo-btn" dashed style="width: 200px">default</div>
                         <br><br>
                         <div class="leo-btn" color="primary" long>primary</div>
                         <br><br>
@@ -277,7 +277,7 @@
                         <br><br>
                         <div class="leo-btn" color="error" bg round shadow long>error</div>`,
 
-                code4: `<div class="leo-btn-group">
+                html4: `<div class="leo-btn-group">
                             <div class="leo-btn">default</div>
                             <div class="leo-btn">default</div>
                         </div>
@@ -313,7 +313,7 @@
                             <div class="leo-btn">error</div>
                         </div>`,
 
-                html1: `<div class="leo-btn-group">
+                html5: `<div class="leo-btn-group">
                             <div
                                 v-for="x in ['large', 'default', 'small', 'mini']"
                                 :class="{ active: size === x }"
@@ -343,7 +343,7 @@
                             <div class="leo-btn">primary</div>
                         </div>`,
 
-                java1: `export default {
+                java5: `export default {
                             data () {
                                 return {
                                     size: 'default'

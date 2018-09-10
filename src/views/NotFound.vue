@@ -27,37 +27,32 @@
         height: calc(100vh);
         background: linear-gradient(90deg, #7443ff, #5fa3fb, #4afff7);
     }
-
     .not-found-content {
-        position: fixed;
-        left: 50%;
         top: 50%;
+        left: 50%;
         color: #fff;
-        text-align: center;
+        position: fixed;
         transform: translate(-50%, -50%);
     }
-
     .not-found-title {
         font-size: 180px;
         line-height: 160px;
-        letter-spacing: -5px;
+        font-family: Times New Roman;;
     }
-
     .not-fond-subtitle {
         font-size: 30px;
         line-height: 72px;
     }
-
     .not-fond-msg {
         font-size: 14px;
         line-height: 26px;
     }
-
     .not-found-btn {
-        display: inline-block;
+        display: block;
         margin-top: 20px;
-        padding: 10px 30px;
-        border-radius: 20px;
+        line-height: 36px;
+        text-align: center;
+        border-radius: 18px;
         background-color: #fff;
     }
 </style>

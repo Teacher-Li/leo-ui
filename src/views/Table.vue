@@ -246,7 +246,6 @@
             Sider,
             Header,
         },
-
         data () {
             return {
                 select: [],

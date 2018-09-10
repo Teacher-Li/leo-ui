@@ -3,8 +3,11 @@
 */
 
 @form-item-divide: 8px;
-@form-item-hight: 48px;
+@form-item-height: 48px;
 @form-label-width: 100px;
+@form-item-divide-small: 5px;
+@form-item-height-small: 38px;
+@form-item-height-large: 52px;
 
 .leo-form {
   .required() {
@@ -14,13 +17,71 @@
     color: @error-color;
     display: inline-block;
   }
-  .label-width(@width) {
+  .label-width(@divide: @form-item-divide, @width: @form-label-width) {
     .leo-form-item {
-      padding-left: @width;
+      padding: @divide 0 @divide @width;
       .leo-form-label {
         width: @width;
       }
     }
+  }
+  .FormSize(@height: @form-item-height, @divide: @form-item-divide) {
+    &[label-position="top-left"],
+    &[label-position="top-right"] {
+      .leo-form-item {
+        .leo-form-label {
+          top: @divide;
+        }
+      }
+    }
+    &[label-position="bottom-left"],
+    &[label-position="bottom-right"] {
+      .leo-form-item {
+        .leo-form-label {
+          top: auto;
+          bottom: @divide;
+        }
+      }
+    }
+    &[label-position="top"] {
+      .leo-form-item {
+        .leo-form-label {
+          padding-bottom: @divide - 2;
+        }
+      }
+    }
+
+    .label-width(@divide);
+    &[label-width="80"] {
+      .label-width(@divide, 80px)
+    }
+    &[label-width="90"] {
+      .label-width(@divide, 90px)
+    }
+    &[label-width="110"] {
+      .label-width(@divide, 110px)
+    }
+    &[label-width="120"] {
+      .label-width(@divide, 120px)
+    }
+
+    .leo-form-item {
+      .leo-form-value {
+        padding: 0 @form-item-divide;
+        height: @height - 2 * @divide;
+        &.leo-form-span {
+          line-height: @height - 2 * @divide - 2;
+        }
+      }
+    }
+  }
+
+  .FormSize();
+  &[size="small"] {
+    .FormSize(@form-item-height-small, @form-item-divide-small);
+  }
+  &[size="large"] {
+    .FormSize(@form-item-height-large);
   }
 
   &[required] {
@@ -36,30 +97,21 @@
     }
   }
 
-  &[label-width="80"] {
-    .label-width(80px)
-  }
-  &[label-width="90"] {
-    .label-width(90px)
-  }
-  &[label-width="110"] {
-    .label-width(110px)
-  }
-  &[label-width="120"] {
-    .label-width(120px)
-  }
-
-  &[label-position="left"] {
+  &[label-position="left"],
+  &[label-position="top-left"],
+  &[label-position="bottom-left"] {
     .leo-form-item {
       .leo-form-label {
         text-align: left;
       }
     }
   }
-  &[label-position="right-top"] {
+  &[label-position="top-left"],
+  &[label-position="top-right"],
+  &[label-position="bottom-left"],
+  &[label-position="bottom-right"] {
     .leo-form-item {
       .leo-form-label {
-        top: @form-item-divide;
         transform: translateY(0);
       }
     }
@@ -70,7 +122,6 @@
       .leo-form-label {
         display: block;
         position: static;
-        padding: 0 0 6px;
         text-align: left;
         transform: translateY(0);
       }
@@ -79,7 +130,6 @@
 
   .leo-form-item {
     position: relative;
-    padding: @form-item-divide 0 @form-item-divide @form-label-width;
     &.leo-form-btn {
 
     }
@@ -90,7 +140,6 @@
       text-align: right;
       position: absolute;
       padding-right: 20px;
-      width: @form-label-width;
       transform: translateY(-50%);
       &[required]::before {
         .required()
@@ -99,12 +148,10 @@
     .leo-form-value {
       width: 100%;
       display: block;
+      border-radius: @border-radius-small;
+      border: 1px solid @input-border-color;
       &.leo-form-input {
-        padding: 0 @form-item-divide;
-        border-radius: @border-radius-small;
-        border: 1px solid @input-border-color;
         transition: border @transition-time ease-in-out;
-        height: @form-item-hight - 2 * @form-item-divide;
         &:hover {
           border-color: @input-hover-border-color;
         }
@@ -123,10 +170,9 @@
         }
       }
       &.leo-form-span {
-        border-radius: @border-radius-small;
-        line-height: @form-item-hight - 2 * @form-item-divide;
-        &.bg {
-          padding: 0 @form-item-divide + 1;
+        border-color: transparent;
+        &[bg] {
+          border-color: @background-color-base;
           background-color: @background-color-base;
         }
       }
