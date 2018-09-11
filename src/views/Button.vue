@@ -155,16 +155,23 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-btn-group">
-                                <div
-                                    v-for="x in ['large', 'default', 'small', 'mini']"
-                                    :class="{ active: size === x }"
-                                    @click="size = x"
-                                    class="leo-btn">
-                                    {{ x }}
+                            <div class="leo-form">
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">按钮尺寸：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                v-for="x in ['large', 'default', 'small', 'mini']"
+                                                :class="{ active: size === x }"
+                                                @click="size = x"
+                                                class="leo-btn">
+                                                {{ x }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <br><br>
+                            <br>
                             <div class="leo-btn" :size="size" dashed>default</div>
                             <div class="leo-btn" :size="size" color="primary">primary</div>
                             <div class="leo-btn" :size="size" color="info" bg>info</div>
@@ -184,7 +191,7 @@
                                 <div class="leo-btn">primary</div>
                                 <div class="leo-btn">primary</div>
                             </div>
-                            <div class="title"><span>禁用状态</span></div>
+                            <div class="title"><span>按钮尺寸</span></div>
                             <div class="description">
                                 按钮有四种尺寸：大、默认（中）、小、迷你。<br>
                                 通过设置 <code>size</code> 为 <code>large</code> 和 <code>small</code> 以及 <code>mini</code> 将按钮设置为大和小尺寸，不设置为默认（中）尺寸。
@@ -313,16 +320,23 @@
                             <div class="leo-btn">error</div>
                         </div>`,
 
-                html5: `<div class="leo-btn-group">
-                            <div
-                                v-for="x in ['large', 'default', 'small', 'mini']"
-                                :class="{ active: size === x }"
-                                @click="size = x"
-                                class="leo-btn">
-                                {{ x }}
+                html5: `<div class="leo-form" label-width="80">
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">按钮尺寸：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            v-for="x in ['large', 'default', 'small', 'mini']"
+                                            :class="{ active: size === x }"
+                                            @click="size = x"
+                                            class="leo-btn">
+                                            {{ x }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <br><br>
+                        <br>
                         <div class="leo-btn" :size="size" dashed>default</div>
                         <div class="leo-btn" :size="size" color="primary">primary</div>
                         <div class="leo-btn" :size="size" color="info" bg>info</div>

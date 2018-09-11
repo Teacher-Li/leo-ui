@@ -15,30 +15,42 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-btn-group">
-                                <div
-                                    v-for="x in ['top', 'right', 'bottom', 'left']"
-                                    :class="{ active: direction === x }"
-                                    @click="direction = x"
-                                    class="leo-btn">
-                                    {{ x }}
+                            <div class="leo-form" inline>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">推开方向：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                v-for="x in ['top', 'right', 'bottom', 'left']"
+                                                :class="{ active: direction === x }"
+                                                @click="direction = x"
+                                                class="leo-btn">
+                                                {{ x }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">过渡模式：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                :class="{ active: mode === x['key'] }"
+                                                @click="mode = x['key']"
+                                                v-for="x in modes"
+                                                class="leo-btn">
+                                                {{ x['value'] }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="leo-btn-group">
-                                <div
-                                    :class="{ active: mode === x['key'] }"
-                                    @click="mode = x['key']"
-                                    v-for="x in modes"
-                                    class="leo-btn">
-                                    {{ x['value'] }}
-                                </div>
-                            </div>
-                            <br><br>
+                            <br>
                             <div class="leo-animation" :direction="direction" style="height: 32px">
                                 <transition name="leo-animation-shove" :mode="mode">
                                     <div
+                                        class="leo-btn leo-animation-item"
                                         @click="open = false"
-                                        class="leo-btn"
                                         color="primary"
                                         v-if="open"
                                         key="open"
@@ -47,8 +59,8 @@
                                         open
                                     </div>
                                     <div
+                                        class="leo-btn leo-animation-item"
                                         @click="open = true"
-                                        class="leo-btn"
                                         color="warning"
                                         key="close"
                                         v-else
@@ -61,13 +73,13 @@
                             <br>
                             <div class="leo-animation" :direction="direction" style="height: 32px">
                                 <transition name="leo-animation-shove" :mode="mode">
-                                    <div class="leo-btn-group" v-if="edit" key="action">
+                                    <div class="leo-btn-group leo-animation-item" v-if="edit" key="action">
                                         <div class="leo-btn" color="success" @click="edit = false" bg shadow>save</div>
                                         <div class="leo-btn" color="warning" @click="edit = false" bg shadow>cancel</div>
                                     </div>
                                     <div
+                                        class="leo-btn leo-animation-item"
                                         @click="edit = true"
-                                        class="leo-btn"
                                         color="primary"
                                         key="edit"
                                         shadow
@@ -126,30 +138,42 @@
                 edit: false,
                 visible: false,
 
-                html1: `<div class="leo-btn-group">
-                            <div
-                                v-for="x in ['top', 'right', 'bottom', 'left']"
-                                :class="{ active: direction === x }"
-                                @click="direction = x"
-                                class="leo-btn">
-                                {{ x }}
+                html1: `<div class="leo-form" inline>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">推开方向：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            v-for="x in ['top', 'right', 'bottom', 'left']"
+                                            :class="{ active: direction === x }"
+                                            @click="direction = x"
+                                            class="leo-btn">
+                                            {{ x }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">过渡模式：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            :class="{ active: mode === x['key'] }"
+                                            @click="mode = x['key']"
+                                            v-for="x in modes"
+                                            class="leo-btn">
+                                            {{ x['value'] }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="leo-btn-group">
-                            <div
-                                :class="{ active: mode === x['key'] }"
-                                @click="mode = x['key']"
-                                v-for="x in modes"
-                                class="leo-btn">
-                                {{ x['value'] }}
-                            </div>
-                        </div>
-                        <br><br>
+                        <br>
                         <div class="leo-animation" :direction="direction" style="height: 32px">
                             <transition name="leo-animation-shove" :mode="mode">
                                 <div
+                                    class="leo-btn leo-animation-item"
                                     @click="open = false"
-                                    class="leo-btn"
                                     color="primary"
                                     v-if="open"
                                     key="open"
@@ -158,8 +182,8 @@
                                     open
                                 </div>
                                 <div
+                                    class="leo-btn leo-animation-item"
                                     @click="open = true"
-                                    class="leo-btn"
                                     color="warning"
                                     key="close"
                                     v-else
@@ -172,13 +196,13 @@
                         <br>
                         <div class="leo-animation" :direction="direction" style="height: 32px">
                             <transition name="leo-animation-shove" :mode="mode">
-                                <div class="leo-btn-group" v-if="edit" key="action">
+                                <div class="leo-btn-group leo-animation-item" v-if="edit" key="action">
                                     <div class="leo-btn" color="success" @click="edit = false" bg shadow>save</div>
                                     <div class="leo-btn" color="warning" @click="edit = false" bg shadow>cancel</div>
                                 </div>
                                 <div
+                                    class="leo-btn leo-animation-item"
                                     @click="edit = true"
-                                    class="leo-btn"
                                     color="primary"
                                     key="edit"
                                     shadow

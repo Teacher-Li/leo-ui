@@ -27,6 +27,8 @@ npm run build
 
 ![Image Table](https://raw.githubusercontent.com/lihaomu/src/master/leo-table.png)
 
+![Image Preview](https://raw.githubusercontent.com/lihaomu/src/master/leo-preview.png)
+
 ![Image Scroll](https://raw.githubusercontent.com/lihaomu/src/master/leo-scroll.png)
 
 ![Image Animation](https://raw.githubusercontent.com/lihaomu/src/master/leo-animation.png)

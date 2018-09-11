@@ -2,12 +2,12 @@
 * Category: form
 */
 
-@form-item-divide: 8px;
-@form-item-height: 48px;
-@form-label-width: 100px;
-@form-item-divide-small: 5px;
-@form-item-height-small: 38px;
-@form-item-height-large: 52px;
+@form-item-divide         : 8px;
+@form-item-height         : 48px;
+@form-label-width         : 100px;
+@form-item-divide-small   : 5px;
+@form-item-height-small   : 38px;
+@form-item-height-large   : 52px;
 
 .leo-form {
   .required() {
@@ -68,10 +68,16 @@
 
     .leo-form-item {
       .leo-form-value {
-        padding: 0 @form-item-divide;
         height: @height - 2 * @divide;
+        &.leo-form-input {
+          padding: 0 @form-item-divide;
+        }
+
         &.leo-form-span {
           line-height: @height - 2 * @divide - 2;
+          &[bg] {
+            padding: 0 @form-item-divide;
+          }
         }
       }
     }
@@ -149,8 +155,8 @@
       width: 100%;
       display: block;
       border-radius: @border-radius-small;
-      border: 1px solid @input-border-color;
       &.leo-form-input {
+        border: 1px solid @input-border-color;
         transition: border @transition-time ease-in-out;
         &:hover {
           border-color: @input-hover-border-color;
@@ -170,7 +176,7 @@
         }
       }
       &.leo-form-span {
-        border-color: transparent;
+        border: 1px solid transparent;
         &[bg] {
           border-color: @background-color-base;
           background-color: @background-color-base;

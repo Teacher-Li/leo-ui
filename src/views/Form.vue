@@ -15,35 +15,51 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-btn-group">
-                                <div
-                                    v-for="x in ['large', 'default', 'small']"
-                                    :class="{ active: size === x }"
-                                    @click="size = x"
-                                    class="leo-btn">
-                                    {{ x }}
+                            <div class="leo-form" inline>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">表单尺寸：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                v-for="x in ['large', 'default', 'small']"
+                                                :class="{ active: size === x }"
+                                                @click="size = x"
+                                                class="leo-btn">
+                                                {{ x }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">label 宽度：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                v-for="x in ['80', '90', 'default', '110', '120']"
+                                                :class="{ active: width === x }"
+                                                @click="width = x"
+                                                class="leo-btn">
+                                                {{ x }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">label 位置：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
+                                                :class="{ active: position === x }"
+                                                @click="position = x"
+                                                class="leo-btn">
+                                                {{ x }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="leo-btn-group">
-                                <div
-                                    v-for="x in ['80', '90', 'default', '110', '120']"
-                                    :class="{ active: width === x }"
-                                    @click="width = x"
-                                    class="leo-btn">
-                                    {{ x }}
-                                </div>
-                            </div>
-                            <br><br>
-                            <div class="leo-btn-group">
-                                <div
-                                    v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
-                                    :class="{ active: position === x }"
-                                    @click="position = x"
-                                    class="leo-btn">
-                                    {{ x }}
-                                </div>
-                            </div>
-                            <br><br>
+                            <br>
                             <div class="leo-form" :size="size" :label-width="width" :label-position="position">
                                 <div class="leo-form-item">
                                     <label class="leo-form-label">用户姓名：</label>
@@ -92,6 +108,30 @@
                     </div>
                     <div class="card">
                         <div class="demo">
+                            <div class="leo-form" label-width="80" inline>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">账户：</label>
+                                    <input type="text" class="leo-form-value leo-form-input">
+                                </div>
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">密码：</label>
+                                    <input type="password" class="leo-form-value leo-form-input">
+                                </div>
+                                <div class="leo-form-item leo-form-btn">
+                                    <div class="leo-btn" color="primary" bg shadow>确定</div>
+                                </div>
+                            </div>
+                            <div class="title"><span>行内表单</span></div>
+                            <div class="description">添加属性 <code>inline</code>，表单元素可以水平排列。</div>
+                        </div>
+                        <div class="code">
+                            <textarea type="text" :value="html2" id="html2"></textarea>
+                            <a @click="copy($event, 'html2')">Copy</a>
+                            <pre>                    {{ html2 }}</pre>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="demo">
                             <div class="leo-form" required>
                                 <div class="leo-form-item">
                                     <label class="leo-form-label">必填项：</label>
@@ -118,30 +158,6 @@
                             </div>
                         </div>
                         <div class="code">
-                            <textarea type="text" :value="html2" id="html2"></textarea>
-                            <a @click="copy($event, 'html2')">Copy</a>
-                            <pre>                    {{ html2 }}</pre>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="demo">
-                            <div class="leo-form" label-width="80" inline>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">账户：</label>
-                                    <input type="text" class="leo-form-value leo-form-input">
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">密码：</label>
-                                    <input type="password" class="leo-form-value leo-form-input">
-                                </div>
-                                <div class="leo-form-item leo-form-btn">
-                                    <div class="leo-btn" color="primary" bg shadow>确定</div>
-                                </div>
-                            </div>
-                            <div class="title"><span>行内表单</span></div>
-                            <div class="description">添加属性 <code>inline</code>，表单元素可以水平排列。</div>
-                        </div>
-                        <div class="code">
                             <textarea type="text" :value="html3" id="html3"></textarea>
                             <a @click="copy($event, 'html3')">Copy</a>
                             <pre>                    {{ html3 }}</pre>
@@ -166,6 +182,8 @@
         data() {
             return {
                 visible1: false,
+
+                sex: '男',
 
                 size: 'default',
                 width: 'default',
@@ -226,17 +244,21 @@
                             </div>
                         </div>`,
 
-                java1: `export default {
-                            data () {
-                                return {
-                                    size: 'default',
-                                    width: 'default',
-                                    position: 'default',
-                                }
-                            }
-                        }`,
+                html2: `<div class="leo-form" label-width="80" inline>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">账户：</label>
+                                <input type="text" class="leo-form-value leo-form-input">
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">密码：</label>
+                                <input type="password" class="leo-form-value leo-form-input">
+                            </div>
+                            <div class="leo-form-item leo-form-btn">
+                                <div class="leo-btn" color="primary" bg shadow>确定</div>
+                            </div>
+                        </div>`,
 
-                html2: `<div class="leo-form" required>
+                html3: `<div class="leo-form" required>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">必填项：</label>
                                 <input type="text" class="leo-form-value leo-form-input">
@@ -257,19 +279,15 @@
                             </div>
                         </div>`,
 
-                html3: `<div class="leo-form" label-width="80" inline>
-                            <div class="leo-form-item">
-                                <label class="leo-form-label">账户：</label>
-                                <input type="text" class="leo-form-value leo-form-input">
-                            </div>
-                            <div class="leo-form-item">
-                                <label class="leo-form-label">密码：</label>
-                                <input type="password" class="leo-form-value leo-form-input">
-                            </div>
-                            <div class="leo-form-item leo-form-btn">
-                                <div class="leo-btn" color="primary" bg shadow>确定</div>
-                            </div>
-                        </div>`
+                java1: `export default {
+                            data () {
+                                return {
+                                    size: 'default',
+                                    width: 'default',
+                                    position: 'default',
+                                }
+                            }
+                        }`
             }
         },
         methods: {

@@ -15,16 +15,23 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-btn-group">
-                                <div
-                                    v-for="x in ['top', 'default', 'bottom']"
-                                    :class="{ active: placement === x }"
-                                    @click="placement = x"
-                                    class="leo-btn">
-                                    {{ x }}
+                            <div class="leo-form">
+                                <div class="leo-form-item">
+                                    <label class="leo-form-label">箭头位置：</label>
+                                    <div class="leo-form-value">
+                                        <div class="leo-btn-group">
+                                            <div
+                                                v-for="x in ['top', 'default', 'bottom']"
+                                                :class="{ active: placement === x }"
+                                                @click="placement = x"
+                                                class="leo-btn">
+                                                {{ x }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <br><br>
+                            <br>
                             <div
                                 :placement="placement"
                                 style="width: 640px"
@@ -120,16 +127,23 @@
 
                 visible: false,
 
-                html1: `<div class="leo-btn-group">
-                            <div
-                                v-for="x in ['top', 'default', 'bottom']"
-                                :class="{ active: placement === x }"
-                                @click="placement = x"
-                                class="leo-btn">
-                                {{ x }}
+                html1: `<div class="leo-form">
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">箭头位置：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            v-for="x in ['top', 'default', 'bottom']"
+                                            :class="{ active: placement === x }"
+                                            @click="placement = x"
+                                            class="leo-btn">
+                                            {{ x }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <br><br>
+                        <br>
                         <div
                             :placement="placement"
                             style="width: 640px"

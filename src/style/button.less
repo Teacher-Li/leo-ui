@@ -2,10 +2,10 @@
 * Category: button
 */
 
-@btn-height: 32px;
-@btn-height-mini: 24px;
-@btn-height-small: 28px;
-@btn-height-large: 36px;
+@btn-height         : 32px;
+@btn-height-mini    : 24px;
+@btn-height-small   : 28px;
+@btn-height-large   : 36px;
 
 // 按钮组
 .leo-btn-group {
@@ -126,8 +126,8 @@
     .leo-btn {
       cursor: not-allowed;
       color: @btn-disabled-color !important;
-      border-color: @btn-disabled-color !important;
       background-color: @body-background !important;
+      border-color: tint(@btn-disabled-color, 85%) !important;
     }
   }
 
@@ -258,8 +258,8 @@
   &[disabled] {
     cursor: not-allowed;
     color: @btn-disabled-color !important;
-    border-color: @btn-disabled-color !important;
     background-color: @body-background !important;
+    border-color: tint(@btn-disabled-color, 85%) !important;
   }
   & + .leo-btn {
     margin-left: 5px;

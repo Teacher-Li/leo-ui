@@ -5,6 +5,7 @@ import NotFound from "./views/NotFound.vue";
 import Button from "./views/Button.vue";
 import Form from "./views/Form.vue";
 import Table from "./views/Table.vue";
+import Preview from "./views/Preview.vue";
 import Scroll from "./views/Scroll.vue";
 import Animation from "./views/Animation.vue";
 
@@ -19,6 +20,7 @@ export default new Router({
         {path: '/button', name: 'Button', component: Button},
         {path: '/form', name: 'Form', component: Form},
         {path: '/table', name: 'Table', component: Table},
+        {path: '/preview', name: 'Preview', component: Preview},
         {path: '/scroll', name: 'Scroll', component: Scroll},
         {path: '/animation', name: 'Animation', component: Animation}
     ]

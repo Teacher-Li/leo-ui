@@ -166,6 +166,17 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
+                            <div
+                                :disabled="!select.length"
+                                @click="exportCsv"
+                                class="leo-btn"
+                                color="primary"
+                                size="small"
+                                shadow
+                                bg>
+                                导出数据
+                            </div>
+                            <br><br>
                             <div class="leo-table">
                                 <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                     <div class="leo-table-head">
@@ -213,7 +224,8 @@
                             </div>
                             <div class="title"><span>可选择</span></div>
                             <div class="description">
-                                第一列是联动的选择框。
+                                第一列是联动的选择框。<br>
+                                可导出选中的数据，生成 <code>csv</code> 文件
                             </div>
                         </div>
                         <div class="code" :class="{ visible : visible4 }">
@@ -237,6 +249,8 @@
 </template>
 
 <script>
+    import CSV from '../utils/CSV';
+
     import Sider from '../components/Sider';
     import Header from '../components/Header';
 
@@ -358,7 +372,18 @@
                             </div>
                         </div>`,
 
-                html4: `<div class="leo-table">
+                html4: `<div
+                            :disabled="!select.length"
+                            @click="exportCsv"
+                            class="leo-btn"
+                            color="primary"
+                            size="small"
+                            shadow
+                            bg>
+                            导出数据
+                        </div>
+                        <br><br>
+                        <div class="leo-table">
                             <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
                                 <div class="leo-table-head">
                                     <table>
@@ -522,7 +547,9 @@
                             }
                         }`,
 
-                java4: `export default {
+                java4: `import CSV from '../utils/CSV';
+
+                        export default {
                             data () {
                                 return {
                                     columns: [
@@ -551,8 +578,8 @@
                                 }
                             },
                             watch: {
-                                'select' () {
-                                    this.selectAll = this.select.length > 0 && this.select.length === this.data.length;
+                                'select' (newValue) {
+                                    this.selectAll = newValue.length > 0 && newValue.length === this.data.length;
                                 },
                             },
                             methods: {
@@ -560,6 +587,17 @@
                                     this.select = this.selectAll
                                         ? []
                                         : this.data.map(item => item.id);
+                                },
+                                exportCsv () {
+                                    let list = this.data.filter(item => this.select.indexOf(item.id) > -1);
+                                    let data = this.columns.map(column => column['label'])
+                                        .reduce((total, item) => total +','+ item);
+
+                                    list.forEach(item => {
+                                        data += '\\n'+ item['name'] +','+ item['sex'] +','+ item['age']
+                                    });
+
+                                    CSV.download('data.csv', data);
                                 }
                             }
                         }`
@@ -578,8 +616,8 @@
             }
         },
         watch: {
-            'select'() {
-                this.selectAll = this.select.length > 0 && this.select.length === this.data.length;
+            'select' (newValue) {
+                this.selectAll = newValue.length > 0 && newValue.length === this.data.length;
             }
         },
         directives: {
@@ -646,6 +684,17 @@
                 this.select = this.selectAll
                     ? []
                     : this.data.map(item => item.id)
+            },
+            exportCsv () {
+                let list = this.data.filter(item => this.select.indexOf(item.id) > -1);
+                let data = this.columns.map(column => column['label'])
+                    .reduce((total, item) => total +','+ item);
+
+                list.forEach(item => {
+                    data += '\n'+ item['name'] +','+ item['sex'] +','+ item['age']
+                });
+
+                CSV.download('data.csv', data);
             }
         }
     }
