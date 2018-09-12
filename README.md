@@ -21,7 +21,7 @@ npm run build
 ```
 
 ## Project view
-访问地址：[Demo](https://lihaomu.github.io/leo/)
+访问地址：[Demo](https://lihaomu.github.io/leo/dist/index.html)
 
 ![Image Button](https://raw.githubusercontent.com/lihaomu/src/master/leo-btn.png)
 
