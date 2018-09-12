@@ -17,9 +17,15 @@
     color: @error-color;
     display: inline-block;
   }
-  .label-width(@divide: @form-item-divide, @width: @form-label-width) {
+  .label-width(@divide, @width: @form-label-width) {
+    &[label-position="top"] {
+      .leo-form-item {
+        padding-left: 0;
+      }
+    }
+
     .leo-form-item {
-      padding: @divide 0 @divide @width;
+      padding-left: @width;
       .leo-form-label {
         width: @width;
       }
@@ -45,7 +51,6 @@
     }
     &[label-position="top"] {
       .leo-form-item {
-        padding-left: 0;
         .leo-form-label {
           padding-bottom: @divide - 2;
         }
@@ -67,6 +72,8 @@
     }
 
     .leo-form-item {
+      padding-top: @divide;
+      padding-bottom: @divide;
       .leo-form-value {
         height: @height - 2 * @divide;
         &.leo-form-input {
