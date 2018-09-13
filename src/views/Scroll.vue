@@ -15,48 +15,50 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-form">
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">箭头位置：</label>
-                                    <div class="leo-form-value">
-                                        <div class="leo-btn-group">
-                                            <div
-                                                v-for="x in ['top', 'default', 'bottom']"
-                                                :class="{ active: placement === x }"
-                                                @click="placement = x"
-                                                class="leo-btn">
-                                                {{ x }}
+                            <div class="example">
+                                <div class="leo-form">
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">箭头位置：</label>
+                                        <div class="leo-form-value">
+                                            <div class="leo-btn-group">
+                                                <div
+                                                    v-for="x in ['top', 'default', 'bottom']"
+                                                    :class="{ active: placement === x }"
+                                                    @click="placement = x"
+                                                    class="leo-btn">
+                                                    {{ x }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div
-                                :placement="placement"
-                                style="width: 640px"
-                                class="leo-scroll"
-                                v-scroll>
-                                <div class="leo-scroll-wrapper" style="height: 100px">
-                                    <div class="leo-scroll-track" :style="styleObject">
-                                        <div
-                                            style="width: 90px;height: 90px;border-radius: 3px;box-shadow: 0 1px 6px rgba(0, 0, 0, .2)"
-                                            :style="{ backgroundColor: item['backgroundColor'] }"
-                                            class="leo-scroll-item"
-                                            v-for="item in list">
+                                <br>
+                                <div
+                                    :placement="placement"
+                                    style="width: 640px"
+                                    class="leo-scroll"
+                                    v-scroll>
+                                    <div class="leo-scroll-wrapper" style="height: 100px">
+                                        <div class="leo-scroll-track" :style="styleObject">
+                                            <div
+                                                style="width: 90px;height: 90px;border-radius: 3px;box-shadow: 0 1px 6px rgba(0, 0, 0, .2)"
+                                                :style="{ backgroundColor: item['backgroundColor'] }"
+                                                class="leo-scroll-item"
+                                                v-for="item in list">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="leo-scroll-control">
-                                    <div
-                                        :class="{ disabled: translateX >= 0 }"
-                                        class="leo-scroll-arrow left"
-                                        @click="scrollLeft(600)">
-                                    </div>
-                                    <div
-                                        :class="{ disabled: translateX + totalWidth <= 600 }"
-                                        class="leo-scroll-arrow right"
-                                        @click="scrollRight(600)">
+                                    <div class="leo-scroll-control">
+                                        <div
+                                            :class="{ disabled: translateX >= 0 }"
+                                            class="leo-scroll-arrow left"
+                                            @click="scrollLeft(600)">
+                                        </div>
+                                        <div
+                                            :class="{ disabled: translateX + totalWidth <= 600 }"
+                                            class="leo-scroll-arrow right"
+                                            @click="scrollRight(600)">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

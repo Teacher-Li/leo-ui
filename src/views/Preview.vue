@@ -15,65 +15,67 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-preview" v-drag>
-                                <div class="leo-animation" style="height: 240px">
-                                    <transition name="leo-animation-shove">
-                                        <div
-                                            class="leo-preview-wrapper leo-animation-item"
-                                            v-if="parsed"
-                                            key="parsed">
+                            <div class="example">
+                                <div class="leo-preview" v-drag>
+                                    <div class="leo-animation" style="height: 240px">
+                                        <transition name="leo-animation-shove">
                                             <div
-                                                @click="clearFile"
-                                                class="leo-btn"
-                                                color="warning"
-                                                size="small"
-                                                shadow
-                                                bg>
-                                                取消
-                                            </div>
-                                            <br><br>
-                                            <div class="leo-table">
-                                                <div class="leo-table-track">
-                                                    <div class="leo-table-head">
-                                                        <table>
-                                                            <colgroup>
-                                                                <col v-for="column in fileData['key']" width="100">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th v-for="column in fileData['key']">{{ column }}</th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
-                                                    </div>
-                                                    <div class="leo-table-body" style="max-height: 158px">
-                                                        <table>
-                                                            <colgroup>
-                                                                <col v-for="column in fileData['key']" width="100">
-                                                            </colgroup>
-                                                            <tbody>
-                                                                <tr v-for="row in fileData['value']">
-                                                                    <td v-for="cell in row">{{ cell }}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                class="leo-preview-wrapper leo-animation-item"
+                                                v-if="parsed"
+                                                key="parsed">
+                                                <div
+                                                    @click="clearFile"
+                                                    class="leo-btn"
+                                                    color="warning"
+                                                    size="small"
+                                                    shadow
+                                                    bg>
+                                                    取消
+                                                </div>
+                                                <br><br>
+                                                <div class="leo-table">
+                                                    <div class="leo-table-track">
+                                                        <div class="leo-table-head">
+                                                            <table>
+                                                                <colgroup>
+                                                                    <col v-for="column in fileData['key']" width="100">
+                                                                </colgroup>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th v-for="column in fileData['key']">{{ column }}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        <div class="leo-table-body" style="max-height: 158px">
+                                                            <table>
+                                                                <colgroup>
+                                                                    <col v-for="column in fileData['key']" width="100">
+                                                                </colgroup>
+                                                                <tbody>
+                                                                    <tr v-for="row in fileData['value']">
+                                                                        <td v-for="cell in row">{{ cell }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div
-                                            class="leo-preview-csv leo-animation-item"
-                                            @dragleave.prevent="dragOver = false"
-                                            @dragover.prevent="dragOver = true"
-                                            style="width: 520px; height: 240px"
-                                            :class="{ active: dragOver }"
-                                            @click="$refs.file.click()"
-                                            key="drag"
-                                            v-else>
-                                            <input ref="file" type="file" @change="changeFile">
-                                            <div class="leo-preview-tip">将文件拖到此处，或<em>点击上传</em></div>
-                                        </div>
-                                    </transition>
+                                            <div
+                                                class="leo-preview-csv leo-animation-item"
+                                                @dragleave.prevent="dragOver = false"
+                                                @dragover.prevent="dragOver = true"
+                                                style="width: 520px; height: 240px"
+                                                :class="{ active: dragOver }"
+                                                @click="$refs.file.click()"
+                                                key="drag"
+                                                v-else>
+                                                <input ref="file" type="file" @change="changeFile">
+                                                <div class="leo-preview-tip">将文件拖到此处，或<em>点击上传</em></div>
+                                            </div>
+                                        </transition>
+                                    </div>
                                 </div>
                             </div>
                             <div class="title"><span>CSV 文件预览</span></div>

@@ -15,74 +15,76 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-form" inline>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">表单尺寸：</label>
-                                    <div class="leo-form-value">
-                                        <div class="leo-btn-group">
-                                            <div
-                                                v-for="x in ['large', 'default', 'small']"
-                                                :class="{ active: size === x }"
-                                                @click="size = x"
-                                                class="leo-btn">
-                                                {{ x }}
+                            <div class="example">
+                                <div class="leo-form" inline>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">表单尺寸：</label>
+                                        <div class="leo-form-value">
+                                            <div class="leo-btn-group">
+                                                <div
+                                                    v-for="x in ['large', 'default', 'small']"
+                                                    :class="{ active: size === x }"
+                                                    @click="size = x"
+                                                    class="leo-btn">
+                                                    {{ x }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">label 宽度：</label>
+                                        <div class="leo-form-value">
+                                            <div class="leo-btn-group">
+                                                <div
+                                                    v-for="x in ['80', '90', 'default', '110', '120']"
+                                                    :class="{ active: width === x }"
+                                                    @click="width = x"
+                                                    class="leo-btn">
+                                                    {{ x }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">label 位置：</label>
+                                        <div class="leo-form-value">
+                                            <div class="leo-btn-group">
+                                                <div
+                                                    v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
+                                                    :class="{ active: position === x }"
+                                                    @click="position = x"
+                                                    class="leo-btn">
+                                                    {{ x }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">label 宽度：</label>
-                                    <div class="leo-form-value">
-                                        <div class="leo-btn-group">
-                                            <div
-                                                v-for="x in ['80', '90', 'default', '110', '120']"
-                                                :class="{ active: width === x }"
-                                                @click="width = x"
-                                                class="leo-btn">
-                                                {{ x }}
-                                            </div>
-                                        </div>
+                                <br>
+                                <div class="leo-form" :size="size" :label-width="width" :label-position="position">
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">用户姓名：</label>
+                                        <input type="text" class="leo-form-value leo-form-input" value="leo">
                                     </div>
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">label 位置：</label>
-                                    <div class="leo-form-value">
-                                        <div class="leo-btn-group">
-                                            <div
-                                                v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
-                                                :class="{ active: position === x }"
-                                                @click="position = x"
-                                                class="leo-btn">
-                                                {{ x }}
-                                            </div>
-                                        </div>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">用户性别：</label>
+                                        <input type="text" class="leo-form-value leo-form-input" value="男" disabled>
                                     </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="leo-form" :size="size" :label-width="width" :label-position="position">
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">用户姓名：</label>
-                                    <input type="text" class="leo-form-value leo-form-input" value="leo">
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">用户性别：</label>
-                                    <input type="text" class="leo-form-value leo-form-input" value="男" disabled>
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">用户年龄：</label>
-                                    <span class="leo-form-value leo-form-span" bg>26</span>
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">用户职业：</label>
-                                    <span class="leo-form-value leo-form-span">Web 前端工程师</span>
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">用户简介：</label>
-                                    <textarea class="leo-form-value leo-form-input" style="padding: 8px; height: 64px;"></textarea>
-                                </div>
-                                <div class="leo-form-item leo-form-btn">
-                                    <div class="leo-btn" color="primary" :size="size" bg shadow>确定</div>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">用户年龄：</label>
+                                        <span class="leo-form-value leo-form-span" bg>26</span>
+                                    </div>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">用户职业：</label>
+                                        <span class="leo-form-value leo-form-span">Web 前端工程师</span>
+                                    </div>
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">用户简介：</label>
+                                        <textarea class="leo-form-value leo-form-input" style="padding: 8px; height: 64px;"></textarea>
+                                    </div>
+                                    <div class="leo-form-item leo-form-btn">
+                                        <div class="leo-btn" color="primary" :size="size" bg shadow>确定</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="title"><span>基本用法</span></div>
@@ -108,19 +110,7 @@
                     </div>
                     <div class="card">
                         <div class="demo">
-                            <div class="leo-form" label-width="80" inline>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">账户：</label>
-                                    <input type="text" class="leo-form-value leo-form-input">
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">密码：</label>
-                                    <input type="password" class="leo-form-value leo-form-input">
-                                </div>
-                                <div class="leo-form-item leo-form-btn">
-                                    <div class="leo-btn" color="primary" bg shadow>确定</div>
-                                </div>
-                            </div>
+                            <div class="example" v-html="html2"></div>
                             <div class="title"><span>行内表单</span></div>
                             <div class="description">添加属性 <code>inline</code>，表单元素可以水平排列。</div>
                         </div>
@@ -132,26 +122,7 @@
                     </div>
                     <div class="card">
                         <div class="demo">
-                            <div class="leo-form" required>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">必填项：</label>
-                                    <input type="text" class="leo-form-value leo-form-input">
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">必填项：</label>
-                                    <input type="text" class="leo-form-value leo-form-input">
-                                </div>
-                            </div>
-                            <div class="leo-form">
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">非必填项：</label>
-                                    <input type="text" class="leo-form-value leo-form-input">
-                                </div>
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label" required>必填项：</label>
-                                    <input type="text" class="leo-form-value leo-form-input">
-                                </div>
-                            </div>
+                            <div class="example" v-html="html3"></div>
                             <div class="title"><span>必填</span></div>
                             <div class="description">
                                 添加属性 <code>required</code>，可设置全局或者局部必填项
@@ -189,35 +160,51 @@
                 width: 'default',
                 position: 'default',
 
-                html1: `<div class="leo-btn-group">
-                            <div
-                                v-for="x in ['large', 'default', 'small']"
-                                :class="{ active: size === x }"
-                                @click="size = x"
-                                class="leo-btn">
-                                {{ x }}
+                html1: `<div class="leo-form" inline>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">表单尺寸：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            v-for="x in ['large', 'default', 'small']"
+                                            :class="{ active: size === x }"
+                                            @click="size = x"
+                                            class="leo-btn">
+                                            {{ x }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">label 宽度：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            v-for="x in ['80', '90', 'default', '110', '120']"
+                                            :class="{ active: width === x }"
+                                            @click="width = x"
+                                            class="leo-btn">
+                                            {{ x }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">label 位置：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
+                                            :class="{ active: position === x }"
+                                            @click="position = x"
+                                            class="leo-btn">
+                                            {{ x }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="leo-btn-group">
-                            <div
-                                v-for="x in ['80', '90', 'default', '110', '120']"
-                                :class="{ active: width === x }"
-                                @click="width = x"
-                                class="leo-btn">
-                                {{ x }}
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="leo-btn-group">
-                            <div
-                                v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
-                                :class="{ active: position === x }"
-                                @click="position = x"
-                                class="leo-btn">
-                                {{ x }}
-                            </div>
-                        </div>
-                        <br><br>
+                        <br>
                         <div class="leo-form" :size="size" :label-width="width" :label-position="position">
                             <div class="leo-form-item">
                                 <label class="leo-form-label">用户姓名：</label>

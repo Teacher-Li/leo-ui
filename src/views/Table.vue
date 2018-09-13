@@ -15,31 +15,33 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-table">
-                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                    <div class="leo-table-head">
-                                        <table>
-                                            <colgroup>
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <thead>
-                                                <tr>
-                                                    <th v-for="column in columns">{{ column['label'] }}</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <div class="leo-table-body">
-                                        <table>
-                                            <colgroup>
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <tbody>
-                                                <tr v-for="row in data">
-                                                    <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="example">
+                                <div class="leo-table">
+                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                                        <div class="leo-table-head">
+                                            <table>
+                                                <colgroup>
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th v-for="column in columns">{{ column['label'] }}</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="leo-table-body">
+                                            <table>
+                                                <colgroup>
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr v-for="row in data">
+                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -64,33 +66,35 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-table">
-                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                    <div class="leo-table-head">
-                                        <table>
-                                            <colgroup>
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <thead>
-                                                <tr>
-                                                    <th v-for="column in columns">{{ column['label'] }}</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <div class="leo-table-body">
-                                        <table>
-                                            <colgroup>
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <tbody>
-                                                <tr
-                                                    :class="className[parseInt(Math.random() * className.length)]"
-                                                    v-for="row in data">
-                                                    <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="example">
+                                <div class="leo-table">
+                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                                        <div class="leo-table-head">
+                                            <table>
+                                                <colgroup>
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th v-for="column in columns">{{ column['label'] }}</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="leo-table-body">
+                                            <table>
+                                                <colgroup>
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr
+                                                        :class="className[parseInt(Math.random() * className.length)]"
+                                                        v-for="row in data">
+                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -116,31 +120,33 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-table" v-drag>
-                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                    <div class="leo-table-head">
-                                        <table>
-                                            <colgroup>
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <thead>
-                                                <tr>
-                                                    <th v-for="column in columns">{{ column['label'] }}</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <div class="leo-table-body" style="max-height: 100px">
-                                        <table>
-                                            <colgroup>
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <tbody>
-                                                <tr v-for="row in data">
-                                                    <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="example">
+                                <div class="leo-table" v-drag>
+                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                                        <div class="leo-table-head">
+                                            <table>
+                                                <colgroup>
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th v-for="column in columns">{{ column['label'] }}</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="leo-table-body" style="max-height: 100px">
+                                            <table>
+                                                <colgroup>
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr v-for="row in data">
+                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -166,59 +172,61 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div
-                                :disabled="!select.length"
-                                @click="exportCsv"
-                                class="leo-btn"
-                                color="primary"
-                                size="small"
-                                shadow
-                                bg>
-                                导出数据
-                            </div>
-                            <br><br>
-                            <div class="leo-table">
-                                <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                    <div class="leo-table-head">
-                                        <table>
-                                            <colgroup>
-                                                <col width="34">
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <label
-                                                            class="leo-table-checkbox"
-                                                            @click="selectedAll"
-                                                            :class="classObject">
-                                                            <input type="checkbox" v-model="selectAll">
-                                                        </label>
-                                                    </th>
-                                                    <th v-for="column in columns">{{ column['label'] }}</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <div class="leo-table-body">
-                                        <table>
-                                            <colgroup>
-                                                <col width="34">
-                                                <col v-for="column in columns" :width="column['width']">
-                                            </colgroup>
-                                            <tbody>
-                                                <tr v-for="row in data">
-                                                    <td>
-                                                        <label
-                                                            :class="{ 'checked': select.indexOf(row.id) > -1 }"
-                                                            class="leo-table-checkbox">
-                                                            <input type="checkbox" :value="row.id" v-model="select">
-                                                        </label>
-                                                    </td>
-                                                    <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="example">
+                                <div
+                                    :disabled="!select.length"
+                                    @click="exportCsv"
+                                    class="leo-btn"
+                                    color="primary"
+                                    size="small"
+                                    shadow
+                                    bg>
+                                    导出数据
+                                </div>
+                                <br><br>
+                                <div class="leo-table">
+                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                                        <div class="leo-table-head">
+                                            <table>
+                                                <colgroup>
+                                                    <col width="34">
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <label
+                                                                class="leo-table-checkbox"
+                                                                @click="selectedAll"
+                                                                :class="classObject">
+                                                                <input type="checkbox" v-model="selectAll">
+                                                            </label>
+                                                        </th>
+                                                        <th v-for="column in columns">{{ column['label'] }}</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="leo-table-body">
+                                            <table>
+                                                <colgroup>
+                                                    <col width="34">
+                                                    <col v-for="column in columns" :width="column['width']">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr v-for="row in data">
+                                                        <td>
+                                                            <label
+                                                                :class="{ 'checked': select.indexOf(row.id) > -1 }"
+                                                                class="leo-table-checkbox">
+                                                                <input type="checkbox" :value="row.id" v-model="select">
+                                                            </label>
+                                                        </td>
+                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

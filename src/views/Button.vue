@@ -15,33 +15,7 @@
                     </div>
                     <div class="card">
                         <div class="demo">
-                            <div class="leo-btn">default</div>
-                            <div class="leo-btn" color="primary">primary</div>
-                            <div class="leo-btn" color="info">info</div>
-                            <div class="leo-btn" color="success">success</div>
-                            <div class="leo-btn" color="warning">warning</div>
-                            <div class="leo-btn" color="error">error</div>
-                            <br><br>
-                            <div class="leo-btn" dashed>default</div>
-                            <div class="leo-btn" color="primary" bg>primary</div>
-                            <div class="leo-btn" color="info" bg>info</div>
-                            <div class="leo-btn" color="success" bg>success</div>
-                            <div class="leo-btn" color="warning" bg>warning</div>
-                            <div class="leo-btn" color="error" bg>error</div>
-                            <br><br>
-                            <div class="leo-btn" round>default</div>
-                            <div class="leo-btn" color="primary" bg round>primary</div>
-                            <div class="leo-btn" color="info" round>info</div>
-                            <div class="leo-btn" color="success" bg round>success</div>
-                            <div class="leo-btn" color="warning" round>warning</div>
-                            <div class="leo-btn" color="error" bg round>error</div>
-                            <br><br>
-                            <div class="leo-btn" text>default</div>
-                            <div class="leo-btn" color="primary" bg shadow>primary</div>
-                            <div class="leo-btn" color="info" bg shadow>info</div>
-                            <div class="leo-btn" color="success" bg round shadow>success</div>
-                            <div class="leo-btn" color="warning" bg round shadow>warning</div>
-                            <div class="leo-btn" color="error" bg shadow>error</div>
+                            <div class="example" v-html="html1"></div>
                             <div class="title"><span>按钮类型</span></div>
                             <div class="description">
                                 按钮类型有：默认按钮、虚线按钮、圆角按钮、文字按钮、阴影按钮以及五种颜色按钮。<br>
@@ -61,17 +35,7 @@
                     </div>
                     <div class="card">
                         <div class="demo">
-                            <div class="leo-btn" dashed style="width: 200px">default</div>
-                            <br><br>
-                            <div class="leo-btn" color="primary" long>primary</div>
-                            <br><br>
-                            <div class="leo-btn" color="info" bg long>info</div>
-                            <br><br>
-                            <div class="leo-btn" color="success" round long>success</div>
-                            <br><br>
-                            <div class="leo-btn" color="warning" bg shadow long>warning</div>
-                            <br><br>
-                            <div class="leo-btn" color="error" bg round shadow long>error</div>
+                            <div class="example" v-html="html2"></div>
                             <div class="title"><span>长按钮</span></div>
                             <div class="description">
                                 添加属性 <code>long</code>，可将按钮的宽度设置为100%。<br>
@@ -86,14 +50,7 @@
                     </div>
                     <div class="card">
                         <div class="demo">
-                            <div class="leo-btn" dashed disabled>default</div>
-                            <div class="leo-btn" color="primary" disabled>primary</div>
-                            <div class="leo-btn" color="info" bg disabled>info</div>
-                            <div class="leo-btn" color="success" round disabled>success</div>
-                            <div class="leo-btn" color="warning" bg shadow disabled>warning</div>
-                            <div class="leo-btn" color="error" bg round shadow disabled>error</div>
-                            <br><br>
-                            <div class="leo-btn" color="error" bg round shadow long disabled>error</div>
+                            <div class="example" v-html="html2"></div>
                             <div class="title"><span>禁用状态</span></div>
                             <div class="description">
                                 添加属性 <code>disabled</code>，可将按钮设置为不可用状态。
@@ -107,41 +64,7 @@
                     </div>
                     <div class="card">
                         <div class="demo">
-                            <div class="leo-btn-group">
-                                <div class="leo-btn">default</div>
-                                <div class="leo-btn">default</div>
-                            </div>
-                            <div class="leo-btn-group" dashed>
-                                <div class="leo-btn">default</div>
-                                <div class="leo-btn">default</div>
-                            </div>
-                            <div class="leo-btn-group" disabled>
-                                <div class="leo-btn">default</div>
-                                <div class="leo-btn">default</div>
-                            </div>
-                            <br><br>
-                            <div class="leo-btn-group" color="primary">
-                                <div class="leo-btn">primary</div>
-                                <div class="leo-btn">primary</div>
-                            </div>
-                            <div class="leo-btn-group" color="info" bg>
-                                <div class="leo-btn">info</div>
-                                <div class="leo-btn">info</div>
-                            </div>
-                            <br><br>
-                            <div class="leo-btn-group" color="success" bg round>
-                                <div class="leo-btn">success</div>
-                                <div class="leo-btn">success</div>
-                            </div>
-                            <div class="leo-btn-group" color="warning" bg round shadow>
-                                <div class="leo-btn">warning</div>
-                                <div class="leo-btn">warning</div>
-                            </div>
-                            <br><br>
-                            <div class="leo-btn-group" color="error" bg round shadow long>
-                                <div class="leo-btn">error</div>
-                                <div class="leo-btn">error</div>
-                            </div>
+                            <div class="example" v-html="html4"></div>
                             <div class="title"><span>按钮组</span></div>
                             <div class="description">
                                 和单个按钮设置一样。
@@ -155,41 +78,43 @@
                     </div>
                     <div class="card" vertical>
                         <div class="demo">
-                            <div class="leo-form">
-                                <div class="leo-form-item">
-                                    <label class="leo-form-label">按钮尺寸：</label>
-                                    <div class="leo-form-value">
-                                        <div class="leo-btn-group">
-                                            <div
-                                                v-for="x in ['large', 'default', 'small', 'mini']"
-                                                :class="{ active: size === x }"
-                                                @click="size = x"
-                                                class="leo-btn">
-                                                {{ x }}
+                            <div class="example">
+                                <div class="leo-form">
+                                    <div class="leo-form-item">
+                                        <label class="leo-form-label">按钮尺寸：</label>
+                                        <div class="leo-form-value">
+                                            <div class="leo-btn-group">
+                                                <div
+                                                    v-for="x in ['large', 'default', 'small', 'mini']"
+                                                    :class="{ active: size === x }"
+                                                    @click="size = x"
+                                                    class="leo-btn">
+                                                    {{ x }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="leo-btn" :size="size" dashed>default</div>
-                            <div class="leo-btn" :size="size" color="primary">primary</div>
-                            <div class="leo-btn" :size="size" color="info" bg>info</div>
-                            <div class="leo-btn" :size="size" color="success" round>success</div>
-                            <div class="leo-btn" :size="size" color="warning" bg shadow>warning</div>
-                            <div class="leo-btn" :size="size" color="error" bg round shadow>error</div>
-                            <br><br>
-                            <div class="leo-btn-group" :size="size" dashed>
-                                <div class="leo-btn">default</div>
-                                <div class="leo-btn">default</div>
-                            </div>
-                            <div class="leo-btn-group" :size="size" color="primary" bg>
-                                <div class="leo-btn">primary</div>
-                                <div class="leo-btn">primary</div>
-                            </div>
-                            <div class="leo-btn-group" :size="size" color="primary" bg round shadow>
-                                <div class="leo-btn">primary</div>
-                                <div class="leo-btn">primary</div>
+                                <br>
+                                <div class="leo-btn" :size="size" dashed>default</div>
+                                <div class="leo-btn" :size="size" color="primary">primary</div>
+                                <div class="leo-btn" :size="size" color="info" bg>info</div>
+                                <div class="leo-btn" :size="size" color="success" round>success</div>
+                                <div class="leo-btn" :size="size" color="warning" bg shadow>warning</div>
+                                <div class="leo-btn" :size="size" color="error" bg round shadow>error</div>
+                                <br><br>
+                                <div class="leo-btn-group" :size="size" dashed>
+                                    <div class="leo-btn">default</div>
+                                    <div class="leo-btn">default</div>
+                                </div>
+                                <div class="leo-btn-group" :size="size" color="primary" bg>
+                                    <div class="leo-btn">primary</div>
+                                    <div class="leo-btn">primary</div>
+                                </div>
+                                <div class="leo-btn-group" :size="size" color="primary" bg round shadow>
+                                    <div class="leo-btn">primary</div>
+                                    <div class="leo-btn">primary</div>
+                                </div>
                             </div>
                             <div class="title"><span>按钮尺寸</span></div>
                             <div class="description">
@@ -253,7 +178,7 @@
                         <div class="leo-btn" color="warning" round>warning</div>
                         <div class="leo-btn" color="error" bg round>error</div>
                         <br><br>
-                        <div class="leo-btn" dashed round>default</div>
+                        <div class="leo-btn" text>default</div>
                         <div class="leo-btn" color="primary" bg shadow>primary</div>
                         <div class="leo-btn" color="info" bg shadow>info</div>
                         <div class="leo-btn" color="success" bg round shadow>success</div>
@@ -272,17 +197,14 @@
                         <br><br>
                         <div class="leo-btn" color="error" bg round shadow long>error</div>`,
 
-                html3: `<div class="leo-btn" dashed style="width: 200px">default</div>
+                html3: `<div class="leo-btn" dashed disabled>default</div>
+                        <div class="leo-btn" color="primary" disabled>primary</div>
+                        <div class="leo-btn" color="info" bg disabled>info</div>
+                        <div class="leo-btn" color="success" round disabled>success</div>
+                        <div class="leo-btn" color="warning" bg shadow disabled>warning</div>
+                        <div class="leo-btn" color="error" bg round shadow disabled>error</div>
                         <br><br>
-                        <div class="leo-btn" color="primary" long>primary</div>
-                        <br><br>
-                        <div class="leo-btn" color="info" bg long>info</div>
-                        <br><br>
-                        <div class="leo-btn" color="success" round long>success</div>
-                        <br><br>
-                        <div class="leo-btn" color="warning" bg shadow long>warning</div>
-                        <br><br>
-                        <div class="leo-btn" color="error" bg round shadow long>error</div>`,
+                        <div class="leo-btn" color="error" bg round shadow long disabled>error</div>`,
 
                 html4: `<div class="leo-btn-group">
                             <div class="leo-btn">default</div>
@@ -320,7 +242,7 @@
                             <div class="leo-btn">error</div>
                         </div>`,
 
-                html5: `<div class="leo-form" label-width="80">
+                html5: `<div class="leo-form">
                             <div class="leo-form-item">
                                 <label class="leo-form-label">按钮尺寸：</label>
                                 <div class="leo-form-value">
