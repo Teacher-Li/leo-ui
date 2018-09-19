@@ -1,5 +1,5 @@
 <template>
-    <div class="form-page">
+    <div class="preview-page">
 
         <Header></Header>
 

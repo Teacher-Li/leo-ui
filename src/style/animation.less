@@ -30,21 +30,6 @@
     }
   }
 
-  .leo-animation-shove-enter-active,
-  .leo-animation-shove-leave-active {
-    transition: all @animation-time ease-in-out;
-  }
-  .leo-animation-shove-enter,
-  .leo-animation-shove-leave-active {
-    opacity: 0;
-  }
-  .leo-animation-shove-enter {
-    transform: translateX(100%);
-  }
-  .leo-animation-shove-leave-active {
-    transform: translateX(-100%);
-  }
-
   .leo-animation-item {
     position: absolute;
   }
@@ -53,5 +38,34 @@
       margin-left: 0;
     }
   }
+}
+
+// shove
+.leo-animation-shove-enter-active,
+.leo-animation-shove-leave-active {
+  transition: all @animation-time ease-in-out;
+}
+.leo-animation-shove-enter,
+.leo-animation-shove-leave-active {
+  opacity: 0;
+}
+.leo-animation-shove-enter {
+  transform: translateX(100%);
+}
+.leo-animation-shove-leave-active {
+  transform: translateX(-100%);
+}
+
+// fade
+.leo-animation-fade-enter-active,
+.leo-animation-fade-leave-active {
+  transition: opacity @animation-time ease-in-out;
+}
+.leo-animation-fade-enter,
+.leo-animation-fade-leave-active {
+  opacity: 0;
+}
+.leo-animation-fade-enter {
+  opacity: 1;
 }
 

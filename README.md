@@ -20,17 +20,12 @@ npm run serve
 npm run build
 ```
 
-## Project view
-访问地址：[Demo](https://lihaomu.github.io/leo/)
-
-![Image Button](https://raw.githubusercontent.com/lihaomu/src/master/leo-btn.png)
-
-![Image Form](https://raw.githubusercontent.com/lihaomu/src/master/leo-form.png)
-
-![Image Table](https://raw.githubusercontent.com/lihaomu/src/master/leo-table.png)
-
-![Image Preview](https://raw.githubusercontent.com/lihaomu/src/master/leo-preview.png)
-
-![Image Scroll](https://raw.githubusercontent.com/lihaomu/src/master/leo-scroll.png)
-
-![Image Animation](https://raw.githubusercontent.com/lihaomu/src/master/leo-animation.png)
+## Links
+- [Button 按钮](https://lihaomu.github.io/leo/#/button)
+- [Form 表单](https://lihaomu.github.io/leo/#/from)
+- [Table 表格](https://lihaomu.github.io/leo/#/table)
+- [Loading 加载](https://lihaomu.github.io/leo/#/loading)
+- [Preview 预览](https://lihaomu.github.io/leo/#/preview)
+- [Masonry 瀑布流](https://lihaomu.github.io/leo/#/masonry)
+- [Scroll 滚动](https://lihaomu.github.io/leo/#/scroll)
+- [Animation 动画](https://lihaomu.github.io/leo/#/animation)

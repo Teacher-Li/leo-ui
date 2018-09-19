@@ -1,5 +1,5 @@
 <template>
-    <div class="form-page">
+    <div class="button-page">
 
         <Header></Header>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="form-page">
+    <div class="table-page">
 
         <Header></Header>
 
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="title"><span>基础用法</span></div>
+                            <div class="title"><span>基本用法</span></div>
                             <div class="description">
                                 表格的最简单用法。
                             </div>

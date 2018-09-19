@@ -1,6 +1,6 @@
 <template>
     <div class="sider">
-        <img src="https://file.iviewui.com/asd/asd-juejin2.png" alt="">
+        <img src="https://file.iviewui.com/asd/asd-juejin2.png" alt="掘金">
         <div class="navigate">
             <router-link
                 class="navigate-item"
@@ -17,13 +17,16 @@
 
 <script>
     export default {
+        name: 'Sider',
         data () {
             return {
                 list: [
                     { key: 'button', label: 'Button 按钮', url: '/button' },
                     { key: 'form', label: 'Form 表单', url: '/form' },
                     { key: 'table', label: 'Table 表格', url: '/table' },
+                    { key: 'loading', label: 'Loading 加载', url: '/loading' },
                     { key: 'preview', label: 'Preview 预览', url: '/preview' },
+                    { key: 'masonry', label: 'Masonry 瀑布流', url: '/masonry' },
                     { key: 'scroll', label: 'Scroll 滚动', url: '/scroll' },
                     { key: 'animation', label: 'Animation 动画', url: '/animation' }
                 ]

@@ -1,0 +1,85 @@
+/*!
+* Category: loading
+*/
+
+@loading-size           : 40px;
+@loading-dot-size       : 32px;
+
+.leo-loading {
+  @keyframes rotateLoad {
+    to { transform: rotate(1turn) }
+  }
+  @keyframes dashLoad {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -40px
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -120px
+    }
+  }
+  @keyframes bounceLoad {
+    0% {
+      transform: scale(0)
+    }
+    to {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+
+  &.fix {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: hsla(0, 0%, 100%, .9);
+
+    & > * {
+      top: 50%;
+      left: 50%;
+      position: absolute;
+    }
+    .leo-loading-dot {
+      margin-top: -@loading-dot-size / 2;
+      margin-left: -@loading-dot-size / 2;
+    }
+    .leo-loading-svg {
+      margin-top: -@loading-size / 2;
+      margin-left: -@loading-size / 2;
+    }
+  }
+
+  .leo-loading-dot {
+    width: @loading-dot-size;
+    height: @loading-dot-size;
+    background-color: @primary-color;
+    border-radius: @loading-dot-size / 2;
+    animation: bounceLoad 1s ease-in-out infinite;
+  }
+
+  .leo-loading-svg {
+    width: @loading-size;
+    height: @loading-size;
+    animation: rotateLoad 2s linear infinite;
+
+    .leo-loading-circle {
+      stroke-width: 2;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      stroke: @primary-color;
+      stroke-dasharray: 90, 150;
+      animation: dashLoad 1.5s ease-in-out infinite;
+    }
+  }
+
+}
+

@@ -2,13 +2,13 @@
 * Category: table
 */
 
-@table-td-height: 36px;
+@table-td-height      : 36px;
 
 .leo-table {
   @keyframes newData {
     0% {
       opacity: .1;
-      transform: translateY(-@table-td-height);
+      transform: translateY(- @table-td-height);
       background-color: tint(@success-color, 90%);
     }
     15% {
@@ -111,7 +111,7 @@
         &.checked {
           border-color: @primary-color;
           background-color: @primary-color;
-          &:after {
+          &::after {
             content: '√';
             font-family: cursive;
           }
@@ -119,7 +119,7 @@
         &.indeterminate {
           border-color: @primary-color;
           background-color: @primary-color;
-          &:after {
+          &::after {
             content: '－';
           }
         }
