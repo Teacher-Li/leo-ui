@@ -39,13 +39,47 @@
   z-index: 1000;
   position: fixed;
   box-shadow: @shadow-down;
+  transform: trabslateY(-100%);
   background-color: @body-background;
+  transition: transform @transition-time;
   .header-inner {
     padding: 0 20px;
-    img {
-      width: 50px;
+    &::after {
+      clear: both;
+      content: '';
+      display: block;
+    }
+
+    .logo {
       float: left;
-      margin-top: 10px;
+      img {
+        height: 50px;
+        margin-top: 10px;
+      }
+    }
+    .nav {
+      float: right;
+      display: flex;
+      justify-content: space-between;
+
+      .menu {
+
+      }
+      .tool {
+        margin-top: 20px;
+        .github {
+          color: @gray-color;
+          transition: color @transition-time;
+          &:hover {
+            color: shade(@gray-color, 25%);
+          }
+
+          svg {
+            display: block;
+            fill: currentColor;
+          }
+        }
+      }
     }
   }
 }

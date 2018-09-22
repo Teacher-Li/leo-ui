@@ -1,272 +1,254 @@
 <template>
     <div class="table-page">
-
-        <Header></Header>
-
-        <div class="body">
-            <div class="wrapper">
-
-                <Sider></Sider>
-
-                <div class="content">
-                    <h1>Table 表格</h1>
-                    <div class="anchor">
-                        <h2>代码示例</h2>
-                    </div>
-                    <div class="card" vertical>
-                        <div class="demo">
-                            <div class="example">
-                                <div class="leo-table">
-                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                        <div class="leo-table-head">
-                                            <table>
-                                                <colgroup>
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <thead>
-                                                    <tr>
-                                                        <th v-for="column in columns">{{ column['label'] }}</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                        <div class="leo-table-body">
-                                            <table>
-                                                <colgroup>
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr v-for="row in data">
-                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+        <h1>Table 表格</h1>
+        <div class="anchor">
+            <h2>代码示例</h2>
+        </div>
+        <div class="card" vertical>
+            <div class="demo">
+                <div class="example">
+                    <div class="leo-table">
+                        <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-head">
+                                <table>
+                                    <colgroup>
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th v-for="column in columns">{{ column['label'] }}</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
-                            <div class="title"><span>基本用法</span></div>
-                            <div class="description">
-                                表格的最简单用法。
+                            <div class="leo-table-body">
+                                <table>
+                                    <colgroup>
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr v-for="row in data">
+                                            <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="code" :class="{ visible : visible1 }">
-                            <div class="html">
-                                <textarea type="text" :value="html1" id="html1"></textarea>
-                                <a @click="copy($event, 'html1')">Copy</a>
-                                <pre>                    {{ html1 }}</pre>
-                            </div>
-                            <div class="js">
-                                <textarea type="text" :value="java1" id="java1"></textarea>
-                                <a @click="copy($event, 'java1')">Copy</a>
-                                <pre>                    {{ java1 }}</pre>
-                            </div>
-                        </div>
-                        <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
-                    </div>
-                    <div class="card" vertical>
-                        <div class="demo">
-                            <div class="example">
-                                <div class="leo-table">
-                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                        <div class="leo-table-head">
-                                            <table>
-                                                <colgroup>
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <thead>
-                                                    <tr>
-                                                        <th v-for="column in columns">{{ column['label'] }}</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                        <div class="leo-table-body">
-                                            <table>
-                                                <colgroup>
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr
-                                                        :class="className[parseInt(Math.random() * className.length)]"
-                                                        v-for="row in data">
-                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="title"><span>行样式</span></div>
-                            <div class="description">
-                                样式类型有：新增行、删除行以及四种颜色背景。<br>
-                                通过设置 <code>tr</code> 的 <code>class</code> 值为 <code>new</code>、 <code>old</code>、<code>active</code>、 <code>success</code>、 <code>warning</code>、 <code>error</code>
-                            </div>
-                        </div>
-                        <div class="code" :class="{ visible : visible2 }">
-                            <div class="html">
-                                <textarea type="text" :value="html2" id="html2"></textarea>
-                                <a @click="copy($event, 'html2')">Copy</a>
-                                <pre>                    {{ html2 }}</pre>
-                            </div>
-                            <div class="js">
-                                <textarea type="text" :value="java2" id="java2"></textarea>
-                                <a @click="copy($event, 'java2')">Copy</a>
-                                <pre>                    {{ java2 }}</pre>
-                            </div>
-                        </div>
-                        <div class="more" :class="{ open: visible2 }" @click="visible2 = !visible2"></div>
-                    </div>
-                    <div class="card" vertical>
-                        <div class="demo">
-                            <div class="example">
-                                <div class="leo-table" v-drag>
-                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                        <div class="leo-table-head">
-                                            <table>
-                                                <colgroup>
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <thead>
-                                                    <tr>
-                                                        <th v-for="column in columns">{{ column['label'] }}</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                        <div class="leo-table-body" style="max-height: 100px">
-                                            <table>
-                                                <colgroup>
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr v-for="row in data">
-                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="title"><span>固定表头</span></div>
-                            <div class="description">
-                                通过设置 <code>max-height</code> 给表格指定最大高度后，会自动固定表头，通过鼠标上下滚动表格。<br>
-                                添加属性 <code>v-drag</code>，通过鼠标点击左右拖动表格。
-                            </div>
-                        </div>
-                        <div class="code" :class="{ visible : visible3 }">
-                            <div class="html">
-                                <textarea type="text" :value="html3" id="html3"></textarea>
-                                <a @click="copy($event, 'html3')">Copy</a>
-                                <pre>                    {{ html3 }}</pre>
-                            </div>
-                            <div class="js">
-                                <textarea type="text" :value="java3" id="java3"></textarea>
-                                <a @click="copy($event, 'java3')">Copy</a>
-                                <pre>                    {{ java3 }}</pre>
-                            </div>
-                        </div>
-                        <div class="more" :class="{ open: visible3 }" @click="visible3 = !visible3"></div>
-                    </div>
-                    <div class="card" vertical>
-                        <div class="demo">
-                            <div class="example">
-                                <div
-                                    :disabled="!select.length"
-                                    @click="exportCsv"
-                                    class="leo-btn"
-                                    color="primary"
-                                    size="small"
-                                    shadow
-                                    bg>
-                                    导出数据
-                                </div>
-                                <br><br>
-                                <div class="leo-table">
-                                    <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
-                                        <div class="leo-table-head">
-                                            <table>
-                                                <colgroup>
-                                                    <col width="34">
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <label
-                                                                class="leo-table-checkbox"
-                                                                @click="selectedAll"
-                                                                :class="classObject">
-                                                                <input type="checkbox" v-model="selectAll">
-                                                            </label>
-                                                        </th>
-                                                        <th v-for="column in columns">{{ column['label'] }}</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                        <div class="leo-table-body">
-                                            <table>
-                                                <colgroup>
-                                                    <col width="34">
-                                                    <col v-for="column in columns" :width="column['width']">
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr v-for="row in data">
-                                                        <td>
-                                                            <label
-                                                                :class="{ 'checked': select.indexOf(row.id) > -1 }"
-                                                                class="leo-table-checkbox">
-                                                                <input type="checkbox" :value="row.id" v-model="select">
-                                                            </label>
-                                                        </td>
-                                                        <td v-for="column in columns">{{ row[column['key']] }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="title"><span>可选择</span></div>
-                            <div class="description">
-                                第一列是联动的选择框。<br>
-                                可导出选中的数据，生成 <code>csv</code> 文件
-                            </div>
-                        </div>
-                        <div class="code" :class="{ visible : visible4 }">
-                            <div class="html">
-                                <textarea type="text" :value="html4" id="html4"></textarea>
-                                <a @click="copy($event, 'html4')">Copy</a>
-                                <pre>                    {{ html4 }}</pre>
-                            </div>
-                            <div class="js">
-                                <textarea type="text" :value="java4" id="java4"></textarea>
-                                <a @click="copy($event, 'java4')">Copy</a>
-                                <pre>                    {{ java4 }}</pre>
-                            </div>
-                        </div>
-                        <div class="more" :class="{ open: visible4 }" @click="visible4 = !visible4"></div>
                     </div>
                 </div>
+                <div class="title"><span>基本用法</span></div>
+                <div class="description">
+                    表格的最简单用法。
+                </div>
             </div>
+            <div class="code" :class="{ visible : visible1 }">
+                <div class="html">
+                    <textarea type="text" :value="html1" id="html1"></textarea>
+                    <a @click="copy($event, 'html1')">Copy</a>
+                    <pre>                    {{ html1 }}</pre>
+                </div>
+                <div class="js">
+                    <textarea type="text" :value="java1" id="java1"></textarea>
+                    <a @click="copy($event, 'java1')">Copy</a>
+                    <pre>                    {{ java1 }}</pre>
+                </div>
+            </div>
+            <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+        </div>
+        <div class="card" vertical>
+            <div class="demo">
+                <div class="example">
+                    <div class="leo-table">
+                        <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-head">
+                                <table>
+                                    <colgroup>
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th v-for="column in columns">{{ column['label'] }}</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="leo-table-body">
+                                <table>
+                                    <colgroup>
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr
+                                            :class="className[parseInt(Math.random() * className.length)]"
+                                            v-for="row in data">
+                                            <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title"><span>行样式</span></div>
+                <div class="description">
+                    样式类型有：新增行、删除行以及四种颜色背景。<br>
+                    通过设置 <code>tr</code> 的 <code>class</code> 值为 <code>new</code>、 <code>old</code>、<code>active</code>、 <code>success</code>、 <code>warning</code>、 <code>error</code>
+                </div>
+            </div>
+            <div class="code" :class="{ visible : visible2 }">
+                <div class="html">
+                    <textarea type="text" :value="html2" id="html2"></textarea>
+                    <a @click="copy($event, 'html2')">Copy</a>
+                    <pre>                    {{ html2 }}</pre>
+                </div>
+                <div class="js">
+                    <textarea type="text" :value="java2" id="java2"></textarea>
+                    <a @click="copy($event, 'java2')">Copy</a>
+                    <pre>                    {{ java2 }}</pre>
+                </div>
+            </div>
+            <div class="more" :class="{ open: visible2 }" @click="visible2 = !visible2"></div>
+        </div>
+        <div class="card" vertical>
+            <div class="demo">
+                <div class="example">
+                    <div class="leo-table" v-drag>
+                        <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-head">
+                                <table>
+                                    <colgroup>
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th v-for="column in columns">{{ column['label'] }}</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="leo-table-body" style="max-height: 100px">
+                                <table>
+                                    <colgroup>
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr v-for="row in data">
+                                            <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title"><span>固定表头</span></div>
+                <div class="description">
+                    通过设置 <code>max-height</code> 给表格指定最大高度后，会自动固定表头，通过鼠标上下滚动表格。<br>
+                    添加属性 <code>v-drag</code>，通过鼠标点击左右拖动表格。
+                </div>
+            </div>
+            <div class="code" :class="{ visible : visible3 }">
+                <div class="html">
+                    <textarea type="text" :value="html3" id="html3"></textarea>
+                    <a @click="copy($event, 'html3')">Copy</a>
+                    <pre>                    {{ html3 }}</pre>
+                </div>
+                <div class="js">
+                    <textarea type="text" :value="java3" id="java3"></textarea>
+                    <a @click="copy($event, 'java3')">Copy</a>
+                    <pre>                    {{ java3 }}</pre>
+                </div>
+            </div>
+            <div class="more" :class="{ open: visible3 }" @click="visible3 = !visible3"></div>
+        </div>
+        <div class="card" vertical>
+            <div class="demo">
+                <div class="example">
+                    <div
+                        :disabled="!select.length"
+                        @click="exportCsv"
+                        class="leo-btn"
+                        color="primary"
+                        size="small"
+                        shadow
+                        bg>
+                        导出数据
+                    </div>
+                    <br><br>
+                    <div class="leo-table">
+                        <div class="leo-table-track" :style="{ 'min-width': minWidth + 'px' }">
+                            <div class="leo-table-head">
+                                <table>
+                                    <colgroup>
+                                        <col width="34">
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <label
+                                                    class="leo-table-checkbox"
+                                                    @click="selectedAll"
+                                                    :class="classObject">
+                                                    <input type="checkbox" v-model="selectAll">
+                                                </label>
+                                            </th>
+                                            <th v-for="column in columns">{{ column['label'] }}</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="leo-table-body">
+                                <table>
+                                    <colgroup>
+                                        <col width="34">
+                                        <col v-for="column in columns" :width="column['width']">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr v-for="row in data">
+                                            <td>
+                                                <label
+                                                    :class="{ 'checked': select.indexOf(row.id) > -1 }"
+                                                    class="leo-table-checkbox">
+                                                    <input type="checkbox" :value="row.id" v-model="select">
+                                                </label>
+                                            </td>
+                                            <td v-for="column in columns">{{ row[column['key']] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title"><span>可选择</span></div>
+                <div class="description">
+                    第一列是联动的选择框。<br>
+                    可导出选中的数据，生成 <code>csv</code> 文件
+                </div>
+            </div>
+            <div class="code" :class="{ visible : visible4 }">
+                <div class="html">
+                    <textarea type="text" :value="html4" id="html4"></textarea>
+                    <a @click="copy($event, 'html4')">Copy</a>
+                    <pre>                    {{ html4 }}</pre>
+                </div>
+                <div class="js">
+                    <textarea type="text" :value="java4" id="java4"></textarea>
+                    <a @click="copy($event, 'java4')">Copy</a>
+                    <pre>                    {{ java4 }}</pre>
+                </div>
+            </div>
+            <div class="more" :class="{ open: visible4 }" @click="visible4 = !visible4"></div>
         </div>
     </div>
 </template>
 
 <script>
-    import CSV from '../utils/CSV';
-
-    import Sider from '../components/Sider';
-    import Header from '../components/Header';
-
     export default {
         name: 'Table',
         components: {
-            Sider,
-            Header,
+
         },
         data () {
             return {
