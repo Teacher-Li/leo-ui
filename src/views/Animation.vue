@@ -10,36 +10,28 @@
                     <div class="leo-form" inline>
                         <div class="leo-form-item">
                             <label class="leo-form-label">推开方向：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        v-for="x in ['top', 'right', 'bottom', 'left']"
-                                        :class="{ active: direction === x }"
-                                        @click="direction = x"
-                                        class="leo-btn">
-                                        {{ x }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                :options="['up', 'right', 'down', 'left']"
+                                style="width: 120px"
+                                v-model="direction">
+                            </Selector>
+
                         </div>
                         <div class="leo-form-item">
                             <label class="leo-form-label">过渡模式：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        :class="{ active: mode === x['key'] }"
-                                        @click="mode = x['key']"
-                                        v-for="x in modes"
-                                        class="leo-btn">
-                                        {{ x['value'] }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                style="width: 120px"
+                                :options="modes"
+                                v-model="mode">
+                            </Selector>
+
                         </div>
                     </div>
                     <br>
-                    <div class="leo-animation" :direction="direction" style="height: 32px">
-                        <transition name="leo-animation-shove" :mode="mode">
+                    <div class="leo-animation" style="height: 32px">
+                        <transition :name="'leo-shove-' + direction" :mode="mode">
                             <div
                                 class="leo-btn leo-animation-item"
                                 @click="open = false"
@@ -63,8 +55,8 @@
                         </transition>
                     </div>
                     <br>
-                    <div class="leo-animation" :direction="direction" style="height: 32px">
-                        <transition name="leo-animation-shove" :mode="mode">
+                    <div class="leo-animation" style="height: 32px">
+                        <transition :name="'leo-shove-' + direction" :mode="mode">
                             <div class="leo-btn-group leo-animation-item" v-if="edit" key="action">
                                 <div class="leo-btn" color="success" @click="edit = false" bg shadow>save</div>
                                 <div class="leo-btn" color="warning" @click="edit = false" bg shadow>cancel</div>
@@ -105,19 +97,19 @@
 </template>
 
 <script>
+    import Selector from '../components/Selector';
+
     export default {
         name: 'Animation',
-        components: {
-
-        },
-        data() {
+        components: { Selector },
+        data () {
             return {
                 direction: 'left',
                 mode: null,
                 modes: [
-                    { key: 'in-out', value: 'in-out' },
-                    { key: null, value: 'default' },
-                    { key: 'out-in', value: 'out-in' },
+                    { label: 'in-out', value: 'in-out' },
+                    { label: 'default', value: null },
+                    { label: 'out-in', value: 'out-in' },
                 ],
 
                 open: true,
@@ -127,36 +119,24 @@
                 html1: `<div class="leo-form" inline>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">推开方向：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            v-for="x in ['top', 'right', 'bottom', 'left']"
-                                            :class="{ active: direction === x }"
-                                            @click="direction = x"
-                                            class="leo-btn">
-                                            {{ x }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    :options="['up', 'right', 'down', 'left']"
+                                    style="width: 120px"
+                                    v-model="direction">
+                                </Selector>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">过渡模式：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            :class="{ active: mode === x['key'] }"
-                                            @click="mode = x['key']"
-                                            v-for="x in modes"
-                                            class="leo-btn">
-                                            {{ x['value'] }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    style="width: 120px"
+                                    :options="modes"
+                                    v-model="mode">
+                                </Selector>
                             </div>
                         </div>
                         <br>
-                        <div class="leo-animation" :direction="direction" style="height: 32px">
-                            <transition name="leo-animation-shove" :mode="mode">
+                        <div class="leo-animation" style="height: 32px">
+                            <transition  :name="'leo-shove-' + direction" :mode="mode">
                                 <div
                                     class="leo-btn leo-animation-item"
                                     @click="open = false"
@@ -180,8 +160,8 @@
                             </transition>
                         </div>
                         <br>
-                        <div class="leo-animation" :direction="direction" style="height: 32px">
-                            <transition name="leo-animation-shove" :mode="mode">
+                        <div class="leo-animation" style="height: 32px">
+                            <transition :name="'leo-shove-' + direction" :mode="mode">
                                 <div class="leo-btn-group leo-animation-item" v-if="edit" key="action">
                                     <div class="leo-btn" color="success" @click="edit = false" bg shadow>save</div>
                                     <div class="leo-btn" color="warning" @click="edit = false" bg shadow>cancel</div>
@@ -199,15 +179,18 @@
                             </transition>
                         </div>`,
 
-                java1: `export default {
+                java1: `import Selector from '../components/Selector';
+
+                        export default {
+                            components: { Selector },
                             data () {
                                 return {
                                     direction: 'left',
                                     mode: null,
                                     modes: [
-                                        { key: 'in-out', value: 'in-out' },
-                                        { key: null, value: 'default' },
-                                        { key: 'out-in', value: 'out-in' },
+                                        { label: 'in-out', value: 'in-out' },
+                                        { label: 'default', value: null },
+                                        { label: 'out-in', value: 'out-in' },
                                     ],
 
                                     open: true,
@@ -219,7 +202,7 @@
             }
         },
         methods: {
-            copy(e, id) {
+            copy (e, id) {
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

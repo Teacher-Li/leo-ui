@@ -52,10 +52,7 @@
 <script>
     export default {
         name: 'Masonry',
-        components: {
-
-        },
-        data() {
+        data () {
             return {
                 visible: false,
 
@@ -108,7 +105,7 @@
             }
         },
         methods: {
-            copy(e, id) {
+            copy (e, id) {
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

@@ -25,8 +25,8 @@
         right: 0;
         bottom: 0;
         z-index: 1001;
+        position: fixed;
         font-weight: 300;
-        position: absolute;
         background: linear-gradient(90deg, #7443ff, #5fa3fb, #4afff7);
     }
     .not-found-content {

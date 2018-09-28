@@ -72,7 +72,7 @@
                 <div class="title"><span>CSV 文件预览</span></div>
                 <div class="description">
                     最基本用法，点击上传，一次选择一个文件。<br>
-                    添加属性 <code>v-drag</code>，可以拖拽上传文件。
+                    添加属性 <code>v-drag</code>，可以拖拽上传文件。<a @click="downloadCSV">(去下载CSV示例)</a>
                 </div>
             </div>
             <div class="code" :class="{ visible : visible }">
@@ -93,14 +93,11 @@
 </template>
 
 <script>
-    import CSV from '../utils/CSV';
+    import csv from '../utils/csv';
 
     export default {
         name: 'Preview',
-        components: {
-
-        },
-        data() {
+        data () {
             return {
                 visible: false,
 
@@ -171,7 +168,7 @@
                             </div>
                         </div>`,
 
-                java1: `import CSV from '../utils/CSV';
+                java1: `import csv from '../utils/csv';
 
                         export default {
                             data () {
@@ -230,9 +227,6 @@
 
             }
         },
-        computed: {
-
-        },
         directives: {
             drag: {
                 inserted (el, binding, vnode) {
@@ -262,6 +256,9 @@
                     }, 5000)
                 }
             },
+            downloadCSV () {
+                this.$router.push({ name: 'Table', params: { download: true }});
+            },
             changeFile (e) {
                 let files = e.target.files;
 
@@ -279,7 +276,7 @@
                     reader.readAsText(file, "GBK");
                     reader.onload = (e) => {
                         this.parsed = true;
-                        this.fileData = CSV.parse(e.target.result);
+                        this.fileData = csv.parse(e.target.result);
                     }
                 }
             },

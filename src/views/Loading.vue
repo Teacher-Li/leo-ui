@@ -33,7 +33,9 @@
                         </div>
                     </div>
                     <div style="position: relative">
+
                         <Loader :type="type" :visible="loading" fix></Loader>
+
                         <div class="article">
                             <h3>登金陵凤凰台</h3>
                             <address>李白</address>
@@ -74,10 +76,8 @@
 
     export default {
         name: 'Loading',
-        components: {
-            Loader
-        },
-        data() {
+        components: { Loader },
+        data () {
             return {
                 visible: false,
 
@@ -123,7 +123,10 @@
                             </div>
                         </div>`,
 
-                java1: `export default {
+                java1: `import Loader from '../components/Loader';
+
+                        export default {
+                            components: { Loader },
                             data () {
                                 return {
                                     type: 'circular',
@@ -135,7 +138,7 @@
             }
         },
         methods: {
-            copy(e, id) {
+            copy (e, id) {
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

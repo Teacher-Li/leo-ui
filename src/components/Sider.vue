@@ -22,8 +22,10 @@
             return {
                 list: [
                     { key: 'button', label: 'Button 按钮', url: '/button' },
+                    { key: 'select', label: 'Select 选择器', url: '/select' },
                     { key: 'form', label: 'Form 表单', url: '/form' },
                     { key: 'table', label: 'Table 表格', url: '/table' },
+                    { key: 'pagination', label: 'Pagination 分页', url: '/pagination' },
                     { key: 'loading', label: 'Loading 加载', url: '/loading' },
                     { key: 'preview', label: 'Preview 预览', url: '/preview' },
                     { key: 'masonry', label: 'Masonry 瀑布流', url: '/masonry' },

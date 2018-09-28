@@ -226,6 +226,13 @@
     color: @btn-hover-color-base;
     border-color: @btn-hover-color-base;
     background-color: @btn-hover-bg-base;
+
+    .leo-btn-icon {
+      color: @btn-hover-color-base !important;
+      &::after {
+        border-top-color: @btn-hover-bg-base !important;
+      }
+    }
   }
 
   &[dashed] {
@@ -260,6 +267,23 @@
     color: @btn-disabled-color !important;
     background-color: @body-background !important;
     border-color: tint(@btn-disabled-color, 85%) !important;
+  }
+
+  .leo-btn-icon {
+    .arrows(0deg, 6px);
+
+    top: -3px;
+    position: relative;
+    color: shade(@gray-color, 15%);
+  }
+  .leo-btn-icon[deg="90"] {
+    .arrows(90deg, 6px);
+  }
+  .leo-btn-icon[deg="180"] {
+    .arrows(180deg, 6px);
+  }
+  .leo-btn-icon[deg="270"] {
+    .arrows(270deg, 6px);
   }
   & + .leo-btn {
     margin-left: 5px;

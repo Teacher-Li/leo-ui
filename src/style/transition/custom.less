@@ -1,0 +1,57 @@
+.custom-motion(@className, @keyframeName, @time: @animation-time-small) {
+  .base-motion(@className, @keyframeName, @time);
+  .@{className}-enter-active, .@{className}-appear {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  .@{className}-leave-active {
+    animation-timing-function: ease-in-out;
+  }
+}
+
+.custom-motion(leo-drop, leoDrop);
+.custom-motion(leo-stack, leoStack, @animation-time);
+
+@keyframes leoDropIn {
+  0% {
+    opacity: 0;
+    transform: scaleY(.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes leoDropOut {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(.8);
+  }
+}
+
+@keyframes leoStackIn {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leoStackOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+}

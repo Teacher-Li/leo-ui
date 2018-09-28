@@ -245,6 +245,8 @@
 </template>
 
 <script>
+    import csv from '../utils/csv';
+
     export default {
         name: 'Table',
         components: {
@@ -537,7 +539,7 @@
                             }
                         }`,
 
-                java4: `import CSV from '../utils/CSV';
+                java4: `import csv from '../utils/csv';
 
                         export default {
                             data () {
@@ -587,10 +589,16 @@
                                         data += '\\n'+ item['name'] +','+ item['sex'] +','+ item['age']
                                     });
 
-                                    CSV.download('data.csv', data);
+                                    csv.download('data.csv', data);
                                 }
                             }
                         }`
+            }
+        },
+        mounted () {
+            if (this.$route.params.download) {
+                this.selectedAll();
+                window.scrollTo(0, document.documentElement.clientHeight)
             }
         },
         computed: {
@@ -684,7 +692,7 @@
                     data += '\n'+ item['name'] +','+ item['sex'] +','+ item['age']
                 });
 
-                CSV.download('data.csv', data);
+                csv.download('data.csv', data);
             }
         }
     }

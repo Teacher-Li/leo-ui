@@ -10,17 +10,13 @@
                     <div class="leo-form">
                         <div class="leo-form-item">
                             <label class="leo-form-label">箭头位置：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        v-for="x in ['top', 'default', 'bottom']"
-                                        :class="{ active: placement === x }"
-                                        @click="placement = x"
-                                        class="leo-btn">
-                                        {{ x }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                :options="['top', 'center', 'bottom']"
+                                style="width: 120px"
+                                v-model="placement">
+                            </Selector>
+
                         </div>
                     </div>
                     <br>
@@ -44,11 +40,13 @@
                                 :class="{ disabled: translateX >= 0 }"
                                 class="leo-scroll-arrow left"
                                 @click="scrollLeft(600)">
+                                &nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                             <div
                                 :class="{ disabled: translateX + totalWidth <= 600 }"
                                 class="leo-scroll-arrow right"
                                 @click="scrollRight(600)">
+                                &nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
                     </div>
@@ -77,14 +75,14 @@
 </template>
 
 <script>
+    import Selector from '../components/Selector';
+
     export default {
         name: 'Scroll',
-        components: {
-
-        },
-        data() {
+        components: { Selector },
+        data () {
             return {
-                placement: 'default',
+                placement: 'center',
 
                 translateX: 0,
 
@@ -116,17 +114,11 @@
                 html1: `<div class="leo-form">
                             <div class="leo-form-item">
                                 <label class="leo-form-label">箭头位置：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            v-for="x in ['top', 'default', 'bottom']"
-                                            :class="{ active: placement === x }"
-                                            @click="placement = x"
-                                            class="leo-btn">
-                                            {{ x }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    :options="['top', 'center', 'bottom']"
+                                    style="width: 120px"
+                                    v-model="placement">
+                                </Selector>
                             </div>
                         </div>
                         <br>
@@ -159,10 +151,13 @@
                             </div>
                         </div>`,
 
-                java1: `export default {
+                java1: `import Selector from '../components/Selector';
+
+                        export default {
+                            components: { Selector },
                             data () {
                                 return {
-                                    placement: 'default',
+                                    placement: 'center',
                                     translateX: 0,
                                     list: [
                                         { id: 1, backgroundColor: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
@@ -254,7 +249,7 @@
                         ? el.addEventListener('DOMMouseScroll', scroll)
                         : el.addEventListener('mousewheel', scroll);
 
-                    function scroll(e) {
+                    function scroll (e) {
                         e.preventDefault();
 
                         let self = vnode.context;
@@ -266,7 +261,7 @@
             }
         },
         methods: {
-            copy(e, id) {
+            copy (e, id) {
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

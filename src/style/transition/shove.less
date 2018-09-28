@@ -1,0 +1,103 @@
+.shove-motion(@className, @keyframeName) {
+  .base-motion(@className, @keyframeName, @animation-time);
+  .@{className}-enter-active, .@{className}-appear {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  .@{className}-leave-active {
+    animation-timing-function: ease-in-out;
+  }
+}
+
+.shove-motion(leo-shove-up, leoShoveUp);
+.shove-motion(leo-shove-down, leoShoveDown);
+.shove-motion(leo-shove-left, leoShoveLeft);
+.shove-motion(leo-shove-right, leoShoveRight);
+
+@keyframes leoShoveUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leoShoveUpOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes leoShoveDownIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leoShoveDownOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes leoShoveLeftIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes leoShoveLeftOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes leoShoveRightIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes leoShoveRightOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

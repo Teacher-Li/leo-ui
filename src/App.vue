@@ -9,7 +9,7 @@
                 <Sider></Sider>
 
                 <div class="content">
-                    <transition name="leo-animation-stack" mode="out-in" appear>
+                    <transition name="leo-stack" mode="out-in" appear>
                         <router-view></router-view>
                     </transition>
                 </div>

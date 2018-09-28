@@ -9,7 +9,7 @@
                 <div class="example" v-html="html1"></div>
                 <div class="title"><span>按钮类型</span></div>
                 <div class="description">
-                    按钮类型有：默认按钮、虚线按钮、圆角按钮、文字按钮、阴影按钮以及五种颜色按钮。<br>
+                    按钮类型有：默认按钮、虚线按钮、圆角按钮、文字按钮、阴影按钮、箭头按钮以及五种颜色按钮。<br>
                     添加属性 <code>bg</code>，可设置按钮的背景色。<br>
                     添加属性 <code>round</code>，可设置为圆角按钮。<br>
                     添加属性 <code>dashed</code>，可设置为虚线按钮。<br>
@@ -73,17 +73,13 @@
                     <div class="leo-form">
                         <div class="leo-form-item">
                             <label class="leo-form-label">按钮尺寸：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        v-for="x in ['large', 'default', 'small', 'mini']"
-                                        :class="{ active: size === x }"
-                                        @click="size = x"
-                                        class="leo-btn">
-                                        {{ x }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                :options="['large', 'default', 'small', 'mini']"
+                                style="width: 120px"
+                                v-model="size">
+                            </Selector>
+
                         </div>
                     </div>
                     <br>
@@ -93,6 +89,7 @@
                     <div class="leo-btn" :size="size" color="success" round>success</div>
                     <div class="leo-btn" :size="size" color="warning" bg shadow>warning</div>
                     <div class="leo-btn" :size="size" color="error" bg round shadow>error</div>
+                    <div class="leo-btn" :size="size"><i class="leo-btn-icon">&nbsp;</i></div>
                     <br><br>
                     <div class="leo-btn-group" :size="size" dashed>
                         <div class="leo-btn">default</div>
@@ -110,7 +107,7 @@
                 <div class="title"><span>按钮尺寸</span></div>
                 <div class="description">
                     按钮有四种尺寸：大、默认（中）、小、迷你。<br>
-                    通过设置 <code>size</code> 为 <code>large</code> 和 <code>small</code> 以及 <code>mini</code> 将按钮设置为大和小尺寸，不设置为默认（中）尺寸。
+                    通过设置 <code>size</code> 为 <code>large</code> 和 <code>small</code> 以及 <code>mini</code> 将按钮设置为大、小和迷你尺寸，不设置为默认（中）尺寸。
                 </div>
             </div>
             <div class="code" :class="{ visible : visible5 }">
@@ -131,9 +128,12 @@
 </template>
 
 <script>
+    import Selector from '../components/Selector';
+
     export default {
         name: 'Button',
-        data() {
+        components: { Selector },
+        data () {
             return {
                 size: 'default',
                 visible5: false,
@@ -164,7 +164,12 @@
                         <div class="leo-btn" color="info" bg shadow>info</div>
                         <div class="leo-btn" color="success" bg round shadow>success</div>
                         <div class="leo-btn" color="warning" bg round shadow>warning</div>
-                        <div class="leo-btn" color="error" bg shadow>error</div>`,
+                        <div class="leo-btn" color="error" bg shadow>error</div>
+                        <br><br>
+                        <div class="leo-btn"><i class="leo-btn-icon">&nbsp;</i></div>
+                        <div class="leo-btn"><i class="leo-btn-icon" deg="90">&nbsp;</i></div>
+                        <div class="leo-btn"><i class="leo-btn-icon" deg="180">&nbsp;</i></div>
+                        <div class="leo-btn"><i class="leo-btn-icon" deg="270">&nbsp;</i></div>`,
 
                 html2: `<div class="leo-btn" dashed style="width: 200px">default</div>
                         <br><br>
@@ -226,17 +231,11 @@
                 html5: `<div class="leo-form">
                             <div class="leo-form-item">
                                 <label class="leo-form-label">按钮尺寸：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            v-for="x in ['large', 'default', 'small', 'mini']"
-                                            :class="{ active: size === x }"
-                                            @click="size = x"
-                                            class="leo-btn">
-                                            {{ x }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    :options="['large', 'default', 'small', 'mini']"
+                                    style="width: 120px"
+                                    v-model="size">
+                                </Selector>
                             </div>
                         </div>
                         <br>
@@ -246,6 +245,7 @@
                         <div class="leo-btn" :size="size" color="success" round>success</div>
                         <div class="leo-btn" :size="size" color="warning" bg shadow>warning</div>
                         <div class="leo-btn" :size="size" color="error" bg round shadow>error</div>
+                        <div class="leo-btn" :size="size"><i class="leo-btn-icon">&nbsp;</i></div>
                         <br><br>
                         <div class="leo-btn-group" :size="size" dashed>
                             <div class="leo-btn">default</div>
@@ -260,7 +260,10 @@
                             <div class="leo-btn">primary</div>
                         </div>`,
 
-                java5: `export default {
+                java5: `import Selector from '../components/Selector';
+
+                        export default {
+                            components: { Selector },
                             data () {
                                 return {
                                     size: 'default'
@@ -270,7 +273,7 @@
             }
         },
         methods: {
-            copy(e, id) {
+            copy (e, id) {
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

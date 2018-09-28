@@ -5,31 +5,6 @@
 .leo-animation {
   position: relative;
 
-  &[direction="top"] {
-    .leo-animation-shove-enter {
-      transform: translateY(100%);
-    }
-    .leo-animation-shove-leave-active {
-      transform: translateY(-100%);
-    }
-  }
-  &[direction="right"] {
-    .leo-animation-shove-enter {
-      transform: translateX(-100%);
-    }
-    .leo-animation-shove-leave-active {
-      transform: translateX(100%);
-    }
-  }
-  &[direction="bottom"] {
-    .leo-animation-shove-enter {
-      transform: translateY(-100%);
-    }
-    .leo-animation-shove-leave-active {
-      transform: translateY(100%);
-    }
-  }
-
   .leo-animation-item {
     position: absolute;
   }
@@ -38,41 +13,4 @@
       margin-left: 0;
     }
   }
-}
-
-// shove
-.leo-animation-shove-enter,
-.leo-animation-shove-leave-to {
-  opacity: 0;
-}
-.leo-animation-shove-enter {
-  transform: translateX(100%);
-}
-.leo-animation-shove-leave-to {
-  transform: translateX(-100%);
-}
-.leo-animation-shove-enter-active,
-.leo-animation-shove-leave-active {
-  transition: all @animation-time ease-in-out;
-}
-
-// fade
-.leo-animation-fade-enter-active,
-.leo-animation-fade-leave-active {
-  transition: opacity @animation-time ease-in-out;
-}
-.leo-animation-fade-enter,
-.leo-animation-fade-leave-to {
-  opacity: 0;
-}
-
-// stack
-.leo-animation-stack-enter-active,
-.leo-animation-stack-leave-active {
-  transition: all @animation-time ease-in-out;
-}
-.leo-animation-stack-enter,
-.leo-animation-stack-leave-to {
-  opacity: 0;
-  transform: translateY(36px);
 }

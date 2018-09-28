@@ -5,6 +5,9 @@ import store from "./store";
 
 import './style/index.less';
 
+import mixins from './utils/mixins'
+Vue.mixin(mixins);
+
 Vue.config.productionTip = false;
 
 new Vue({

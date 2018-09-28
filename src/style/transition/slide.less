@@ -1,0 +1,119 @@
+.slide-motion(@className, @keyframeName) {
+    .base-motion(@className, @keyframeName);
+    .@{className}-enter-active, .@{className}-appear {
+        opacity: 0;
+        animation-timing-function: ease-in-out;
+    }
+    .@{className}-leave-active {
+        animation-timing-function: ease-in-out;
+    }
+}
+
+.slide-motion(leo-slide-up, leoSlideUp);
+.slide-motion(leo-slide-down, leoSlideDown);
+.slide-motion(leo-slide-left, leoSlideLeft);
+.slide-motion(leo-slide-right, leoSlideRight);
+
+@keyframes leoSlideUpIn {
+    0% {
+        opacity: 0;
+        transform: scaleY(.8);
+        transform-origin: 0 0;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: 0 0;
+    }
+}
+
+@keyframes leoSlideUpOut {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: 0 0;
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(.8);
+        transform-origin: 0 0;
+    }
+}
+
+@keyframes leoSlideDownIn {
+    0% {
+        opacity: 0;
+        transform: scaleY(.8);
+        transform-origin: 100% 100%;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: 100% 100%;
+    }
+}
+
+@keyframes leoSlideDownOut {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: 100% 100%;
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(.8);
+        transform-origin: 100% 100%;
+    }
+}
+
+@keyframes leoSlideLeftIn {
+    0% {
+        opacity: 0;
+        transform: scaleX(.8);
+        transform-origin: 0 0;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+        transform-origin: 0 0;
+    }
+}
+
+@keyframes leoSlideLeftOut {
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+        transform-origin: 0 0;
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(.8);
+        transform-origin: 0 0;
+    }
+}
+
+@keyframes leoSlideRightIn {
+    0% {
+        opacity: 0;
+        transform: scaleX(.8);
+        transform-origin: 100% 0;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+        transform-origin: 100% 0;
+    }
+}
+
+@keyframes leoSlideRightOut {
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+        transform-origin: 100% 0;
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(.8);
+        transform-origin: 100% 0;
+    }
+}

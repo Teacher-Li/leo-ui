@@ -10,49 +10,37 @@
                     <div class="leo-form" inline>
                         <div class="leo-form-item">
                             <label class="leo-form-label">表单尺寸：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        v-for="x in ['large', 'default', 'small']"
-                                        :class="{ active: size === x }"
-                                        @click="size = x"
-                                        class="leo-btn">
-                                        {{ x }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                :options="['large', 'default', 'small']"
+                                style="width: 120px"
+                                v-model="size">
+                            </Selector>
+
                         </div>
                         <div class="leo-form-item">
                             <label class="leo-form-label">label 宽度：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        v-for="x in ['80', '90', 'default', '110', '120']"
-                                        :class="{ active: width === x }"
-                                        @click="width = x"
-                                        class="leo-btn">
-                                        {{ x }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                :options="['80', '90', '100', '110', '120']"
+                                style="width: 120px"
+                                v-model="width">
+                            </Selector>
+
                         </div>
                         <div class="leo-form-item">
                             <label class="leo-form-label">label 位置：</label>
-                            <div class="leo-form-value">
-                                <div class="leo-btn-group">
-                                    <div
-                                        v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
-                                        :class="{ active: position === x }"
-                                        @click="position = x"
-                                        class="leo-btn">
-                                        {{ x }}
-                                    </div>
-                                </div>
-                            </div>
+
+                            <Selector
+                                :options="['left', 'right', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
+                                style="width: 120px"
+                                v-model="placement">
+                            </Selector>
+
                         </div>
                     </div>
                     <br>
-                    <div class="leo-form" :size="size" :label-width="width" :label-position="position">
+                    <div class="leo-form" :size="size" :label-width="width" :label-placement="placement">
                         <div class="leo-form-item">
                             <label class="leo-form-label">用户姓名：</label>
                             <input type="text" class="leo-form-value leo-form-input" value="leo">
@@ -129,63 +117,45 @@
 </template>
 
 <script>
+    import Selector from '../components/Selector';
+
     export default {
         name: 'Form',
-        components: {
-
-        },
-        data() {
+        components: { Selector },
+        data () {
             return {
                 visible1: false,
 
                 sex: '男',
 
                 size: 'default',
-                width: 'default',
-                position: 'default',
+                width: '100',
+                placement: 'right',
 
                 html1: `<div class="leo-form" inline>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">表单尺寸：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            v-for="x in ['large', 'default', 'small']"
-                                            :class="{ active: size === x }"
-                                            @click="size = x"
-                                            class="leo-btn">
-                                            {{ x }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    :options="['large', 'default', 'small']"
+                                    style="width: 120px"
+                                    v-model="size">
+                                </Selector>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">label 宽度：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            v-for="x in ['80', '90', 'default', '110', '120']"
-                                            :class="{ active: width === x }"
-                                            @click="width = x"
-                                            class="leo-btn">
-                                            {{ x }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    :options="['80', '90', '100', '110', '120']"
+                                    style="width: 120px"
+                                    v-model="width">
+                                </Selector>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">label 位置：</label>
-                                <div class="leo-form-value">
-                                    <div class="leo-btn-group">
-                                        <div
-                                            v-for="x in ['left', 'default', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
-                                            :class="{ active: position === x }"
-                                            @click="position = x"
-                                            class="leo-btn">
-                                            {{ x }}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Selector
+                                    :options="['left', 'right', 'top', 'top-left', 'top-right', 'bottom-left', 'bottom-right']"
+                                    style="width: 120px"
+                                    v-model="placement">
+                                </Selector>
                             </div>
                         </div>
                         <br>
@@ -250,19 +220,22 @@
                             </div>
                         </div>`,
 
-                java1: `export default {
+                java1: `import Selector from '../components/Selector';
+
+                        export default {
+                            components: { Selector },
                             data () {
                                 return {
                                     size: 'default',
-                                    width: 'default',
-                                    position: 'default',
+                                    width: '100',
+                                    placement: 'right',
                                 }
                             }
                         }`
             }
         },
         methods: {
-            copy(e, id) {
+            copy (e, id) {
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

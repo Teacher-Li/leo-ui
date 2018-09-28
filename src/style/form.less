@@ -18,7 +18,7 @@
     display: inline-block;
   }
   .label-width(@divide, @width: @form-label-width) {
-    &[label-position="top"] {
+    &[label-placement="top"] {
       .leo-form-item {
         padding-left: 0;
       }
@@ -32,16 +32,16 @@
     }
   }
   .FormSize(@height: @form-item-height, @divide: @form-item-divide) {
-    &[label-position="top-left"],
-    &[label-position="top-right"] {
+    &[label-placement="top-left"],
+    &[label-placement="top-right"] {
       .leo-form-item {
         .leo-form-label {
           top: @divide;
         }
       }
     }
-    &[label-position="bottom-left"],
-    &[label-position="bottom-right"] {
+    &[label-placement="bottom-left"],
+    &[label-placement="bottom-right"] {
       .leo-form-item {
         .leo-form-label {
           top: auto;
@@ -49,7 +49,7 @@
         }
       }
     }
-    &[label-position="top"] {
+    &[label-placement="top"] {
       .leo-form-item {
         .leo-form-label {
           padding-bottom: @divide - 2;
@@ -106,31 +106,37 @@
     }
   }
   &[inline] {
+    &::after {
+      clear: both;
+      content: '';
+      display: block;
+    }
+
     .leo-form-item {
-      display: inline-block;
+      float: left;
     }
   }
 
-  &[label-position="left"],
-  &[label-position="top-left"],
-  &[label-position="bottom-left"] {
+  &[label-placement="left"],
+  &[label-placement="top-left"],
+  &[label-placement="bottom-left"] {
     .leo-form-item {
       .leo-form-label {
         text-align: left;
       }
     }
   }
-  &[label-position="top-left"],
-  &[label-position="top-right"],
-  &[label-position="bottom-left"],
-  &[label-position="bottom-right"] {
+  &[label-placement="top-left"],
+  &[label-placement="top-right"],
+  &[label-placement="bottom-left"],
+  &[label-placement="bottom-right"] {
     .leo-form-item {
       .leo-form-label {
         transform: translateY(0);
       }
     }
   }
-  &[label-position="top"] {
+  &[label-placement="top"] {
     .leo-form-item {
       .leo-form-label {
         display: block;
