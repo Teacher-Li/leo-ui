@@ -103,24 +103,41 @@
         cursor: pointer;
         line-height: 12px;
         text-align: center;
+        position: relative;
         display: inline-block;
         vertical-align: middle;
         border: @table-checkbox-border;
         border-radius: @border-radius-small;
         transition: all @transition-time ease-in-out;
-        &.checked {
-          border-color: @primary-color;
-          background-color: @primary-color;
-          &::after {
-            content: '√';
-            font-family: cursive;
-          }
+        &::after {
+          top: 1px;
+          left: 4px;
+          width: 4px;
+          height: 8px;
+          content: '';
+          position: absolute;
+          transform: scale(0);
+          border: 2px solid #fff;
         }
+        &.checked,
         &.indeterminate {
           border-color: @primary-color;
           background-color: @primary-color;
           &::after {
-            content: '－';
+            border-top: 0;
+            border-left: 0;
+            transform: scale(1);
+          }
+        }
+        &.checked {
+          &::after {
+            transform+_: rotate(45deg);
+          }
+        }
+        &.indeterminate {
+          &::after {
+            border-bottom: 0;
+            transform+_: rotate(90deg);
           }
         }
 

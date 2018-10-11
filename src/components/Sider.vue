@@ -27,6 +27,7 @@
                     { key: 'table', label: 'Table 表格', url: '/table' },
                     { key: 'pagination', label: 'Pagination 分页', url: '/pagination' },
                     { key: 'loading', label: 'Loading 加载', url: '/loading' },
+                    { key: 'tooltip', label: 'Tooltip 文字提示', url: '/tooltip' },
                     { key: 'preview', label: 'Preview 预览', url: '/preview' },
                     { key: 'masonry', label: 'Masonry 瀑布流', url: '/masonry' },
                     { key: 'scroll', label: 'Scroll 滚动', url: '/scroll' },

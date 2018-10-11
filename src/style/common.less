@@ -3,23 +3,18 @@
 */
 
 .arrows(@degree, @width) {
-  .rotate(@degree) {
-    transform+_: rotate(-@degree) translate(-50%);
-  }
-
   &::before,
   &::after {
-    .rotate(@degree);
-
     top: 50%;
     width: 0;
     left: 50%;
     height: 0;
     content: "";
     position: absolute;
-    transform-origin: 0 @width / 2;
     border: 1px solid transparent;
+    transform-origin: 0 @width / 2;
     transition: transform @transition-time;
+    transform: rotate(-@degree) translate(-50%);
   }
   &::before {
     border-top-color: inherit;
@@ -30,7 +25,6 @@
     border-width: @width - 2 @width - 2 0 @width - 2;
   }
 }
-
 
 .header {
   top: 0;
@@ -72,11 +66,6 @@
           transition: color @transition-time;
           &:hover {
             color: shade(@gray-color, 25%);
-          }
-
-          svg {
-            display: block;
-            fill: currentColor;
           }
         }
       }

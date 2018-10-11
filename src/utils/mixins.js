@@ -17,7 +17,40 @@ export default {
                 })
             }
         },
+        // 文字提示
+        'tooltip': {
+            inserted (el, binding, vnode) {
+                let num = binding.value.length;
+                let html = el.innerHTML.replace(/(^\s*)|(\s*$)/g, "");
 
+                if (html.length > num) {
+                    el.innerHTML = html.slice(0, num) + '...';
+
+                    if (!binding.value.theme) {
+                        el.setAttribute('title', html)
+                    } else {
+                        let div = document.createElement('div');
+                        div.innerHTML = html;
+
+                        div.className = 'leo-tooltip';
+                        div.classList.add(binding.value.theme);
+
+                        document.body.appendChild(div);
+                        el.addEventListener('mouseover', (e) => {
+                            div.classList.add('visible');
+                            div.style.top = e.clientY + 'px';
+                            div.style.left = e.clientX + 'px';
+                            if (binding.value.width) {
+                                div.style.maxWidth = binding.value.width + 'px';
+                            }
+                        });
+                        el.addEventListener('mouseout', () => {
+                            div.classList.remove('visible');
+                        })
+                    }
+                }
+            }
+        }
     },
     methods: {
         // 派发
@@ -35,6 +68,13 @@ export default {
         // 广播
         broadcast (componentName, eventName, params) {
             broadcast.call(this, componentName, eventName, params);
+        },
+        // 类名
+        addClassName (el, className) {
+            el.className += ' ' + className
+        },
+        removeClassName (el, className) {
+            el.className = el.className.replace(' ')
         }
     }
 }

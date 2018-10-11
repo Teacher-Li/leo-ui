@@ -27,6 +27,7 @@ npm run build
 - [Table 表格](https://lihaomu.github.io/leo/#/table)
 - [Pagination 分页](https://lihaomu.github.io/leo/#/pagination)
 - [Loading 加载](https://lihaomu.github.io/leo/#/loading)
+- [Tooltip 文字提示](https://lihaomu.github.io/leo/#/tooltip)
 - [Preview 预览](https://lihaomu.github.io/leo/#/preview)
 - [Masonry 瀑布流](https://lihaomu.github.io/leo/#/masonry)
 - [Scroll 滚动](https://lihaomu.github.io/leo/#/scroll)

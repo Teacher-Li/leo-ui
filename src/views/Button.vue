@@ -14,8 +14,7 @@
                     添加属性 <code>round</code>，可设置为圆角按钮。<br>
                     添加属性 <code>dashed</code>，可设置为虚线按钮。<br>
                     添加属性 <code>shadow</code>，必须和属性 <code>bg</code> 以及 <code>color</code> 一起用，可设置为阴影按钮。<br>
-                    通过设置 <code>color</code> 为 <code>primary</code>、 <code>info</code>、 <code>success</code>、
-                    <code>warning</code>、 <code>error</code> 创建不同样式的按钮，不设置为默认按钮。
+                    通过设置 <code>color</code> 为 <code>primary</code>、<code>info</code>、<code>success</code>、<code>warning</code>、<code>error</code> 创建不同样式的按钮，不设置为默认按钮。
                 </div>
             </div>
             <div class="code">
@@ -41,7 +40,7 @@
         </div>
         <div class="card">
             <div class="demo">
-                <div class="example" v-html="html2"></div>
+                <div class="example" v-html="html3"></div>
                 <div class="title"><span>禁用状态</span></div>
                 <div class="description">
                     添加属性 <code>disabled</code>，可将按钮设置为不可用状态。
@@ -189,6 +188,7 @@
                         <div class="leo-btn" color="success" round disabled>success</div>
                         <div class="leo-btn" color="warning" bg shadow disabled>warning</div>
                         <div class="leo-btn" color="error" bg round shadow disabled>error</div>
+                        <div class="leo-btn" round disabled><i class="leo-btn-icon">&nbsp;</i></div>
                         <br><br>
                         <div class="leo-btn" color="error" bg round shadow long disabled>error</div>`,
 

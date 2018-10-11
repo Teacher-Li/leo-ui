@@ -228,7 +228,7 @@
     background-color: @btn-hover-bg-base;
 
     .leo-btn-icon {
-      color: @btn-hover-color-base !important;
+      color: @btn-hover-color-base;
       &::after {
         border-top-color: @btn-hover-bg-base !important;
       }
@@ -267,6 +267,14 @@
     color: @btn-disabled-color !important;
     background-color: @body-background !important;
     border-color: tint(@btn-disabled-color, 85%) !important;
+    &:hover {
+      .leo-btn-icon {
+        color: shade(@gray-color, 15%);
+        &::after {
+          border-top-color: @body-background !important;
+        }
+      }
+    }
   }
 
   .leo-btn-icon {

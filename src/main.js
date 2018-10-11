@@ -5,6 +5,8 @@ import store from "./store";
 
 import './style/index.less';
 
+require('./utils/prototype');
+
 import mixins from './utils/mixins'
 Vue.mixin(mixins);
 

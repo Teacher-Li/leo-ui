@@ -1,0 +1,25 @@
+/*!
+* Category: tooltip
+*/
+
+.leo-tooltip {
+  display: none;
+  margin: 5px 0;
+  z-index: 10000;
+  min-height: 34px;
+  padding: 8px 12px;
+  position: absolute;
+  white-space: normal;
+  box-shadow: @shadow-down;
+  border-radius: @border-radius-base;
+  &.dark {
+    color: #fff;
+    background-color: rgba(70,76,91,.9);
+  }
+  &.light {
+    background-color: #fff;
+  }
+  &.visible {
+    display: block;
+  }
+}

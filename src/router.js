@@ -8,6 +8,7 @@ import Form from "./views/Form.vue";
 import Table from "./views/Table.vue";
 import Pagination from "./views/Pagination.vue";
 import Loading from "./views/Loading.vue";
+import Tooltip from "./views/Tooltip.vue";
 import Preview from "./views/Preview.vue";
 import Masonry from "./views/Masonry.vue";
 import Scroll from "./views/Scroll.vue";
@@ -27,6 +28,7 @@ export default new Router({
         {path: '/table', name: 'Table', component: Table},
         {path: '/pagination', name: 'Pagination', component: Pagination},
         {path: '/loading', name: 'Loading', component: Loading},
+        {path: '/tooltip', name: 'Tooltip', component: Tooltip},
         {path: '/preview', name: 'Preview', component: Preview},
         {path: '/masonry', name: 'Masonry', component: Masonry},
         {path: '/scroll', name: 'Scroll', component: Scroll},
