@@ -7,11 +7,6 @@
     .leo-page-total {
       line-height: @height;
     }
-    .leo-page-elevator {
-      input {
-        height: @height;
-      }
-    }
   }
 
   display: flex;
@@ -52,24 +47,6 @@
   .leo-page-sizer,
   .leo-page-elevator {
     margin-left: 15px;
-  }
-  .leo-page-elevator {
-    input {
-      width: 50px;
-      margin: 0 5px;
-      padding: 0 6px;
-      border-radius: @border-radius-small;
-      border: 1px solid @input-border-color;
-      transition: border @transition-time ease-in-out;
-      &:hover {
-        border-color: @input-hover-border-color;
-      }
-      &:focus {
-        outline: none;
-        box-shadow: @input-focus-shadow;
-        border-color: @input-hover-border-color;
-      }
-    }
   }
 }
 

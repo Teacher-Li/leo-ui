@@ -7,23 +7,23 @@
         <div class="card" vertical>
             <div class="demo">
                 <div class="example">
-                    <div class="leo-btn" @click="add" color="success" size="small" shadow bg>添加</div>
-                    <div class="leo-btn" @click="remove" color="warning" size="small" shadow bg>删除</div>
-                    <div class="leo-btn" @click="reset" color="primary" size="small" shadow bg>重置</div>
-                    <br><br>
-                    <div class="leo-masonry">
-                        <div v-for="(item, i) in list" class="leo-masonry-item" style="padding: 10px">
-                            <div
-                                style="border-radius: 3px;box-shadow: 0 1px 6px rgba(0, 0, 0, .2);position: relative"
-                                :style="{ height: item['height'], backgroundColor: item['backgroundColor'] }"
-                                class="leo-masonry-wrapper">
-                                <div
-                                    style="font-size: 20px;background-color: #ccc"
-                                    class="leo-avatar"
-                                    center>
-                                    {{ i + 1 }}
-                                </div>
-                            </div>
+                    <Loader :visible="loading" fix></Loader>
+                    <div class="leo-form" inline label-width="80">
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">关键词：</label>
+
+                            <Inputer v-model="word" style="width: 120px"></Inputer>
+
+                        </div>
+                        <div class="leo-form-item leo-form-btn">
+                            <div class="leo-btn" color="success" @click="add" shadow bg>添加</div>
+                            <div class="leo-btn" color="warning" @click="clear" shadow bg>清空</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div v-masonry="{ width: 200, padding: 8 }" class="leo-masonry">
+                        <div class="leo-masonry-item" v-for="image in images">
+                            <img :src="image" class="leo-masonry-img">
                         </div>
                     </div>
                 </div>
@@ -50,58 +50,96 @@
 </template>
 
 <script>
+    import Loader from '../components/Loader';
+    import Inputer from '../components/Inputer';
+
     export default {
         name: 'Masonry',
+        components: { Loader, Inputer },
         data () {
             return {
                 visible: false,
+                loading: false,
 
-                num: 0,
-                list: [],
+                images: [],
+                page: 0,
 
-                html1: `<div class="leo-btn" @click="add" color="success" size="small" shadow bg>添加</div>
-                        <div class="leo-btn" @click="remove" color="warning" size="small" shadow bg>删除</div>
-                        <div class="leo-btn" @click="reset" color="primary" size="small" shadow bg>重置</div>
-                        <br><br>
-                        <div class="leo-masonry">
-                            <div v-for="(item, i) in list" class="leo-masonry-item" style="padding: 10px">
-                                <div
-                                    style="border-radius: 3px;box-shadow: 0 1px 6px rgba(0, 0, 0, .2);position: relative"
-                                    :style="{ height: item['height'], backgroundColor: item['backgroundColor'] }"
-                                    class="leo-masonry-wrapper">
-                                    <div
-                                        style="font-size: 20px;background-color: #ccc"
-                                        class="leo-avatar"
-                                        center>
-                                        {{ i + 1 }}
-                                    </div>
-                                </div>
+                word: '赵丽颖',
+
+                html1: `<Loader :visible="loading" fix></Loader>
+                        <div class="leo-form" inline label-width="80">
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">关键词：</label>
+                                <Inputer v-model="word" style="width: 120px"></Inputer>
+                            </div>
+                            <div class="leo-form-item leo-form-btn">
+                                <div class="leo-btn" color="success" @click="add" shadow bg>添加</div>
+                                <div class="leo-btn" color="warning" @click="clear" shadow bg>清空</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div v-masonry="{ width: 200, padding: 8 }" class="leo-masonry">
+                            <div class="leo-masonry-item" v-for="image in images">
+                                <img :src="image" class="leo-masonry-img">
                             </div>
                         </div>`,
 
-                java1: `export default {
+                java1: `import Loader from '../components/Loader';
+                        import Inputer from '../components/Inputer';
+
+                        export default {
+                            components: { Loader, Inputer },
                             data () {
                                 return {
-                                    num: 0,
-                                    list: []
+                                    loading: false,
+
+                                    images: [],
+                                    page: 0,
+
+                                    word: '赵丽颖'
                                 }
                             },
                             methods: {
                                 add () {
-                                    this.list.push({
-                                        height: parseInt(Math.random() * 200 + 50) + 'px',
-                                        backgroundColor: '#' + (~~ (Math.random() * (1 << 24))).toString(16)
+                                    this.loading = true;
+                                    this.ajax({
+                                        method: 'GET',
+                                        url: 'http://haha/api/image/',
+                                        data: {
+                                            num: 10,
+                                            word: this.word,
+                                            page: this.page ++
+                                        },
+                                        success: (res) => {
+                                            this.showImages(res['Data'])
+                                        }
                                     })
                                 },
-                                remove () {
-                                    this.list.length > 0 && this.list.pop()
-                                },
                                 reset () {
-                                    this.list = []
+                                    this.images = []
+                                },
+                                showImages (images, list, index) {
+                                    list  = list || [];
+                                    index = index || 0;
+
+                                    if (index < images.length) {
+                                        let img = new Image();
+                                        img.src = images[index];
+
+                                        img.onerror = () => {
+                                            this.showImages(images, list, ++index)
+                                        };
+                                        img.onload = () => {
+                                            list.unshift(images[index]);
+                                            this.showImages(images, list, ++index)
+                                        }
+                                    } else {
+                                        this.loading = false;
+                                        this.images.unshift(...list)
+                                    }
                                 }
                             }
                         }`
-
             }
         },
         methods: {
@@ -120,16 +158,65 @@
                 }
             },
             add () {
-                this.list.push({
-                    height: parseInt(Math.random() * 200 + 50) + 'px',
-                    backgroundColor: '#' + (~~ (Math.random() * (1 << 24))).toString(16)
+                this.loading = true;
+                this.word === '' ? this.TXApi() : this.BDApi()
+            },
+            clear () {
+                this.page = 1;
+                this.images = []
+            },
+            BDApi () {
+                this.ajax({
+                    method: 'GET',
+                    url: 'http://112.74.174.31:5235/api/image/',
+                    data: {
+                        num: 10,
+                        word: this.word,
+                        page: this.page ++
+                    },
+                    success: (res) => {
+                        !res['Status']
+                            ? this.TXApi()
+                            : this.showImages(res['Data'])
+
+                    }
                 })
             },
-            remove () {
-                this.list.length > 0 && this.list.pop()
+            TXApi () {
+                this.ajax({
+                    method: 'GET',
+                    url: 'https://api.tianapi.com/meinv/',
+                    data: {
+                        num: 10,
+                        key: '895a630b5f7e9ad87e93c6751cf5b399'
+                    },
+                    success: (res) => {
+                        this.showImages(res.newslist.map(item => item.picUrl))
+                    }
+                })
             },
-            reset () {
-                this.list = []
+            showImages (images, list, index) {
+                list  = list || [];
+                index = index || 0;
+
+                if (index < images.length) {
+                    console.log('第'+ (index + 1) +'张图片');
+
+                    let img = new Image();
+                    img.src = images[index];
+
+                    img.onerror = () => {
+                        console.log('加载失败');
+                        this.showImages(images, list, ++index)
+                    };
+                    img.onload = () => {
+                        list.push(images[index]);
+                        this.showImages(images, list, ++index)
+                    }
+                } else {
+                    this.loading = false;
+                    this.images.unshift(...list)
+                }
             }
         }
     }

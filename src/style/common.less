@@ -33,9 +33,7 @@
   z-index: 1000;
   position: fixed;
   box-shadow: @shadow-down;
-  transform: trabslateY(-100%);
   background-color: @body-background;
-  transition: transform @transition-time;
   .header-inner {
     padding: 0 20px;
     &::after {
@@ -182,6 +180,9 @@
           .demo {
             width: 100%;
             padding-bottom: 24px;
+            .example {
+              position: relative;
+            }
           }
           .code {
             height: 0;

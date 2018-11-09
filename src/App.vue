@@ -24,20 +24,6 @@
 
     export default {
         name: 'App',
-        components: {
-            Sider,
-            Header,
-        },
-        data () {
-            return {
-                direction: 'bottom'
-            }
-        },
-        watch: {
-            '$route' (to, from) {
-                const paths = ['/', '/button', '/form', '/table', '/loading', '/preview', '/masonry', '/scroll', '/animation'];
-                this.direction = paths.indexOf(to.path) > paths.indexOf(from.path) ? 'bottom' : 'top'
-            }
-        }
+        components: { Sider, Header }
     }
 </script>

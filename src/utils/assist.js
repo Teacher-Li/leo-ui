@@ -6,6 +6,11 @@ export function oneOf (value, validList) {
     return false;
 }
 
+// 判断数值是否在范围内
+export function isInclude (value, min, max) {
+    return value <= max && value >= min
+}
+
 // 获取
 export function getExtremum (value, min, max) {
     return Math.min(max, Math.max(min, value))

@@ -23,6 +23,20 @@
                             </div>
                         </div>
                         <div class="leo-form-item">
+                            <label class="leo-form-label">方向：</label>
+                            <div class="leo-form-value">
+                                <div class="leo-btn-group">
+                                    <div
+                                        :class="{ active: placement === x }"
+                                        v-for="x in ['top', 'bottom']"
+                                        @click="placement = x"
+                                        class="leo-btn">
+                                        {{ x }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leo-form-item">
                             <label class="leo-form-label">尺寸：</label>
                             <div class="leo-form-value">
                                 <div class="leo-btn-group">
@@ -41,6 +55,7 @@
 
                     <Selector
                         @on-change="changeSelected"
+                        :placement="placement"
                         :disabled="disabled"
                         style="width: 240px"
                         :options="options"
@@ -84,8 +99,9 @@
             return {
                 visible: false,
 
-                disabled: false,
                 size: 'default',
+                disabled: false,
+                placement: 'bottom',
 
                 value: '',
                 options: ['New York', 'London', 'Sydney', 'Ottawa', 'Paris', 'Canberra'],
@@ -101,6 +117,20 @@
                                             @click="disabled = x.value"
                                             class="leo-btn">
                                             {{ x.label }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">方向：</label>
+                                <div class="leo-form-value">
+                                    <div class="leo-btn-group">
+                                        <div
+                                            :class="{ active: placement === x }"
+                                            v-for="x in ['top', 'bottom']"
+                                            @click="placement = x"
+                                            class="leo-btn">
+                                            {{ x }}
                                         </div>
                                     </div>
                                 </div>
@@ -123,6 +153,7 @@
                         <br>
                         <Selector
                             @on-change="changeSelected"
+                            :placement="placement"
                             :disabled="disabled"
                             style="width: 240px"
                             :options="options"
@@ -137,8 +168,9 @@
                             components: { Pager, Selector },
                             data () {
                                 return {
-                                    disabled: false,
                                     size: 'default',
+                                    disabled: false,
+                                    placement: 'bottom',
 
                                     value: '',
                                     options: ['New York', 'London', 'Sydney', 'Ottawa', 'Paris', 'Canberra']

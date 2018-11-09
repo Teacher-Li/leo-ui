@@ -23,7 +23,7 @@ npm run build
 ## Links
 - [Button 按钮](https://lihaomu.github.io/leo/#/button)
 - [Select 选择器](https://lihaomu.github.io/leo/#/select)
-- [Form 表单](https://lihaomu.github.io/leo/#/from)
+- [Form 表单](https://lihaomu.github.io/leo/#/form)
 - [Table 表格](https://lihaomu.github.io/leo/#/table)
 - [Pagination 分页](https://lihaomu.github.io/leo/#/pagination)
 - [Loading 加载](https://lihaomu.github.io/leo/#/loading)

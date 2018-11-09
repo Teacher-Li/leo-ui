@@ -53,14 +53,6 @@
                     </div>
                     <div class="leo-form" inline>
                         <div class="leo-form-item">
-                            <label class="leo-form-label">周围个数：</label>
-                            <input
-                                class="leo-form-value leo-form-input"
-                                v-model.number.lazy="around"
-                                v-regexp="/[^0-9]/g"
-                                type="text">
-                        </div>
-                        <div class="leo-form-item">
                             <label class="leo-form-label">对齐方式：</label>
 
                             <Selector
@@ -78,6 +70,48 @@
                                 style="width: 120px"
                                 v-model="size">
                             </Selector>
+
+                        </div>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">数据总数：</label>
+
+                            <Inputer
+                                :parser="val => val.replace(/[^0-9]/g, '')"
+                                v-model.number="total"
+                                style="width: 120px">
+                            </Inputer>
+
+                        </div>
+                    </div>
+                    <div class="leo-form" inline>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">周围个数：</label>
+
+                            <Inputer
+                                :parser="val => val.replace(/[^0-9]/g, '')"
+                                v-model.number="around"
+                                style="width: 120px">
+                            </Inputer>
+
+                        </div>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">每页个数：</label>
+
+                            <Inputer
+                                :parser="val => val.replace(/[^0-9]/g, '')"
+                                v-model.number="pageSize"
+                                style="width: 120px">
+                            </Inputer>
+
+                        </div>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">当前页码：</label>
+
+                            <Inputer
+                                :parser="val => val.replace(/[^0-9]/g, '')"
+                                v-model.number="current"
+                                style="width: 120px">
+                            </Inputer>
 
                         </div>
                     </div>
@@ -127,11 +161,12 @@
 
 <script>
     import Pager from '../components/Pager';
+    import Inputer from '../components/Inputer';
     import Selector from '../components/Selector';
 
     export default {
         name: 'Pagination',
-        components: { Pager, Selector },
+        components: { Pager, Inputer, Selector },
         data () {
             return {
                 visible: false,
@@ -143,9 +178,9 @@
                 around: 1,
                 align: 'left',
                 size: 'default',
-                showTotal: false,
-                showSizer: false,
-                showElevator: false,
+                showTotal: true,
+                showSizer: true,
+                showElevator: true,
                 list: [{ label: '显示', value: true }, { label: '隐藏', value: false }],
 
                 html1: `<div class="leo-form" inline>
@@ -194,14 +229,6 @@
                         </div>
                         <div class="leo-form" inline>
                             <div class="leo-form-item">
-                                <label class="leo-form-label">周围个数：</label>
-                                <input
-                                    class="leo-form-value leo-form-input"
-                                    v-model.number.lazy="around"
-                                    v-regexp="/[^0-9]/g"
-                                    type="text">
-                            </div>
-                            <div class="leo-form-item">
                                 <label class="leo-form-label">对齐方式：</label>
                                 <Selector
                                     :options="['left', 'center', 'right']"
@@ -216,6 +243,40 @@
                                     style="width: 120px"
                                     v-model="size">
                                 </Selector>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">数据总数：</label>
+                                <Inputer
+                                    :parser="val => val.replace(/[^0-9]/g, '')"
+                                    v-model.number="total"
+                                    style="width: 120px">
+                                </Inputer>
+                            </div>
+                        </div>
+                        <div class="leo-form" inline>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">周围个数：</label>
+                                <Inputer
+                                    :parser="val => val.replace(/[^0-9]/g, '')"
+                                    v-model.number="around"
+                                    style="width: 120px">
+                                </Inputer>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">每页个数：</label>
+                                <Inputer
+                                    :parser="val => val.replace(/[^0-9]/g, '')"
+                                    v-model.number="pageSize"
+                                    style="width: 120px">
+                                </Inputer>
+                            </div>
+                            <div class="leo-form-item">
+                                <label class="leo-form-label">当前页码：</label>
+                                <Inputer
+                                    :parser="val => val.replace(/[^0-9]/g, '')"
+                                    v-model.number="current"
+                                    style="width: 120px">
+                                </Inputer>
                             </div>
                         </div>
                         <br>
@@ -234,10 +295,15 @@
                         </Pager>`,
 
                 java1: `import Pager from '../components/Pager';
+                        import Inputer from '../components/Inputer';
                         import Selector from '../components/Selector';
 
                         export default {
-                            components: { Pager, Selector },
+                            components: {
+                                Pager,
+                                Inputer,
+                                Selector
+                            },
                             data () {
                                 return {
                                     total: 200,
@@ -247,10 +313,10 @@
                                     around: 1,
                                     align: 'left',
                                     size: 'default',
-                                    showTotal: false,
-                                    showSizer: false,
-                                    showElevator: false,
-                                    list: [{ label: '显示', value: true }, { label: '隐藏', value: false }]
+                                    showTotal: true,
+                                    showSizer: true,
+                                    showElevator: true,
+                                    list: [{ label: '显示', value: true }, { label: '隐藏', value: false }],
                                 }
                             },
                             methods: {
@@ -267,6 +333,7 @@
         },
         methods: {
             copy (e, id) {
+                this.current = 20;
                 let tag = e.target;
                 if (!tag.className) {
                     document.querySelector('#' + id).select();

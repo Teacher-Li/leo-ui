@@ -43,11 +43,15 @@
                     <div class="leo-form" :size="size" :label-width="width" :label-placement="placement">
                         <div class="leo-form-item">
                             <label class="leo-form-label">用户姓名：</label>
-                            <input type="text" class="leo-form-value leo-form-input" value="leo">
+
+                            <Inputer value="leo"></Inputer>
+
                         </div>
                         <div class="leo-form-item">
                             <label class="leo-form-label">用户性别：</label>
-                            <input type="text" class="leo-form-value leo-form-input" value="男" disabled>
+
+                            <Inputer value="男" disabled></Inputer>
+
                         </div>
                         <div class="leo-form-item">
                             <label class="leo-form-label">用户年龄：</label>
@@ -89,7 +93,25 @@
         </div>
         <div class="card">
             <div class="demo">
-                <div class="example" v-html="html2"></div>
+                <div class="example">
+                    <div class="leo-form" label-width="80" inline>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">账户：</label>
+
+                            <Inputer value="leo"></Inputer>
+
+                        </div>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">密码：</label>
+
+                            <Inputer type="password" value="leo"></Inputer>
+
+                        </div>
+                        <div class="leo-form-item leo-form-btn">
+                            <div class="leo-btn" color="primary" bg shadow>确定</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="title"><span>行内表单</span></div>
                 <div class="description">添加属性 <code>inline</code>，表单元素可以水平排列。</div>
             </div>
@@ -101,7 +123,36 @@
         </div>
         <div class="card">
             <div class="demo">
-                <div class="example" v-html="html3"></div>
+                <div class="example">
+                    <div class="leo-form" required>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">必填项：</label>
+
+                            <Inputer></Inputer>
+
+                        </div>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">必填项：</label>
+
+                            <Inputer></Inputer>
+
+                        </div>
+                    </div>
+                    <div class="leo-form">
+                        <div class="leo-form-item">
+                            <label class="leo-form-label">非必填项：</label>
+
+                            <Inputer></Inputer>
+
+                        </div>
+                        <div class="leo-form-item">
+                            <label class="leo-form-label" required>必填项：</label>
+
+                            <Inputer></Inputer>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="title"><span>必填</span></div>
                 <div class="description">
                     添加属性 <code>required</code>，可设置全局或者局部必填项
@@ -117,16 +168,15 @@
 </template>
 
 <script>
+    import Inputer from '../components/Inputer';
     import Selector from '../components/Selector';
 
     export default {
         name: 'Form',
-        components: { Selector },
+        components: { Inputer, Selector },
         data () {
             return {
                 visible1: false,
-
-                sex: '男',
 
                 size: 'default',
                 width: '100',
@@ -162,11 +212,11 @@
                         <div class="leo-form" :size="size" :label-width="width" :label-position="position">
                             <div class="leo-form-item">
                                 <label class="leo-form-label">用户姓名：</label>
-                                <input type="text" class="leo-form-value leo-form-input" value="leo">
+                                <Inputer value="leo"></Inputer>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">用户性别：</label>
-                                <input type="text" class="leo-form-value leo-form-input" value="男" disabled>
+                                <Inputer value="男" disabled></Inputer>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">用户年龄：</label>
@@ -188,11 +238,11 @@
                 html2: `<div class="leo-form" label-width="80" inline>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">账户：</label>
-                                <input type="text" class="leo-form-value leo-form-input">
+                                <Inputer value="leo"></Inputer>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">密码：</label>
-                                <input type="password" class="leo-form-value leo-form-input">
+                                <Inputer type="password" value="leo"></Inputer>
                             </div>
                             <div class="leo-form-item leo-form-btn">
                                 <div class="leo-btn" color="primary" bg shadow>确定</div>
@@ -202,28 +252,29 @@
                 html3: `<div class="leo-form" required>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">必填项：</label>
-                                <input type="text" class="leo-form-value leo-form-input">
+                                <Inputer></Inputer>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label">必填项：</label>
-                                <input type="text" class="leo-form-value leo-form-input">
+                                <Inputer></Inputer>
                             </div>
                         </div>
                         <div class="leo-form">
                             <div class="leo-form-item">
                                 <label class="leo-form-label">非必填项：</label>
-                                <input type="text" class="leo-form-value leo-form-input">
+                                <Inputer></Inputer>
                             </div>
                             <div class="leo-form-item">
                                 <label class="leo-form-label" required>必填项：</label>
-                                <input type="text" class="leo-form-value leo-form-input">
+                                <Inputer></Inputer>
                             </div>
                         </div>`,
 
-                java1: `import Selector from '../components/Selector';
+                java1: `import Inputer from '../components/Inputer';
+                        import Selector from '../components/Selector';
 
                         export default {
-                            components: { Selector },
+                            components: { Inputer, Selector },
                             data () {
                                 return {
                                     size: 'default',

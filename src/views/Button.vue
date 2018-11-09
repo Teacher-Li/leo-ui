@@ -105,7 +105,7 @@
                 </div>
                 <div class="title"><span>按钮尺寸</span></div>
                 <div class="description">
-                    按钮有四种尺寸：大、默认（中）、小、迷你。<br>
+                    按钮尺寸有：大、默认（中）、小、迷你。<br>
                     通过设置 <code>size</code> 为 <code>large</code> 和 <code>small</code> 以及 <code>mini</code> 将按钮设置为大、小和迷你尺寸，不设置为默认（中）尺寸。
                 </div>
             </div>

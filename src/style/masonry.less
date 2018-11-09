@@ -3,12 +3,18 @@
 */
 
 .leo-masonry {
-  column-gap: 0;
-  column-count: 5;
-
+  position: relative;
   .leo-masonry-item {
-    break-inside: avoid;
-    box-sizing: border-box;
+    opacity: 0;
+    position: absolute;
+    perspective: 1000px;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transform: scale(.5) translate3d(0, 0, 0);
+    transition: all @animation-time ease-in-out;
+    .leo-masonry-img {
+      width: 100%;
+    }
   }
 }
 

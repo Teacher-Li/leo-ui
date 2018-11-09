@@ -1,7 +1,7 @@
 <template>
     <div class="leo-page" :align="align" :size="size">
         <div class="leo-page-total" v-show="showTotal">
-            共 {{ total }} 条
+            共 {{ total || 0 }} 条
         </div>
         <div class="leo-btn" @click="prevPage" :disabled="!canPrevPage" :size="size">
             <i class="leo-btn-icon" deg="270">&nbsp;</i>
@@ -29,24 +29,30 @@
 
         <div v-show="showElevator" class="leo-page-elevator">
             跳至
-            <input
-                v-model.number.lazy="currentPage"
-                @change="changeCurrentPage"
-                v-regexp="/[^0-9]/g"
-                type="text">
+
+            <Inputer
+                :parser="val => val.replace(/[^0-9]/g, '')"
+                @on-change="changeCurrentPage"
+                v-model.number="currentPage"
+                style="width: 50px"
+                :size="size"
+                lazy>
+            </Inputer>
+
             页
         </div>
-
     </div>
 </template>
 
 <script>
-    import { oneOf, getExtremum } from '../utils/assist';
+    import { oneOf, isInclude, getExtremum } from '../utils/assist';
+
+    import Inputer from '../components/Inputer';
     import Selector from '../components/Selector';
 
     export default {
         name: 'Pager',
-        components: { Selector },
+        components: { Inputer, Selector },
         props: {
             total: {
                 type: Number,
@@ -102,12 +108,16 @@
             }
         },
         watch: {
+            total () {
+                isInclude(this.currentPage, 1, this.totalPage) || this.changePage(getExtremum(this.currentPage, 1, this.totalPage))
+            },
             current (val) {
-                this.changePage(getExtremum(val, 1, this.totalPage))
+                this.currentPage = val;
+                isInclude(val, 1, this.totalPage) || this.changePage(getExtremum(val, 1, this.totalPage))
             },
             pageSize (val) {
                 this.currentPageSize = val;
-                this.changePage(getExtremum(this.currentPage, 1, this.totalPage))
+                isInclude(this.currentPage, 1, this.totalPage) || this.changePage(getExtremum(this.currentPage, 1, this.totalPage))
             }
         },
         computed: {
@@ -151,7 +161,6 @@
         },
         methods: {
             changePage (page) {
-                this.currentPage = page;
                 this.$emit('on-change', page);
             },
             prevPage () {
@@ -162,11 +171,11 @@
                 let page = this.currentPage + 1;
                 this.canNextPage && this.changePage(page);
             },
-            changePageSize (val) {
-                this.$emit('on-page-size-change', val);
+            changePageSize (size) {
+                this.$emit('on-page-size-change', size);
             },
             changeCurrentPage () {
-                this.changePage(getExtremum(this.currentPage, 1, this.totalPage))
+                this.changePage(this.currentPage)
             }
         }
     }
