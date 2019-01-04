@@ -1,5 +1,14 @@
 .DS_Store
 node_modules
+/public
+/src/assets
+/dist/js
+/src/App.vue
+/src/main.js
+/dist/favicon.ico
+/dist/index.html
+babel.config.js
+vue.config.js
 
 # local env files
 .env.local

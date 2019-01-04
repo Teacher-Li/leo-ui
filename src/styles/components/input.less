@@ -1,0 +1,86 @@
+/*!
+* Category: input
+*/
+
+@input-prefix           : ~"@{css-prefix}input";
+
+.@{input-prefix} {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  &:hover {
+    .@{input-prefix}-icon {
+      display: block;
+    }
+  }
+  &.mini {
+    input {
+      height: @height-mini;
+    }
+  }
+  &.small {
+    input {
+      height: @height-small;
+    }
+  }
+  &.large {
+    input {
+      height: @height-large;
+    }
+  }
+
+  textarea,
+  input {
+    width: 100%;
+    outline: none;
+    border: @border-base;
+    font-size: @font-size-small;
+    border-radius: @border-radius-small;
+    transition: border @transition-time ease-in-out;
+    &:hover,
+    &:focus {
+      border-color: @primary-color;
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
+    }
+
+    &[readonly] {
+      cursor: default;
+      &:hover,
+      &:focus {
+        border-color: @border-color;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    &[disabled] {
+      color: @gray-color;
+      cursor: not-allowed;
+      background-color: @disabled-color;
+      &:hover {
+        border-color: @border-color;
+      }
+    }
+  }
+  textarea {
+    padding: 8px;
+    min-height: 64px;
+    line-height: 1.5em;
+  }
+  input {
+    padding: 0 8px;
+    height: @height-base;
+  }
+  &-icon {
+    top: 50%;
+    right: 8px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    transform: translateY(-50%);
+    color: shade(@gray-color, 15%);
+  }
+}

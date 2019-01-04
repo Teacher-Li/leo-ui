@@ -1,0 +1,76 @@
+/*!
+* Category: carousels
+*/
+
+@carousels-prefix            : ~"@{css-prefix}carousels";
+
+.@{carousels-prefix} {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  &.top-left,
+  &.top-right {
+    padding-top: 28px;
+    .@{carousels-prefix}-arrows {
+      top: 0;
+    }
+  }
+  &.center {
+    &:hover {
+      .@{carousels-prefix}-icon {
+        opacity: 1;
+      }
+    }
+    .@{carousels-prefix}-icon {
+      top: 50%;
+      opacity: 0;
+      position: absolute;
+      transform: translateY(-50%);
+      transition: all @transition-time ease-in-out;
+      &.left {
+        left: 0;
+      }
+      &.right {
+        right: 0;
+      }
+    }
+  }
+  &.bottom-left,
+  &.bottom-right {
+    padding-bottom: 28px;
+    .@{carousels-prefix}-arrows {
+      bottom: 0;
+    }
+  }
+  &.top-left,
+  &.bottom-left {
+    .@{carousels-prefix}-arrows {
+      left: 0;
+    }
+  }
+  &.top-right,
+  &.bottom-right {
+    .@{carousels-prefix}-arrows {
+      right: 0;
+    }
+  }
+
+  &-track {
+    .clear();
+
+    transition: transform @transition-time ease-out;
+
+    .@{carousels-prefix}-item {
+      float: left;
+    }
+  }
+
+  &-icon {
+    color: @primary-color;
+    display: inline-block;
+  }
+
+  &-arrows {
+    position: absolute;
+  }
+}

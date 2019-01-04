@@ -1,29 +1,56 @@
 <template>
-    <div id="app">
+  <div id="app">
 
-        <Header></Header>
-
-        <div class="body">
-            <div class="wrapper">
-
-                <Sider></Sider>
-
-                <div class="content">
-                    <transition name="leo-stack" mode="out-in" appear>
-                        <router-view></router-view>
-                    </transition>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </template>
 
 <script>
-    import Sider from './components/Sider.vue';
-    import Header from './components/Header.vue';
+  export default {
+    name: 'app',
+    data () {
+      return {
 
-    export default {
-        name: 'App',
-        components: { Sider, Header }
+      }
+    },
+    computed: {
+
+    },
+    watch: {
+
+    },
+    methods: {
+
     }
+  }
 </script>
+
+<style lang="less">
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin: 20px;
+  }
+
+  .devide {
+    height: 20px;
+  }
+</style>

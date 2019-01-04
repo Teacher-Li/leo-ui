@@ -1,0 +1,22 @@
+/*!
+* Category: animation
+*/
+
+@animation-prefix            : ~"@{css-prefix}animation";
+
+.@{animation-prefix} {
+  position: relative;
+  &.left {
+    .@{animation-prefix}-item {
+      left: 0;
+    }
+  }
+  &.right {
+    .@{animation-prefix}-item {
+      right: 0;
+    }
+  }
+  &-item {
+    position: absolute;
+  }
+}

@@ -1,0 +1,59 @@
+/*!
+* Category: tooltip
+*/
+
+@tooltip-prefix            : ~"@{css-prefix}tooltip";
+
+.@{tooltip-prefix} {
+  .tooltipColor (@color) {
+    color: @color;
+    background-color: fade(tint(@color, 90%), 90%);
+  }
+
+  opacity: 0;
+  top: -100%;
+  left: -100%;
+  z-index: -1;
+  margin: 5px 0;
+  position: fixed;
+  padding: 8px 12px;
+  text-align: justify;
+  white-space: normal;
+  transform: scale(0.8);
+  min-height: @height-base;
+  box-shadow: @shadow-down;
+  border-radius: @border-radius-base;
+  transition: opacity @transition-time, transform @transition-time;
+  &.small {
+    padding: 5px 12px;
+    min-height: @height-small;
+  }
+  &.light {
+    color: @text-color;
+    background-color: rgba(255, 255, 255, .9);
+  }
+  &.dark {
+    color: #fff;
+    background-color: rgba(70, 76, 91, .9);
+  }
+  &.primary {
+    .tooltipColor(@primary-color)
+  }
+  &.info {
+    .tooltipColor(@info-color)
+  }
+  &.success {
+    .tooltipColor( @success-color)
+  }
+  &.warning {
+    .tooltipColor(@warning-color)
+  }
+  &.error {
+    .tooltipColor(@error-color)
+  }
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+    z-index: @zindex-tooltip;
+  }
+}
