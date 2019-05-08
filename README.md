@@ -5,7 +5,7 @@
 ## Install
 
 ``` sh
- npm install leo-ui --save
+npm install leo-ui --save
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ Vue.use(Leo)
 
 ## Docs
 
-[1.x](https://lihaomu.github.io/leo-ui/)
+[1.x](https://teacher-li.github.io/leo-ui/)
 
 ## License
 
