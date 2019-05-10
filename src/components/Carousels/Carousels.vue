@@ -1,10 +1,10 @@
 <template>
-  <div :class="classes" v-carousels="carousels">
-    <div :class="trackClasses" :style="trackStyles">
+  <div :class="`${ prefix } ${ placement }`" v-carousels="carousels">
+    <div :class="`${ prefix }-track`" :style="trackStyles">
       <slot></slot>
     </div>
     <template v-if="placement === 'center'">
-      <div :class="[iconClasses, 'left']">
+      <div :class="`${ prefix }-icon left`">
 
         <o-button
           @on-click="carousels(true, width)"
@@ -15,7 +15,7 @@
         </o-button>
 
       </div>
-      <div :class="[iconClasses, 'right']">
+      <div :class="`${ prefix }-icon right`">
 
         <o-button
           :disabled="translateX + trackWidth <= width + gutter"
@@ -27,8 +27,8 @@
 
       </div>
     </template>
-    <div v-else :class="arrowsClasses">
-      <div :class="iconClasses">
+    <div v-else :class="`${ prefix }-arrows`">
+      <div :class="`${ prefix }-icon`">
 
         <o-button
           @on-click="carousels(true, width)"
@@ -39,7 +39,7 @@
         </o-button>
 
       </div>
-      <div :class="iconClasses">
+      <div :class="`${ prefix }-icon`">
 
         <o-button
           :disabled="translateX + trackWidth <= width + gutter"
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-  import { oneOf, getStyle } from '../../utils/assist';
+  import { oneOf, getStyle } from '@/utils/assist';
 
   export default {
     name: 'Carousels',
@@ -76,32 +76,19 @@
       }
     },
     provide () {
-      return { gutter: this.gutter }
+      return { gutter: this.gutter };
     },
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-carousels`,
+
         width: 0,
 
         translateX: 0,
         trackWidth: 0
       }
     },
-    mounted () {
-      this.width = parseInt(getStyle(this.$el, 'width'))
-    },
     computed: {
-      classes () {
-        return [this.$LEO.prefix + 'carousels', this.placement]
-      },
-      trackClasses () {
-        return this.$LEO.prefix + 'carousels-track'
-      },
-      arrowsClasses () {
-        return this.$LEO.prefix + 'carousels-arrows'
-      },
-      iconClasses () {
-        return this.$LEO.prefix + 'carousels-icon'
-      },
       trackStyles () {
         let style = {
           width    : this.trackWidth + 'px',
@@ -151,9 +138,7 @@
     },
     methods: {
       slotChange (val) {
-        this.$nextTick(() => {
-          this.trackWidth += val
-        })
+        this.$nextTick(() => { this.trackWidth += val })
       },
       carousels (isLeft, num) {
         num = num || this.value || this.width;
@@ -166,6 +151,9 @@
           this.translateX = Math.max(this.width + this.gutter - this.trackWidth, value);
         }
       }
+    },
+    mounted () {
+      this.width = parseInt(getStyle(this.$el, 'width'));
     }
   }
 </script>

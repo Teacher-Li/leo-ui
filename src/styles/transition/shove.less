@@ -3,7 +3,7 @@
 */
 
 .shove-motion(@direction, @keyframeName) {
-  @className: ~"@{css-prefix}shove-@{direction}";
+  @className: ~"@{css-prefix}-shove-@{direction}";
 
   .base-motion(@className, @keyframeName, @animation-time);
   .@{className}-enter-active, .@{className}-appear {

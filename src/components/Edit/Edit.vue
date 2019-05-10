@@ -1,8 +1,8 @@
 <template>
-  <div :class="classes">
-    <div :class="animationClasses" :style="{ height: height + 'px' }">
-      <transition :name="shoveName">
-        <div v-if="edit" :class="animationItemClasses" key="action">
+  <div :class="`${ $LEO.prefix }-edit`">
+    <div :class="`${ $LEO.prefix }-animation ${ align }`" :style="{ height: height + 'px' }">
+      <transition :name="`${ $LEO.prefix }-shove-right`">
+        <div v-if="edit" :class="`${ $LEO.prefix }-animation-item`" key="action">
 
           <o-button-group :size="size" :align="align">
             <o-button
@@ -24,7 +24,7 @@
           </o-button-group>
 
         </div>
-        <div v-else :class="animationItemClasses" key="edit">
+        <div v-else :class="`${ $LEO.prefix }-animation-item`" key="edit">
 
           <o-button
             :icon="type === 'text' ? '' : btnIcon[0]"
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Edit',
@@ -115,30 +115,16 @@
         loading: false
       }
     },
-    computed: {
-      classes () {
-        return this.$LEO.prefix + 'edit'
-      },
-      animationClasses () {
-        return [this.$LEO.prefix + 'animation', this.align]
-      },
-      shoveName () {
-        return this.$LEO.prefix + 'shove-right'
-      },
-      animationItemClasses () {
-        return this.$LEO.prefix + 'animation-item'
-      }
-    },
     watch: {
-      'edit' (newValue) {
-        if (!newValue) this.loading = false
+      edit (newValue) {
+        if (!newValue) this.loading = false;
       }
     },
     methods: {
       confirm () {
         if (!this.disabled) {
           this.loading = true;
-          this.$emit('on-confirm')
+          this.$emit('on-confirm');
         }
       }
     }

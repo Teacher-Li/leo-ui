@@ -32,8 +32,8 @@
     </template>
 
     <o-icon
+      :class="`${ prefix }-icon`"
       @on-click="handleClear"
-      :class="iconClasses"
       v-if="showIcon"
       type="clear">
     </o-icon>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Input',
@@ -113,19 +113,21 @@
     inject: {
       form: { default: null }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-input`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'input',
+          `${ this.prefix }`,
           this.type === 'textarea'
             ? ''
             : this.form
               ? this.form.size
               : this.size
         ]
-      },
-      iconClasses () {
-        return this.$LEO.prefix + 'input-icon'
       },
       showIcon () {
         return this.type !== 'textarea' && this.clearable && !this.disabled && !this.readonly && this.value
@@ -136,9 +138,9 @@
         let result = '';
         for (let i = 0; i < str.length; i++) {
           if (i && i % 2 === 0) result += '-';
-          result += str[i]
+          result += str[i];
         }
-        return result
+        return result;
       },
       handleInput (e) {
         let val = e.target.value.trim();
@@ -168,22 +170,22 @@
 
             break;
           default:
-            if (this.parser && val.length > 0) val = this.parser(val)
+            if (this.parser && val.length > 0) val = this.parser(val);
         }
 
         e.target.value = val.slice(0, this.maxlength);
-        this.lazy || this.handleChange(e)
+        this.lazy || this.handleChange(e);
       },
       handleFocus (e) {
         this.$emit('on-focus', e);
       },
       handleBlur (e) {
         this.$emit('on-blur', e);
-        this.lazy && this.handleChange(e)
+        this.lazy && this.handleChange(e);
       },
       handleEnter (e) {
         this.$emit('on-enter', e);
-        this.lazy && this.handleChange(e)
+        this.lazy && this.handleChange(e);
       },
       handleClear () {
         let val = this.formatter === 'number' ? null : '';
@@ -194,17 +196,17 @@
 
         this.$emit('on-clear');
         this.$emit('change', val);
-        this.$emit('on-change', val)
+        this.$emit('on-change', val);
       },
       handleChange (e) {
         let val = e.target.value;
         if (this.formatter === 'number') {
           val = val.length > 0 ? Number(val) : null;
-          e.target.value = val
+          e.target.value = val;
         }
 
         this.$emit('change', val);
-        this.$emit('on-change', val)
+        this.$emit('on-change', val);
       }
     }
   }

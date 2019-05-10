@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" @click.stop="handleClick">
+  <div :class="`${ prefix }`" @click.stop="handleClick">
     <template v-if="dragable">
       <div
         @dragleave.prevent="dragOver = false"
@@ -10,13 +10,13 @@
         :class="dragClasses">
 
           <o-icon
-            :class="iconClasses"
+            :class="`${ prefix }-icon`"
             :size="iconSize"
             type="upload">
           </o-icon>
 
       </div>
-      <div :class="textClasses"><slot></slot></div>
+      <div :class="`${ prefix }-text`"><slot></slot></div>
     </template>
     <template v-else>
       <div :class="selectClasses">
@@ -24,7 +24,7 @@
         {{ fileName }}
 
         <o-icon
-          :class="iconClasses"
+          :class="`${ prefix }-icon`"
           :size="iconSize"
           type="upload">
         </o-icon>
@@ -32,15 +32,12 @@
       </div>
     </template>
 
-    <input
-      @change="handleChange"
-      type="file"
-      ref="file">
+    <input ref="file" type="file" @change="handleChange">
   </div>
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'UpLoad',
@@ -79,31 +76,26 @@
     },
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-upload`,
+
         dragOver: false,
         fileName: null
       }
     },
     computed: {
-      classes () {
-        return this.$LEO.prefix + 'upload'
-      },
       dragClasses () {
         return [
-          this.classes + '-drag',
-          { active: this.dragOver }
+          `${ this.prefix }-drag`,
+          {
+            active: this.dragOver
+          }
         ]
-      },
-      textClasses () {
-        return this.classes + '-text'
       },
       selectClasses () {
         return [
-          this.classes + '-select',
+          `${ this.prefix }-select`,
           this.form ? this.form.size : this.size
         ]
-      },
-      iconClasses () {
-        return this.classes + '-icon'
       },
       iconSize () {
         return this.dragable
@@ -115,32 +107,32 @@
     },
     methods: {
       handleClick () {
-        this.$refs.file.click()
+        this.$refs.file.click();
       },
       handleChange (e) {
         const files = e.target.files;
 
         if (files.length > 0) {
           this.uploadFile(files[0]);
-          this.$refs.file.value = null
+          this.$refs.file.value = null;
         }
       },
       handlePaste (e) {
         const files = e['clipboardData']['files'];
-        this.pastable && this.uploadFile(files[0])
+        this.pastable && this.uploadFile(files[0]);
       },
       handleDrop (e) {
         const files = e['dataTransfer']['files'];
 
         this.dragOver = false;
-        this.uploadFile(files[0])
+        this.uploadFile(files[0]);
       },
       uploadFile (file) {
         let validator = true;
 
         if (this.suffix.length > 0) {
           const suffix = file.name.split('.').pop().toLocaleLowerCase();
-          validator = this.suffix.some(item => item.toLocaleLowerCase() === suffix)
+          validator = this.suffix.some(item => item.toLocaleLowerCase() === suffix);
         }
 
         if (validator) {
@@ -149,10 +141,10 @@
           reader.readAsText(file, this.encode);
           reader.onload = e => {
             this.fileName = file.name;
-            this.$emit('on-success', Object.assign(file, { data: e.target.result }))
+            this.$emit('on-success', Object.assign(file, { data: e.target.result }));
           }
         } else {
-          this.$emit('on-error')
+          this.$emit('on-error');
         }
       }
     }

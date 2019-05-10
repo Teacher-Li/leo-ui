@@ -23,7 +23,7 @@ import CarouselsItem from './components/CarouselsItem';
 import heart from './directives/heart';
 import tooltip from './directives/tooltip';
 
-import Csv from './utils/csv';
+import CSV from './utils/csv';
 
 const UI = require('../package.json');
 
@@ -61,20 +61,20 @@ const install = function (Vue, opts = {}) {
 
   // 组件
   Object.keys(components).forEach(key => {
-    Vue.component(key, components[key])
+    Vue.component(key, components[key]);
   });
 
   // 指令
   Object.keys(directives).forEach(key => {
-    Vue.directive(key, directives[key])
+    Vue.directive(key, directives[key]);
   });
 
   Vue.prototype.$LEO = {
     version : UI.version,
-    prefix  : opts.prefix || 'leo-'
+    prefix  : opts.prefix || 'leo'
   };
 
-  Vue.prototype.$Csv = Csv;
+  Vue.prototype.$CSV = CSV;
 };
 
 // auto install

@@ -1,7 +1,7 @@
 <template>
-  <div :class="classes">
+  <div :class="`${ prefix }`">
     <div
-      :class="wrapClasses"
+      :class="`${ prefix }-wrap`"
       :style="wrapStyles"
       v-masonry>
       <slot></slot>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { getStyle } from '../../utils/assist';
+  import { getStyle } from '@/utils/assist';
 
   export default {
     name: 'Masonry',
@@ -29,6 +29,8 @@
     },
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-masonry`,
+
         top: [],
         left: [],
 
@@ -36,22 +38,7 @@
         columns: 0
       }
     },
-    mounted () {
-      let width = parseInt(getStyle(this.$el, 'width'));
-      this.columns = Math.floor((width + this.gutter) / this.width);
-
-      for (let i = 0; i < this.columns; i++){
-        this.top.push(0);
-        this.left.push(i * this.width)
-      }
-    },
     computed: {
-      classes () {
-        return this.$LEO.prefix + 'masonry'
-      },
-      wrapClasses () {
-        return this.$LEO.prefix + 'masonry-wrap'
-      },
       wrapStyles () {
         let style = {
           height: this.height + 'px'
@@ -82,7 +69,7 @@
 
               for (let i = 0; i < self.columns; i++){
                 self.top.push(0);
-                self.left.push(i * self.width)
+                self.left.push(i * self.width);
               }
 
               el.childNodes.forEach(child => {
@@ -96,17 +83,17 @@
                 child.style.transform = 'scale(1) translate3d('+ left + 'px' +',' + top + 'px' + ',0)';
 
                 self.top[index] += child.offsetHeight;
-                self.height = Math.max(height, self.top[index])
+                self.height = Math.max(height, self.top[index]);
               })
             }
           }
 
           el.__resize = resizeHandler;
-          window.addEventListener('resize', resizeHandler)
+          window.addEventListener('resize', resizeHandler);
         },
         unbind (el, {}) {
           window.removeEventListener('resize', el.__resize);
-          delete el.__resize
+          delete el.__resize;
         }
       }
     },
@@ -123,13 +110,22 @@
           el.style.transform = 'scale(1) translate3d('+ left + 'px' +',' + top + 'px' + ',0)';
 
           this.top[index] += val;
-          this.height = Math.max(height, this.top[index])
+          this.height = Math.max(height, this.top[index]);
         })
       },
       slotDelete (el, val) {
         let index = el.getAttribute('data-index');
         this.top[index] -= val;
-        this.height = Math.max.apply(Math, this.top)
+        this.height = Math.max.apply(Math, this.top);
+      }
+    },
+    mounted () {
+      let width = parseInt(getStyle(this.$el, 'width'));
+      this.columns = Math.floor((width + this.gutter) / this.width);
+
+      for (let i = 0; i < this.columns; i++){
+        this.top.push(0);
+        this.left.push(i * this.width);
       }
     }
   }

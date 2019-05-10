@@ -1,23 +1,23 @@
 <template>
-  <transition :name="fadeName">
+  <transition :name="`${ $LEO.prefix }-fade`">
     <div v-show="visible" :class="classes">
       <template v-if="type === 'dot'">
-        <div :class="dotClasses"><span></span></div>
+        <div :class="`${ prefix }-dot`"><span></span></div>
       </template>
       <template v-else>
-        <div :class="circularClasses">
+        <div :class="`${ prefix }-circular`">
           <svg viewBox="25 25 50 50">
             <circle cx="50" cy="50" r="20" fill="none"></circle>
           </svg>
         </div>
       </template>
-      <div :class="textClasses"><slot></slot></div>
+      <div :class="`${ prefix }-text`"><slot></slot></div>
     </div>
   </transition>
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Load',
@@ -37,27 +37,25 @@
         default: false
       }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-load`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'load',
+          `${ this.prefix }`,
           {
             fix    : this.fix,
             visible: this.visible
           }
         ]
-      },
-      dotClasses () {
-        return this.$LEO.prefix + 'load-dot'
-      },
-      circularClasses () {
-        return this.$LEO.prefix + 'load-circular'
-      },
-      textClasses () {
-        return this.$LEO.prefix + 'load-text'
-      },
-      fadeName () {
-        return this.$LEO.prefix + 'fade'
+      }
+    },
+    watch: {
+      visible (newValue) {
+        document.body.style.overflow = newValue ? 'hidden' : '';
       }
     }
   }

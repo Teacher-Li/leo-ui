@@ -1,6 +1,6 @@
 <template>
-  <div :class="classes">
-    <div :class="totalClasses" v-show="showTotal">
+  <div :class="`${ prefix } ${ size } ${ align }`">
+    <div :class="`${ prefix }-total`" v-show="showTotal">
       共 {{ total || 0 }} 条
     </div>
 
@@ -9,14 +9,14 @@
       :disabled="!canPrevPage"
       @on-click="prevPage"
       :size="size">
-      <i :class="iconClasses" deg="270">&nbsp;</i>
+      <i :class="`${ $LEO.prefix }-button-icon`" deg="270">&nbsp;</i>
     </o-button>
 
     <template v-if="simple">
       <template v-for="page in pages">
         <div
           v-if="typeof page === 'string'"
-          :class="ellipsisClasses">
+          :class="`${ prefix }-ellipsis`">
           <o-icon type="ellipsis" size="16"></o-icon>
         </div>
 
@@ -34,7 +34,7 @@
       <template v-for="page in pages">
         <div
           v-if="typeof page === 'string'"
-          :class="ellipsisClasses">
+          :class="`${ prefix }-ellipsis`">
           <o-icon type="ellipsis" size="16"></o-icon>
         </div>
 
@@ -53,10 +53,10 @@
       :disabled="!canNextPage"
       @on-click="nextPage"
       :size="size">
-      <i :class="iconClasses" deg="90">&nbsp;</i>
+      <i :class="`${ $LEO.prefix }-button-icon`" deg="90">&nbsp;</i>
     </o-button>
 
-    <div v-show="showSizer" :class="sizerClasses">
+    <div v-show="showSizer" :class="`${ prefix }-sizer`">
 
       <o-select
         @on-change="changePageSize"
@@ -68,7 +68,7 @@
       </o-select>
 
     </div>
-    <div v-show="showElevator" :class="elevatorClasses">
+    <div v-show="showElevator" :class="`${ prefix }-elevator`">
       跳至
 
       <o-input
@@ -87,7 +87,7 @@
 </template>
 
 <script>
-  import { oneOf, isInclude, getExtremum } from '../../utils/assist';
+  import { oneOf, isInclude, getExtremum } from '@/utils/assist';
 
   export default {
     name: 'Page',
@@ -154,33 +154,13 @@
     },
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-page`,
+
         currentPage: this.current,
         currentPageSize: this.pageSize
       }
     },
     computed: {
-      classes () {
-        return [
-          this.$LEO.prefix + 'page',
-          this.size,
-          this.align
-        ]
-      },
-      totalClasses () {
-        return this.$LEO.prefix + 'page-total'
-      },
-      iconClasses () {
-        return this.$LEO.prefix + 'button-icon'
-      },
-      ellipsisClasses () {
-        return this.$LEO.prefix + 'page-ellipsis'
-      },
-      sizerClasses () {
-        return this.$LEO.prefix + 'page-sizer'
-      },
-      elevatorClasses () {
-        return this.$LEO.prefix + 'page-elevator'
-      },
       totalCount () {
         return 2 * this.around + 7
       },
@@ -208,28 +188,28 @@
           pages = Array.from({length: this.totalPage}, (v, i) => i + 1);
         } else {
           if (this.currentPage <= startPosition) {
-            pages = [...Array.from({length: baseCount}, (v, i) => i + 1), "...", this.totalPage]
+            pages = [...Array.from({length: baseCount}, (v, i) => i + 1), "...", this.totalPage];
           } else if (this.currentPage >= endPosition) {
-            pages = [1, '...', ...Array.from({length: baseCount}, (v, i) => this.totalPage - baseCount + i + 1)]
+            pages = [1, '...', ...Array.from({length: baseCount}, (v, i) => this.totalPage - baseCount + i + 1)];
           } else {
-            pages = [1, '...', ...Array.from({length: this.around * 2 + 1}, (v, i) => this.currentPage - this.around + i), '...', this.totalPage]
+            pages = [1, '...', ...Array.from({length: this.around * 2 + 1}, (v, i) => this.currentPage - this.around + i), '...', this.totalPage];
           }
         }
 
-        return pages
+        return pages;
       }
     },
     watch: {
       total () {
-        isInclude(this.currentPage, 1, this.totalPage) || this.changePage(getExtremum(this.currentPage, 1, this.totalPage))
+        isInclude(this.currentPage, 1, this.totalPage) || this.changePage(getExtremum(this.currentPage, 1, this.totalPage));
       },
       current (val) {
         this.currentPage = val;
-        isInclude(val, 1, this.totalPage) || this.changePage(getExtremum(val, 1, this.totalPage))
+        isInclude(val, 1, this.totalPage) || this.changePage(getExtremum(val, 1, this.totalPage));
       },
       pageSize (val) {
         this.currentPageSize = val;
-        isInclude(this.currentPage, 1, this.totalPage) || this.changePage(getExtremum(this.currentPage, 1, this.totalPage))
+        isInclude(this.currentPage, 1, this.totalPage) || this.changePage(getExtremum(this.currentPage, 1, this.totalPage));
       }
     },
     methods: {
@@ -248,7 +228,7 @@
         this.$emit('on-page-size-change', size);
       },
       changeCurrentPage () {
-        this.changePage(this.currentPage)
+        this.changePage(this.currentPage);
       }
     }
   }

@@ -1,4 +1,4 @@
-import { getElementByAttribute } from '../utils/assist'
+import { getElementByAttribute } from '@/utils/assist'
 
 export default {
   inserted (el, binding, vnode) {
@@ -11,7 +11,7 @@ export default {
       el.innerHTML = html.slice(0, length) + '...';
 
       if (binding.modifiers['original']) {
-        el.setAttribute('title', html)
+        el.setAttribute('title', html);
       } else {
         let self  = vnode.context;
         let div   = document.createElement('div');
@@ -20,26 +20,26 @@ export default {
         div.setAttribute('tooltip-name', name);
 
         div.innerHTML = html;
-        div.className = self.$LEO.prefix + 'tooltip' + (binding.modifiers['small'] ? ' small' : '');
+        div.className = `${ self.$LEO.prefix }-tooltip` + (binding.modifiers['small'] ? ' small' : '');
         div.classList.add(theme);
         document.body.appendChild(div);
 
-        function mouseoverHandler (e) {
+        function mouseoverHandler(e) {
           div.classList.add('visible');
-          div.style.top  = e.clientY + 'px';
-          div.style.left = e.clientX + 'px';
+          div.style.top  = `${ e.clientY }px`;
+          div.style.left = `${ e.clientX }px`;
           if (binding.value.width) {
             div.style.maxWidth = Math.max(binding.value.width, 120) + 'px';
           }
         }
-        function mouseoutHandler () {
+        function mouseoutHandler() {
           div.classList.remove('visible')
         }
 
         el.__mouseout  = mouseoutHandler;
         el.__mouseover = mouseoverHandler;
         el.addEventListener('mouseout', mouseoutHandler);
-        el.addEventListener('mouseover', mouseoverHandler)
+        el.addEventListener('mouseover', mouseoverHandler);
       }
     }
   },
@@ -56,12 +56,12 @@ export default {
       let name      = el.getAttribute('data-name');
 
       let node;
-      let nodes = document.querySelectorAll("div." + self.$LEO.prefix + 'tooltip');
+      let nodes = document.querySelectorAll(`div.${ self.$LEO.prefix }-tooltip`);
 
       for (let i = 0; i < nodes.length; i++) {
         if (nodes[i].getAttribute('tooltip-name') === name) {
           node = nodes[i];
-          break
+          break;
         }
       }
 
@@ -72,18 +72,18 @@ export default {
       }
       if (theme !== oldTheme) {
         node.classList.remove(oldTheme || 'light');
-        node.classList.add(theme)
+        node.classList.add(theme);
       }
     }
   },
   unbind (el, {}, vnode) {
     let self  = vnode.context;
-    let nodes = document.querySelectorAll("div." + self.$LEO.prefix + 'tooltip');
+    let nodes = document.querySelectorAll(`div.${ self.$LEO.prefix }-tooltip`);
     nodes.forEach(node => { document.body.removeChild(node) });
 
     el.removeEventListener('mouseout', el.__mouseout);
     el.removeEventListener('mouseover', el.__mouseover);
     delete el.__mouseout;
-    delete el.__mouseover
+    delete el.__mouseover;
   }
 }

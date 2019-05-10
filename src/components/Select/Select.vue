@@ -14,25 +14,25 @@
         type="clear">
       </o-icon>
 
-      <o-icon type="down" :class="arrowsClasses" :size="12"></o-icon>
+      <o-icon type="down" :class="`${ prefix }-icon arrows`" :size="12"></o-icon>
 
     </div>
-    <transition :name="dropName">
-      <div :class="listClasses" v-show="visible">
+    <transition :name="`${ $LEO.prefix }-drop`">
+      <div :class="`${ prefix }-list`" v-show="visible">
         <div
-          :class="[$LEO.prefix + 'select-item', { active: item.value === value }]"
+          :class="[`${ prefix }-item`, { active: item.value === value }]"
           @click="handleChange(item.value)"
           v-for="item in list">
           {{ item.label }}
         </div>
-        <div v-if="!list.length" :class="textClasses">{{ notFoundText }}</div>
+        <div v-if="!list.length" :class="`${ prefix }-text`">{{ notFoundText }}</div>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
   import { directive as clickOutside } from 'v-click-outside-x';
 
   export default {
@@ -81,13 +81,15 @@
     },
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-select`,
+
         visible: false
       }
     },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'select',
+          `${ this.prefix }`,
           this.placement,
           this.form ? this.form.size : this.size,
           {
@@ -98,7 +100,7 @@
       },
       valueClasses () {
         return [
-          this.$LEO.prefix + 'select-value',
+          `${ this.prefix }-value`,
           {
             disabled: this.disabled
           }
@@ -106,23 +108,11 @@
       },
       clearClasses () {
         return [
-          this.$LEO.prefix + 'select-icon',
+          `${ this.prefix }-icon`,
           {
             clear: this.canClear
           }
         ]
-      },
-      arrowsClasses () {
-        return [this.$LEO.prefix + 'select-icon', 'arrows']
-      },
-      listClasses () {
-        return this.$LEO.prefix + 'select-list'
-      },
-      textClasses () {
-        return this.$LEO.prefix + 'select-text'
-      },
-      dropName () {
-        return this.$LEO.prefix + 'drop'
       },
       list () {
         let options = this.options;

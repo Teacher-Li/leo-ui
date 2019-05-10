@@ -3,7 +3,7 @@
 */
 
 .move-motion(@direction, @keyframeName) {
-  @className: ~"@{css-prefix}move-@{direction}";
+  @className: ~"@{css-prefix}-move-@{direction}";
 
   .base-motion(@className, @keyframeName);
   .@{className}-enter-active, .@{className}-appear {

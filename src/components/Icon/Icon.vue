@@ -5,12 +5,12 @@
     :font-size="size"
     :class="classes"
     :color="color">
-    <use :xlink:href="linkHref"></use>
+    <use :xlink:href="`#${ prefix }-${ type }`"></use>
   </svg>
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Icon',
@@ -39,24 +39,26 @@
       },
       color: String
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-icon`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'icon',
+          `${ this.prefix }`,
           this.custom,
           {
             rotate  : this.rotate,
             disabled: this.disabled
           }
         ]
-      },
-      linkHref () {
-        return '#' + this.$LEO.prefix + 'icon-' + this.type
       }
     },
     methods: {
       handleClick (e) {
-        this.disabled || this.$emit('on-click', e)
+        this.disabled || this.$emit('on-click', e);
       }
     }
   }

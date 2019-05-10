@@ -1,16 +1,21 @@
 <template>
-  <div :class="classes">
+  <div :class="`${ prefix }-item`">
     <label
       v-if="label || $slots.label"
       :class="labelClasses"
       :style="labelStyles">
       <slot name="label">{{ label }}</slot>
     </label>
-    <div :class="valueClasses" :style="valueStyles">
-      <transition :name="zoomName" mode="out-in">
-        <slot v-if="editable"></slot>
-        <span v-else :class="{ empty: !value }">{{ value || emptyText }}</span>
-      </transition>
+    <div :class="`${ prefix }-value`" :style="valueStyles">
+      <template v-if="ganged">
+        <transition :name="`${ $LEO.prefix }-zoom`" mode="out-in">
+          <slot v-if="editable"></slot>
+          <span v-else :class="{ empty: !value }">{{ value || emptyText }}</span>
+        </transition>
+      </template>
+      <template v-else>
+        <slot></slot>
+      </template>
     </div>
   </div>
 </template>
@@ -41,23 +46,21 @@
       }
     },
     inject: ['form'],
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-form`,
+
+        ganged: !this.editable
+      }
+    },
     computed: {
-      classes () {
-        return this.$LEO.prefix + 'form-item'
-      },
       labelClasses () {
         return [
-          this.$LEO.prefix + 'form-label',
+          `${ this.prefix }-label`,
           {
             required : this.editable && this.required
           }
         ]
-      },
-      valueClasses () {
-        return this.$LEO.prefix + 'form-value'
-      },
-      zoomName () {
-        return this.$LEO.prefix + 'zoom'
       },
       labelStyles () {
         return this.form.labelPlacement === 'top'
@@ -72,7 +75,7 @@
     },
     methods: {
       handleClick (e) {
-        this.disabled || this.$emit('on-click', e)
+        this.disabled || this.$emit('on-click', e);
       }
     }
   }

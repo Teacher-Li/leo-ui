@@ -11,9 +11,9 @@ npm install leo-ui --save
 ## Usage
 
 ```javascript
-import Leo from 'leo-ui'
+import leo from 'leo-ui'
 import 'leo-ui/dist/css/app.css'
-Vue.use(Leo)
+Vue.use(leo)
 ```
 
 ## Docs

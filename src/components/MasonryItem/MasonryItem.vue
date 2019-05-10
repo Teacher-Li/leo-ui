@@ -1,11 +1,11 @@
 <template>
-  <div :class="classes" :style="styles">
+  <div :class="`${ prefix }`" :style="styles">
     <slot></slot>
   </div>
 </template>
 
 <script>
-  import { getStyle } from '../../utils/assist';
+  import { getStyle } from '@/utils/assist';
 
   export default {
     name: 'MasonryItem',
@@ -15,17 +15,12 @@
     inject: ['masonry'],
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-masonry-item`,
+
         height: 0
       }
     },
-    mounted () {
-      this.height = parseInt(getStyle(this.$el, 'height'));
-      this.$parent.slotAdd(this.$el, this.height)
-    },
     computed: {
-      classes () {
-        return this.$LEO.prefix + 'masonry-item'
-      },
       styles () {
         let style = {
           opacity : 1,
@@ -39,11 +34,12 @@
             })
       }
     },
-    methods: {
-
+    mounted () {
+      this.height = parseInt(getStyle(this.$el, 'height'));
+      this.$parent.slotAdd(this.$el, this.height);
     },
     beforeDestroy () {
-      this.$parent.slotDelete(this.$el, this.height)
+      this.$parent.slotDelete(this.$el, this.height);
     }
   }
 </script>

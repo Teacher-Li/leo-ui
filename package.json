@@ -1,12 +1,12 @@
 {
   "name": "leo-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "license": "MIT",
   "main": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lihaomu/leo-ui"
+    "url": "https://github.com/Teacher-Li/leo-ui"
   },
   "scripts": {
     "serve": "vue-cli-service serve",

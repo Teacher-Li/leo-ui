@@ -6,7 +6,7 @@
 
     <o-icon
       :type="order ? 'sortascending' : 'sortdescending'"
-      :class="iconClasses"
+      :class="`${ prefix }-icon`"
       size="16">
     </o-icon>
 
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
-
   export default {
     name: 'TableSort',
     props: {
@@ -28,20 +26,20 @@
         default: false
       }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-table-sort`
+      }
+    },
     computed: {
       classes () {
-        return [this.$LEO.prefix + 'table-sort',
+        return [
+          `${ this.prefix }`,
           {
             active : this.active
           }
         ]
-      },
-      iconClasses () {
-        return this.$LEO.prefix + 'table-sort-icon'
       }
-    },
-    methods: {
-
     }
   }
 </script>

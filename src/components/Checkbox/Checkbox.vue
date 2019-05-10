@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { removeOne } from '../../utils/assist';
+  import { removeOne } from '@/utils/assist';
 
   export default {
     name: 'Checkbox',
@@ -48,25 +48,19 @@
     },
     data () {
       return {
+        prefix: `${ this.$LEO.prefix }-checkbox`,
+
         isBoolean: true
       }
-    },
-    mounted () {
-      this.isBoolean = typeof this.value === 'boolean'
     },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'checkbox',
+          `${ this.prefix }`,
           {
             disabled : this.disabled
           }
         ]
-      },
-      isChecked () {
-        return this.isBoolean
-          ? this.value
-          : this.value.indexOf(this.current) > -1
       },
       spanClasses () {
         return {
@@ -74,6 +68,11 @@
           disabled      : this.disabled,
           indeterminate : this.indeterminate
         }
+      },
+      isChecked () {
+        return this.isBoolean
+          ? this.value
+          : this.value.indexOf(this.current) > -1
       }
     },
     methods: {
@@ -85,8 +84,11 @@
             : removeOne(this.current, this.value);
 
         this.$emit('change', val);
-        this.$emit('on-change', val)
+        this.$emit('on-change', val);
       }
+    },
+    mounted () {
+      this.isBoolean = typeof this.value === 'boolean';
     }
   }
 </script>

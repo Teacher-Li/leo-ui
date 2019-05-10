@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Button',
@@ -71,10 +71,15 @@
     inject: {
       form: { default: null }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-button`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'button',
+          `${ this.prefix }`,
           this.type,
           this.form ? this.form.size : this.size,
           this.disabled && !this.type ? '' : this.custom,
@@ -90,7 +95,7 @@
     },
     methods: {
       handleClick (e) {
-        this.disabled || this.loading || this.$emit('on-click', e)
+        this.disabled || this.loading || this.$emit('on-click', e);
       }
     }
   }

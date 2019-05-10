@@ -1,25 +1,21 @@
 <template>
-  <div :class="classes" :style="styles">
+  <div :class="`${ prefix }`" :style="styles">
     <slot></slot>
   </div>
 </template>
 
 <script>
-  import { oneOf, getStyle } from '../../utils/assist';
+  import { getStyle } from '@/utils/assist';
 
   export default {
     name: 'CarouselsItem',
-    props: {
-
-    },
     inject: ['gutter'],
-    mounted () {
-      this.$parent.slotChange(parseInt(getStyle(this.$el, 'width')))
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-carousels-item`
+      }
     },
     computed: {
-      classes () {
-        return this.$LEO.prefix + 'carousels-item'
-      },
       styles () {
         return this.gutter === 0
           ? {}
@@ -28,8 +24,8 @@
             }
       }
     },
-    methods: {
-
+    mounted () {
+      this.$parent.slotChange(parseInt(getStyle(this.$el, 'width')));
     }
   }
 </script>

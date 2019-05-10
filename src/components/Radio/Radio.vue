@@ -31,23 +31,28 @@
         default: false
       }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-radio`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'radio',
+          `${ this.prefix }`,
           {
             'disabled': this.disabled
           }
         ]
-      },
-      isChecked () {
-        return this.value === this.current
       },
       spanClasses () {
         return {
           'checked': this.isChecked,
           'disabled': this.disabled
         }
+      },
+      isChecked () {
+        return this.value === this.current
       }
     },
     methods: {
@@ -57,7 +62,7 @@
           : '';
 
         this.$emit('change', val);
-        this.$emit('on-change', val)
+        this.$emit('on-change', val);
       }
     }
   }

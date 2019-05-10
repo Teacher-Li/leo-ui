@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'ButtonGroup',
@@ -45,10 +45,15 @@
     inject: {
       form: { default: null }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-button-group`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'button-group',
+          `${ this.prefix }`,
           this.type,
           this.custom,
           this.long ? '' : this.align,

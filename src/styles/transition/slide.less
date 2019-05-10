@@ -3,7 +3,7 @@
 */
 
 .slide-motion(@direction, @keyframeName) {
-  @className: ~"@{css-prefix}slide-@{direction}";
+  @className: ~"@{css-prefix}-slide-@{direction}";
 
   .base-motion(@className, @keyframeName);
     .@{className}-enter-active, .@{className}-appear {

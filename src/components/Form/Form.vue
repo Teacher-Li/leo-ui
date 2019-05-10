@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Form',
@@ -38,10 +38,15 @@
     provide () {
       return { form: this }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-form`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'form',
+          `${ this.prefix }`,
           this.labelPlacement,
           this.size,
           {

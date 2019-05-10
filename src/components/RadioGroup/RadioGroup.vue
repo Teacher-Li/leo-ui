@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes">
+  <div :class="`${ prefix }`">
     <slot></slot>
   </div>
 </template>
@@ -7,13 +7,9 @@
 <script>
   export default {
     name: 'RadioGroup',
-
-    props: {
-
-    },
-    computed: {
-      classes () {
-        return this.$LEO.prefix + 'radio-group'
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-radio-group`
       }
     }
   }

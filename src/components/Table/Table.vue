@@ -1,10 +1,10 @@
 <template>
   <div :class="classes">
     <table>
-      <thead :class="theadClasses">
+      <thead :class="`${ prefix }-head ${ custom }`">
         <slot name="thead"></slot>
       </thead>
-      <tbody :class="tbodyClasses">
+      <tbody :class="`${ prefix }-body`">
         <slot></slot>
       </tbody>
     </table>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import { oneOf } from '../../utils/assist';
+  import { oneOf } from '@/utils/assist';
 
   export default {
     name: 'Table',
@@ -30,26 +30,22 @@
         default: ''
       }
     },
+    data () {
+      return {
+        prefix: `${ this.$LEO.prefix }-table`
+      }
+    },
     computed: {
       classes () {
         return [
-          this.$LEO.prefix + 'table',
+          `${ this.prefix }`,
           this.size,
           {
             rotate  : this.rotate,
             disabled: this.disabled
           }
         ]
-      },
-      theadClasses () {
-        return [this.$LEO.prefix + 'table-head', this.custom]
-      },
-      tbodyClasses () {
-        return this.$LEO.prefix + 'table-body'
       }
-    },
-    methods: {
-
     }
   }
 </script>
