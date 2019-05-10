@@ -37,7 +37,7 @@
 </template>
 
 <script>
-  import { oneOf } from '@/utils/assist';
+  import { oneOf } from '../../utils/assist';
 
   export default {
     name: 'UpLoad',

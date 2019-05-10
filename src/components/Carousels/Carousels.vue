@@ -55,7 +55,7 @@
 </template>
 
 <script>
-  import { oneOf, getStyle } from '@/utils/assist';
+  import { oneOf, getStyle } from '../../utils/assist';
 
   export default {
     name: 'Carousels',

@@ -87,7 +87,7 @@
 </template>
 
 <script>
-  import { oneOf, isInclude, getExtremum } from '@/utils/assist';
+  import { oneOf, isInclude, getExtremum } from '../../utils/assist';
 
   export default {
     name: 'Page',

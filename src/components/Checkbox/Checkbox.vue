@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { removeOne } from '@/utils/assist';
+  import { removeOne } from '../../utils/assist';
 
   export default {
     name: 'Checkbox',

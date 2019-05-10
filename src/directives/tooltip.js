@@ -1,4 +1,4 @@
-import { getElementByAttribute } from '@/utils/assist'
+import { getElementByAttribute } from '../utils/assist'
 
 export default {
   inserted (el, binding, vnode) {

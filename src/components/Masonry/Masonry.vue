@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { getStyle } from '@/utils/assist';
+  import { getStyle } from '../../utils/assist';
 
   export default {
     name: 'Masonry',
