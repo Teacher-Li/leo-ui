@@ -8,9 +8,6 @@ window.requestAnimationFrame = (() =>
 )();
 
 class Heart {
-  scale = 1;
-  alpha = 1;
-
   constructor (data, x, y) {
     this.x = x;
     this.y = y;
@@ -19,6 +16,8 @@ class Heart {
   }
 
   show (data) {
+    let scale = 1;
+    let alpha = 1;
     let div = document.createElement('div');
 
     div.className = data.__className;
@@ -29,19 +28,19 @@ class Heart {
     document.body.appendChild(div);
 
     const animation = () => {
-      if (this.alpha <= 0) {
+      if (alpha <= 0) {
         document.body.removeChild(div);
         return;
       }
 
       this.y --;
-      this.scale += 0.004;
-      this.alpha -= 0.013;
+      scale += 0.004;
+      alpha -= 0.013;
 
       div.style.top        = `${ this.y }px`;
       div.style.left       = `${ this.x }px`;
-      div.style.opacity    = this.alpha;
-      div.style.transform  = `scale(${ this.scale }) rotate(45deg)`;
+      div.style.opacity    = `${ alpha }`;
+      div.style.transform  = `scale(${ scale }) rotate(45deg)`;
 
       requestAnimationFrame(animation);
     };
