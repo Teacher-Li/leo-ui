@@ -1,3 +1,55 @@
+window.requestAnimationFrame = (() =>
+  window.requestAnimationFrame
+  || window.webkitRequestAnimationFrame
+  || window.mozRequestAnimationFrame
+  || window.oRequestAnimationFrame
+  || window.msRequestAnimationFrame
+  || function (callback) { setTimeout(callback, 1000/60) }
+)();
+
+class Heart {
+  scale = 1;
+  alpha = 1;
+
+  constructor (data, x, y) {
+    this.x = x;
+    this.y = y;
+
+    this.show(data);
+  }
+
+  show (data) {
+    let div = document.createElement('div');
+
+    div.className = data.__className;
+    div.style.background = data.__custom
+      ? ''
+      : (data.__color || ('#' + (~~(Math.random() * (1<<24))).toString(16)));
+
+    document.body.appendChild(div);
+
+    const animation = () => {
+      if (this.alpha <= 0) {
+        document.body.removeChild(div);
+        return;
+      }
+
+      this.y --;
+      this.scale += 0.004;
+      this.alpha -= 0.013;
+
+      div.style.top        = `${ this.y }px`;
+      div.style.left       = `${ this.x }px`;
+      div.style.opacity    = this.alpha;
+      div.style.transform  = `scale(${ this.scale }) rotate(45deg)`;
+
+      requestAnimationFrame(animation);
+    };
+
+    requestAnimationFrame(animation);
+  }
+}
+
 export default {
   inserted (el, { value }, vnode) {
     let self = vnode.context;
@@ -13,54 +65,9 @@ export default {
       }
     }
 
-    function Heart(left, top) {
-      let div = document.createElement('div');
-      div.className = el.__className;
-      document.body.appendChild(div);
-
-      this.scale = 1;
-      this.alpha = 1;
-      this.el    = div;
-      this.top   = top;
-      this.left  = left;
-      this.color = el.__custom
-        ? ''
-        : (el.__color || ('#' + (~~(Math.random() * (1<<24))).toString(16)));
-
-      this.setDOMStyle = () => {
-        if (this.alpha <= 0) {
-          document.body.removeChild(this.el);
-          return;
-        }
-
-        this.top --;
-        this.scale += 0.004;
-        this.alpha -= 0.013;
-
-        this.el.style.top        = `${ this.top }px`;
-        this.el.style.left       = `${ this.left }px`;
-        this.el.style.opacity    = this.alpha;
-        this.el.style.transform  = `scale(${ this.scale }) rotate(45deg)`;
-        this.el.style.background = this.color;
-
-        requestAnimationFrame(this.setDOMStyle);
-      }
-    }
-
-    window.requestAnimationFrame = (() =>
-        window.requestAnimationFrame
-        || window.webkitRequestAnimationFrame
-        || window.mozRequestAnimationFrame
-        || window.oRequestAnimationFrame
-        || window.msRequestAnimationFrame
-        || function (callback) { setTimeout(callback, 1000/60) }
-    )();
-
-    function clickHandler (e) {
-      let newHeart = new Heart(e.clientX - 5, e.clientY - 5);
-
-      requestAnimationFrame(newHeart.setDOMStyle);
-    }
+    const clickHandler = e => {
+      new Heart(el,e.clientX - 5, e.clientY - 5);
+    };
 
     el.__click = clickHandler;
     el.addEventListener('click', clickHandler);

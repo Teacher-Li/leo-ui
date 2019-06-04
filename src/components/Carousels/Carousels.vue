@@ -108,14 +108,14 @@
         bind (el, { value }, vnode) {
           let self = vnode.context;
 
-          function mousewheelHandler (e) {
+          const mousewheelHandler = e => {
             e.preventDefault();
             value(e.wheelDelta ? e.wheelDelta > 0 : e.detail < 0)
-          }
-          function resizeHandler () {
+          };
+          const resizeHandler = () => {
             self.width = parseInt(getStyle(el, 'width'));
             self.translateX = Math.max(self.width + self.gutter - self.trackWidth, self.translateX)
-          }
+          };
 
           el.__resize     = resizeHandler;
           el.__mousewheel = mousewheelHandler;

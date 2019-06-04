@@ -1,0 +1,15 @@
+/*!
+* Category: drag-select
+*/
+
+@drag-select-prefix            : ~"@{css-prefix}-drag-select";
+
+.@{drag-select-prefix} {
+  opacity: 0;
+  position: fixed;
+  background: #598fe6;
+  transition: opacity .5s;
+  &.visible {
+    opacity: .6;
+  }
+}

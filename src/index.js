@@ -22,6 +22,7 @@ import CarouselsItem from './components/CarouselsItem';
 
 import heart from './directives/heart';
 import tooltip from './directives/tooltip';
+import dragSelect from './directives/dragSelect';
 
 import CSV from './utils/csv';
 
@@ -53,10 +54,11 @@ const components = {
 
 const directives = {
   heart,
-  tooltip
+  tooltip,
+  dragSelect
 };
 
-const install = function (Vue, opts = {}) {
+const install = (Vue, opts = {}) => {
   if (install.installed) return;
 
   // 组件

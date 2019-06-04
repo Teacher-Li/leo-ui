@@ -57,7 +57,7 @@
         bind (el, {}, vnode) {
           let self = vnode.context;
 
-          function resizeHandler () {
+          const resizeHandler = () => {
             let width   = parseInt(getStyle(self.$el, 'width'));
             let columns = Math.floor((width + self.gutter) / self.width);
 
@@ -86,7 +86,7 @@
                 self.height = Math.max(height, self.top[index]);
               })
             }
-          }
+          };
 
           el.__resize = resizeHandler;
           window.addEventListener('resize', resizeHandler);

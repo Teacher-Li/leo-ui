@@ -1,5 +1,3 @@
-import { getElementByAttribute } from '../utils/assist'
-
 export default {
   inserted (el, binding, vnode) {
     let length = binding.value['length'];
@@ -24,17 +22,17 @@ export default {
         div.classList.add(theme);
         document.body.appendChild(div);
 
-        function mouseoverHandler(e) {
+        const mouseoverHandler = e => {
           div.classList.add('visible');
           div.style.top  = `${ e.clientY }px`;
           div.style.left = `${ e.clientX }px`;
           if (binding.value.width) {
             div.style.maxWidth = Math.max(binding.value.width, 120) + 'px';
           }
-        }
-        function mouseoutHandler() {
+        };
+        const mouseoutHandler = () => {
           div.classList.remove('visible')
-        }
+        };
 
         el.__mouseout  = mouseoutHandler;
         el.__mouseover = mouseoverHandler;

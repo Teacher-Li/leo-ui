@@ -1,6 +1,6 @@
 module.exports = {
   // 基本路径
-  baseUrl: process.env.NODE_ENV === 'production' ? './' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
 
   // 输出文件目录
   outputDir: "dist",
@@ -10,7 +10,7 @@ module.exports = {
     host: 'localhost',
     port: 1024,
     https: false,
-    open: true,
+    open: false,
     hotOnly: false,
     proxy: null,
     before: app => {}
