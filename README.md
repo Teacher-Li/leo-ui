@@ -14,6 +14,7 @@ npm install leo-ui --save
 import Vue from 'vue'
 import leo from 'leo-ui'
 import 'leo-ui/lib/leo-ui.css'
+
 Vue.use(leo)
 ```
 

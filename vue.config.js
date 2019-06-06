@@ -1,15 +1,22 @@
-const path = require('path')
+const path    = require('path');
+const webpack = require('webpack');
+const package = require('./package.json');
 
 module.exports = {
-  // 修改 pages 入口
   pages: {
     index: {
-      entry: 'examples/main.js', // 入口
-      template: 'public/index.html', // 模板
-      filename: 'index.html' // 输出文件
+      entry: 'examples/main.js'
     }
   },
+
   // 扩展 webpack 配置
+  configureWebpack: {
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env.VERSION': `'${ package.version }'`
+      })
+    ]
+  },
   chainWebpack: config => {
     // @ 默认指向 src 目录，这里要改成 examples
     // 另外也可以新增一个 ~ 指向 packages
