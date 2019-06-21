@@ -1,4 +1,4 @@
-import "./styles/index.less"
+import './styles/index.less';
 
 import Icon from './components/Icon';
 import Load from './components/Load';
@@ -26,7 +26,10 @@ import Heart from './directives/heart';
 import Tooltip from './directives/tooltip';
 import DragSelect from './directives/dragSelect';
 
+import './utils/iconfont';
+
 import CSV from './utils/csv';
+import Indicator from './utils/indicator';
 
 const components = {
   oIcon: Icon,
@@ -77,6 +80,7 @@ const install = (Vue, opts = {}) => {
   };
 
   Vue.prototype.$CSV = CSV;
+  Vue.prototype.$Indicator = Indicator;
 };
 
 // auto install

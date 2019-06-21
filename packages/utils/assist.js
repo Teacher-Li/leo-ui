@@ -2,10 +2,6 @@
  * Created by leo on 2018/12/11.
  */
 
-export function oneOf (value, todos) {
-  return todos.some(todo => todo === value);
-}
-
 export function removeOne (value, todos) {
   const index = todos.indexOf(value);
   index > -1 && todos.splice(index, 1);

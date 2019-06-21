@@ -94,7 +94,7 @@ const csv = {
       key: arr[0],
       value: arr[arr.length - 1].length <= 1 ? arr.slice(1, -1) : arr.slice(1)
     };
-  },
+  }
 };
 
 export default csv;

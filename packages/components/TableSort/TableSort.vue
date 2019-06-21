@@ -5,7 +5,7 @@
     <slot></slot>
 
     <o-icon
-      :type="order ? 'sortascending' : 'sortdescending'"
+      :type="order ? 'sort-ascending' : 'sort-descending'"
       :class="`${ prefix }-icon`"
       size="16">
     </o-icon>

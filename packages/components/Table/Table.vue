@@ -12,20 +12,18 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'Table',
     props: {
       custom: {
         validator (value) {
-          return oneOf(value, ['primary', 'info', 'success', 'warning', 'error', ''])
+          return ['primary', 'info', 'success', 'warning', 'error', ''].includes(value);
         },
         default: 'primary'
       },
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       }

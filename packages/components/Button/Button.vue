@@ -17,26 +17,24 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'Button',
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['bg', 'shadow', 'text', 'dashed', ''])
+          return ['bg', 'shadow', 'text', 'dashed', ''].includes(value);
         },
         default: ''
       },
       custom: {
         validator (value) {
-          return oneOf(value, ['primary', 'info', 'success', 'warning', 'error', ''])
+          return ['primary', 'info', 'success', 'warning', 'error', ''].includes(value);
         },
         default: ''
       },
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },

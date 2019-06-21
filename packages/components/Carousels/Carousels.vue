@@ -55,14 +55,14 @@
 </template>
 
 <script>
-  import { oneOf, getStyle } from '~/utils/assist';
+  import { getStyle } from '~/utils/assist';
 
   export default {
     name: 'Carousels',
     props: {
       placement: {
         validator (value) {
-          return oneOf(value, ['top-left', 'top-right', 'center', 'bottom-right', 'bottom-left'])
+          return ['top-left', 'top-right', 'center', 'bottom-right', 'bottom-left'].includes(value);
         },
         default: 'center'
       },

@@ -5,20 +5,18 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'Form',
     props: {
       labelPlacement: {
         validator (value) {
-          return oneOf(value, ['top', 'top-left', 'top-right', 'right', 'bottom-left', 'bottom-right', 'left'])
+          return ['top', 'top-left', 'top-right', 'right', 'bottom-left', 'bottom-right', 'left'].includes(value);
         },
         default: 'right'
       },
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },

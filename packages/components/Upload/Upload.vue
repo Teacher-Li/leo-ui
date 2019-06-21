@@ -37,20 +37,18 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'UpLoad',
     props: {
       encode: {
         validator (value) {
-          return oneOf(value, ['GBK', 'UTF-8'])
+          return ['GBK', 'UTF-8'].includes(value);
         },
         default: 'GBK'
       },
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },

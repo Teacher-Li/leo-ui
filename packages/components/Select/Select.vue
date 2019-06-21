@@ -32,7 +32,6 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
   import { directive as clickOutside } from 'v-click-outside-x';
 
   export default {
@@ -45,13 +44,13 @@
     props: {
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },
       placement: {
         validator (value) {
-          return oneOf(value, ['top', 'bottom'])
+          return ['top', 'bottom'].includes(value);
         },
         default: 'bottom'
       },

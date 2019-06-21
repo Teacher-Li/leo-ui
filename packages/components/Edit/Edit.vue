@@ -42,8 +42,6 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'Edit',
     model: {
@@ -53,19 +51,19 @@
     props: {
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },
       type: {
         validator (value) {
-          return oneOf(value, ['text', 'icon', ''])
+          return ['text', 'icon', ''].includes(value);
         },
         default: ''
       },
       align: {
         validator (value) {
-          return oneOf(value, ['left', 'right'])
+          return ['left', 'right'].includes(value);
         },
         default: 'left'
       },

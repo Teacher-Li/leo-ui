@@ -87,26 +87,26 @@
 </template>
 
 <script>
-  import { oneOf, isInclude, getExtremum } from '~/utils/assist';
+  import { isInclude, getExtremum } from '~/utils/assist';
 
   export default {
     name: 'Page',
     props: {
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },
       align: {
         validator (value) {
-          return oneOf(value, ['left', 'center', 'right'])
+          return ['left', 'center', 'right'].includes(value);
         },
         default: 'left'
       },
       placement: {
         validator (value) {
-          return oneOf(value, ['top', 'bottom'])
+          return ['top', 'bottom'].includes(value);
         },
         default: 'bottom'
       },

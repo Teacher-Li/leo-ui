@@ -42,8 +42,6 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'Input',
     model: {
@@ -53,25 +51,25 @@
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['text', 'password', 'textarea'])
+          return ['text', 'password', 'textarea'].includes(value);
         },
         default: 'text'
       },
       size: {
         validator (value) {
-          return oneOf(value, ['large', 'small', 'mini', ''])
+          return ['large', 'small', 'mini', ''].includes(value);
         },
         default: ''
       },
       formatter: {
         validator (value) {
-          return oneOf(value, ['email', 'number', 'phone', 'name', 'mac', ''])
+          return ['email', 'number', 'phone', 'name', 'mac', ''].includes(value);
         },
         default: ''
       },
       autocomplete: {
         validator (value) {
-          return oneOf(value, ['on', 'off'])
+          return ['on', 'off'].includes(value);
         },
         default: 'off'
       },

@@ -4,20 +4,19 @@
     aria-hidden="true"
     :font-size="size"
     :class="classes"
-    :color="color">
+    :style="styles">
     <use :xlink:href="`#${ prefix }-${ type }`"></use>
   </svg>
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
 
   export default {
     name: 'Icon',
     props: {
       custom: {
         validator (value) {
-          return oneOf(value, ['primary', 'info', 'success', 'warning', 'error', ''])
+          return ['primary', 'info', 'success', 'warning', 'error', ''].includes(value);
         },
         default: ''
       },
@@ -54,6 +53,13 @@
             disabled: this.disabled
           }
         ]
+      },
+      styles () {
+        return this.custom
+          ? {}
+          : {
+              fill: this.color
+            }
       }
     },
     methods: {

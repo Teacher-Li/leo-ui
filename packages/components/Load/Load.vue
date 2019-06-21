@@ -17,14 +17,12 @@
 </template>
 
 <script>
-  import { oneOf } from '~/utils/assist';
-
   export default {
     name: 'Load',
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['dot', 'circular'])
+          return ['dot', 'circular'].includes(value);
         },
         default: 'circular'
       },
