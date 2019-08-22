@@ -44,7 +44,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           this.labelPlacement,
           this.size,
           {

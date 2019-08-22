@@ -34,7 +34,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           {
             active : this.active
           }

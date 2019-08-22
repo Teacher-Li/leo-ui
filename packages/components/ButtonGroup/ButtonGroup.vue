@@ -51,7 +51,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           this.type,
           this.custom,
           this.long ? '' : this.align,

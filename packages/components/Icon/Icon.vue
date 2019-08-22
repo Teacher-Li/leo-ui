@@ -46,7 +46,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           this.custom,
           {
             rotate  : this.rotate,

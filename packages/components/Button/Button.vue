@@ -77,7 +77,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           this.type,
           this.form ? this.form.size : this.size,
           this.disabled && !this.type ? '' : this.custom,

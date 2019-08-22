@@ -88,7 +88,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           this.placement,
           this.form ? this.form.size : this.size,
           {

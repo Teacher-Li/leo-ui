@@ -11,9 +11,10 @@
       return {
 
       }
-    },
-    mounted () {
-
     }
   }
 </script>
+
+<style>
+
+</style>

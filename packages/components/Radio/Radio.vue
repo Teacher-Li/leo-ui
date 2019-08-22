@@ -39,7 +39,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           {
             'disabled': this.disabled
           }

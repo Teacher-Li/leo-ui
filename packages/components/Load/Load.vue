@@ -43,7 +43,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           {
             fix    : this.fix,
             visible: this.visible

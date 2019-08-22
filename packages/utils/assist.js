@@ -39,3 +39,22 @@ export function getStyle (element, styleName) {
     return element.style[styleName];
   }
 }
+
+export function scrollIntoView (direction, el, parent = el.parentElement) {
+  const rect = el.getBoundingClientRect();
+  const parentRect = parent.getBoundingClientRect();
+
+  if (direction === 'vertical') {
+    if (rect.top < parentRect.top) {
+      parent.scrollTop -= parentRect.top - rect.top;
+    } else if (rect.bottom > parentRect.bottom) {
+      parent.scrollTop += rect.bottom - parentRect.bottom;
+    }
+  } else if (direction === 'horizontal') {
+    if (rect.left < parentRect.left) {
+      parent.scrollLeft -= parentRect.left - rect.left;
+    } else if (rect.right > parentRect.right) {
+      parent.scrollLeft += rect.right - parentRect.right;
+    }
+  }
+}

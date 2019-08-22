@@ -19,7 +19,7 @@
         validator (value) {
           return ['primary', 'info', 'success', 'warning', 'error', ''].includes(value);
         },
-        default: 'primary'
+        default: ''
       },
       size: {
         validator (value) {
@@ -36,7 +36,7 @@
     computed: {
       classes () {
         return [
-          `${ this.prefix }`,
+          this.prefix,
           this.size,
           {
             rotate  : this.rotate,

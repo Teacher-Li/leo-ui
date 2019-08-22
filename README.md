@@ -2,20 +2,23 @@
 
 > 一个基于Vue.js的UI组件库
 
-## Install
+## Usage
 
+Using npm:
 ``` sh
 npm install leo-ui --save
 ```
-
-## Usage
-
 ```javascript
-import Vue from 'vue'
-import leo from 'leo-ui'
-import 'leo-ui/lib/leo-ui.css'
+import Vue from 'vue';
+import leo from 'leo-ui';
+import 'leo-ui/lib/leo-ui.css';
 
-Vue.use(leo)
+Vue.use(leo);
+```
+Using cdn:
+``` html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leo-ui/lib/leo-ui.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leo-ui/lib/leo-ui.umd.min.js"></script>
 ```
 
 ## Docs
