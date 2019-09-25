@@ -42,8 +42,12 @@
 </template>
 
 <script>
+  import oButton from '~/components/Button';
+  import oButtonGroup from '~/components/ButtonGroup';
+
   export default {
     name: 'oEdit',
+    components: { oButton, oButtonGroup },
     model: {
       prop: 'edit',
       event: 'change'

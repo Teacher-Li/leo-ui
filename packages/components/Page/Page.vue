@@ -17,7 +17,9 @@
         <div
           v-if="typeof page === 'string'"
           :class="`${ prefix }-ellipsis`">
+
           <o-icon type="ellipsis" size="16"></o-icon>
+
         </div>
 
         <o-button
@@ -35,7 +37,9 @@
         <div
           v-if="typeof page === 'string'"
           :class="`${ prefix }-ellipsis`">
+
           <o-icon type="ellipsis" size="16"></o-icon>
+
         </div>
 
         <o-button
@@ -87,10 +91,16 @@
 </template>
 
 <script>
+  import oIcon from '~/components/Icon';
+  import oInput from '~/components/Input';
+  import oButton from '~/components/Button';
+  import oSelect from '~/components/Select';
+
   import { isInclude, getExtremum } from '~/utils/assist';
 
   export default {
     name: 'oPage',
+    components: { oIcon, oInput, oButton, oSelect },
     props: {
       size: {
         validator (value) {

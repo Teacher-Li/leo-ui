@@ -37,8 +37,11 @@
 </template>
 
 <script>
+  import oIcon from '~/components/Icon';
+
   export default {
-    name: 'oUpLoad',
+    name: 'oUpload',
+    components: { oIcon },
     props: {
       encode: {
         validator (value) {

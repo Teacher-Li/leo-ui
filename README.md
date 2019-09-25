@@ -14,6 +14,13 @@ import leo from 'leo-ui';
 import 'leo-ui/lib/leo-ui.css';
 
 Vue.use(leo);
+
+// 按需引用
+import { Button, Select } from 'leo-ui';
+import 'leo-ui/lib/leo-ui.css';
+
+Vue.use(Button);
+Vue.use(Select);
 ```
 Using cdn:
 ``` html

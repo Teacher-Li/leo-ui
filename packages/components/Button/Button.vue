@@ -17,8 +17,11 @@
 </template>
 
 <script>
+  import oIcon from '~/components/Icon';
+
   export default {
     name: 'oButton',
+    components: { oIcon },
     props: {
       type: {
         validator (value) {

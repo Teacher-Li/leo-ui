@@ -14,8 +14,11 @@
 </template>
 
 <script>
+  import oIcon from '~/components/Icon';
+
   export default {
     name: 'oTableSort',
+    components: { oIcon },
     props: {
       order: {
         type: Boolean,

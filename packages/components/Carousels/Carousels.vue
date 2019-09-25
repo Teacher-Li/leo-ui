@@ -55,10 +55,13 @@
 </template>
 
 <script>
+  import oButton from '~/components/Button';
+
   import { getStyle } from '~/utils/assist';
 
   export default {
     name: 'oCarousels',
+    components: { oButton },
     props: {
       placement: {
         validator (value) {

@@ -32,10 +32,13 @@
 </template>
 
 <script>
+  import oIcon from '~/components/Icon';
+
   import { directive as clickOutside } from 'v-click-outside-x';
 
   export default {
     name: 'oSelect',
+    components: { oIcon },
     directives: { clickOutside },
     model: {
       prop: 'value',

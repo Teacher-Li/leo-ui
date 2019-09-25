@@ -42,8 +42,11 @@
 </template>
 
 <script>
+  import oIcon from '~/components/Icon';
+
   export default {
     name: 'oInput',
+    components: { oIcon },
     model: {
       prop: 'value',
       event: 'change'
