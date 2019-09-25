@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <o-button>123</o-button>
   </div>
 </template>
 

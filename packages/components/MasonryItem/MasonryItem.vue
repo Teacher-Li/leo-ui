@@ -8,14 +8,14 @@
   import { getStyle } from '~/utils/assist';
 
   export default {
-    name: 'MasonryItem',
+    name: 'oMasonryItem',
     props: {
 
     },
     inject: ['masonry'],
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-masonry-item`,
+        prefix: `${ this.$prefix }-masonry-item`,
 
         height: 0
       }

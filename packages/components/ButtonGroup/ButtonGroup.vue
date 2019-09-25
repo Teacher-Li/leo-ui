@@ -5,7 +5,7 @@
 </template>
 <script>
   export default {
-    name: 'ButtonGroup',
+    name: 'oButtonGroup',
     props: {
       type: {
         validator (value) {
@@ -45,7 +45,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-button-group`
+        prefix: `${ this.$prefix }-button-group`
       }
     },
     computed: {

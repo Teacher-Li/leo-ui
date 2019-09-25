@@ -58,7 +58,7 @@
   import { getStyle } from '~/utils/assist';
 
   export default {
-    name: 'Carousels',
+    name: 'oCarousels',
     props: {
       placement: {
         validator (value) {
@@ -80,7 +80,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-carousels`,
+        prefix: `${ this.$prefix }-carousels`,
 
         width: 0,
 

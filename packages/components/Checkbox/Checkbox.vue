@@ -23,7 +23,7 @@
   import { removeOne } from '~/utils/assist';
 
   export default {
-    name: 'Checkbox',
+    name: 'oCheckbox',
     model: {
       prop: 'value',
       event: 'change'
@@ -48,7 +48,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-checkbox`,
+        prefix: `${ this.$prefix }-checkbox`,
 
         isBoolean: true
       }

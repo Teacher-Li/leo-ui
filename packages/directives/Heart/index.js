@@ -1,11 +1,11 @@
-import Edit from './Edit.vue';
+import heart from './heart';
 
 /* istanbul ignore next */
-Edit.install = Vue => {
+heart.install = Vue => {
     if (!Vue.prototype.$prefix) {
         Vue.prototype.$prefix = 'leo';
     }
-    Vue.component(Edit.name, Edit);
+    Vue.directive('heart', heart);
 };
 
-export default Edit;
+export default heart;

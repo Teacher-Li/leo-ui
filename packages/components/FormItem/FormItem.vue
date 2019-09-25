@@ -8,7 +8,7 @@
     </label>
     <div :class="`${ prefix }-value`" :style="valueStyles">
       <template v-if="ganged">
-        <transition :name="`${ $LEO.prefix }-zoom`" mode="out-in">
+        <transition :name="`${ $prefix }-zoom`" mode="out-in">
           <slot v-if="editable"></slot>
           <span v-else :class="{ empty: !value }">{{ value || emptyText }}</span>
         </transition>
@@ -22,7 +22,7 @@
 
 <script>
   export default {
-    name: 'FormItem',
+    name: 'oFormItem',
     props: {
       label: {
         type: String,
@@ -48,7 +48,7 @@
     inject: ['form'],
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-form`,
+        prefix: `${ this.$prefix }-form`,
 
         ganged: !this.editable
       }

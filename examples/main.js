@@ -11,4 +11,7 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  mounted () {
+    this.$Indicator.init()
+  }
 }).$mount('#app')

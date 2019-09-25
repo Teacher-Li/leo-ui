@@ -1,8 +1,8 @@
 <template>
-  <div :class="`${ $LEO.prefix }-edit`">
-    <div :class="`${ $LEO.prefix }-animation ${ align }`" :style="{ height: height + 'px' }">
-      <transition :name="`${ $LEO.prefix }-shove-right`">
-        <div v-if="edit" :class="`${ $LEO.prefix }-animation-item`" key="action">
+  <div :class="`${ $prefix }-edit`">
+    <div :class="`${ $prefix }-animation ${ align }`" :style="{ height: height + 'px' }">
+      <transition :name="`${ $prefix }-shove-right`">
+        <div v-if="edit" :class="`${ $prefix }-animation-item`" key="action">
 
           <o-button-group :size="size" :align="align">
             <o-button
@@ -24,7 +24,7 @@
           </o-button-group>
 
         </div>
-        <div v-else :class="`${ $LEO.prefix }-animation-item`" key="edit">
+        <div v-else :class="`${ $prefix }-animation-item`" key="edit">
 
           <o-button
             :icon="type === 'text' ? '' : btnIcon[0]"
@@ -43,7 +43,7 @@
 
 <script>
   export default {
-    name: 'Edit',
+    name: 'oEdit',
     model: {
       prop: 'edit',
       event: 'change'

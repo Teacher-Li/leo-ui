@@ -38,7 +38,7 @@
 
 <script>
   export default {
-    name: 'UpLoad',
+    name: 'oUpLoad',
     props: {
       encode: {
         validator (value) {
@@ -74,7 +74,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-upload`,
+        prefix: `${ this.$prefix }-upload`,
 
         dragOver: false,
         fileName: null

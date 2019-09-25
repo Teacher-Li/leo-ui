@@ -30,7 +30,7 @@ const indicator = {
     this.instance = new Vue({
       render (h) {
         return h('div', {
-          class: `${ this.$LEO.prefix }-indicator ${ custom || color ? custom : 'primary' }`,
+          class: `leo-indicator ${ custom || color ? custom : 'primary' }`,
           style: custom
               || {
                    backgroundImage: `linear-gradient(to right top, ${ color } 50%, transparent 50%)`

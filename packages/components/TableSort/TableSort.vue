@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    name: 'TableSort',
+    name: 'oTableSort',
     props: {
       order: {
         type: Boolean,
@@ -28,7 +28,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-table-sort`
+        prefix: `${ this.$prefix }-table-sort`
       }
     },
     computed: {

@@ -17,7 +17,7 @@
       <o-icon type="down" :class="`${ prefix }-icon arrows`" :size="12"></o-icon>
 
     </div>
-    <transition :name="`${ $LEO.prefix }-drop`">
+    <transition :name="`${ $prefix }-drop`">
       <div :class="`${ prefix }-list`" v-show="visible">
         <div
           :class="[`${ prefix }-item`, { active: item.value === value }]"
@@ -35,7 +35,7 @@
   import { directive as clickOutside } from 'v-click-outside-x';
 
   export default {
-    name: 'Select',
+    name: 'oSelect',
     directives: { clickOutside },
     model: {
       prop: 'value',
@@ -80,7 +80,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-select`,
+        prefix: `${ this.$prefix }-select`,
 
         visible: false
       }

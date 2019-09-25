@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    name: 'Table',
+    name: 'oTable',
     props: {
       custom: {
         validator (value) {
@@ -30,7 +30,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-table`
+        prefix: `${ this.$prefix }-table`
       }
     },
     computed: {

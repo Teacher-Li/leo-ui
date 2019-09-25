@@ -18,7 +18,7 @@
 
 <script>
   export default {
-    name: 'Button',
+    name: 'oButton',
     props: {
       type: {
         validator (value) {
@@ -71,7 +71,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-button`
+        prefix: `${ this.$prefix }-button`
       }
     },
     computed: {

@@ -6,10 +6,10 @@
 
 <script>
   export default {
-    name: 'RadioGroup',
+    name: 'oRadioGroup',
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-radio-group`
+        prefix: `${ this.$prefix }-radio-group`
       }
     }
   }

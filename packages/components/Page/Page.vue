@@ -9,7 +9,7 @@
       :disabled="!canPrevPage"
       @on-click="prevPage"
       :size="size">
-      <i :class="`${ $LEO.prefix }-button-icon`" deg="270">&nbsp;</i>
+      <i :class="`${ $prefix }-button-icon`" deg="270">&nbsp;</i>
     </o-button>
 
     <template v-if="simple">
@@ -53,7 +53,7 @@
       :disabled="!canNextPage"
       @on-click="nextPage"
       :size="size">
-      <i :class="`${ $LEO.prefix }-button-icon`" deg="90">&nbsp;</i>
+      <i :class="`${ $prefix }-button-icon`" deg="90">&nbsp;</i>
     </o-button>
 
     <div v-show="showSizer" :class="`${ prefix }-sizer`">
@@ -90,7 +90,7 @@
   import { isInclude, getExtremum } from '~/utils/assist';
 
   export default {
-    name: 'Page',
+    name: 'oPage',
     props: {
       size: {
         validator (value) {
@@ -154,7 +154,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-page`,
+        prefix: `${ this.$prefix }-page`,
 
         currentPage: this.current,
         currentPageSize: this.pageSize

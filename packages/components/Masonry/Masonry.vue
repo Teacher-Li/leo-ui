@@ -13,7 +13,7 @@
   import { getStyle } from '~/utils/assist';
 
   export default {
-    name: 'Masonry',
+    name: 'oMasonry',
     props: {
       width: {
         type: Number,
@@ -29,7 +29,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-masonry`,
+        prefix: `${ this.$prefix }-masonry`,
 
         top: [],
         left: [],

@@ -12,7 +12,7 @@
 <script>
 
   export default {
-    name: 'Icon',
+    name: 'oIcon',
     props: {
       custom: {
         validator (value) {
@@ -40,7 +40,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-icon`
+        prefix: `${ this.$prefix }-icon`
       }
     },
     computed: {

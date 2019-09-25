@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'Radio',
+    name: 'oRadio',
     model: {
       prop: 'value',
       event: 'change'
@@ -33,7 +33,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-radio`
+        prefix: `${ this.$prefix }-radio`
       }
     },
     computed: {

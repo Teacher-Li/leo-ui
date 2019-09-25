@@ -43,7 +43,7 @@
 
 <script>
   export default {
-    name: 'Input',
+    name: 'oInput',
     model: {
       prop: 'value',
       event: 'change'
@@ -113,7 +113,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-input`
+        prefix: `${ this.$prefix }-input`
       }
     },
     computed: {

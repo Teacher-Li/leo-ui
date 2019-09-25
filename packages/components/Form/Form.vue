@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'Form',
+    name: 'oForm',
     props: {
       labelPlacement: {
         validator (value) {
@@ -38,7 +38,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-form`
+        prefix: `${ this.$prefix }-form`
       }
     },
     computed: {

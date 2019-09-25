@@ -6,10 +6,10 @@
 
 <script>
   export default {
-    name: 'CheckboxGroup',
+    name: 'oCheckboxGroup',
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-checkbox-group`
+        prefix: `${ this.$prefix }-checkbox-group`
       }
     }
   }

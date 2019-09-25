@@ -1,5 +1,5 @@
 <template>
-  <transition :name="`${ $LEO.prefix }-fade`">
+  <transition :name="`${ $prefix }-fade`">
     <div v-show="visible" :class="classes">
       <template v-if="type === 'dot'">
         <div :class="`${ prefix }-dot`"><span></span></div>
@@ -18,7 +18,7 @@
 
 <script>
   export default {
-    name: 'Load',
+    name: 'oLoad',
     props: {
       type: {
         validator (value) {
@@ -37,7 +37,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-load`
+        prefix: `${ this.$prefix }-load`
       }
     },
     computed: {

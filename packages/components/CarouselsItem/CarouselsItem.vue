@@ -8,11 +8,11 @@
   import { getStyle } from '~/utils/assist';
 
   export default {
-    name: 'CarouselsItem',
+    name: 'oCarouselsItem',
     inject: ['gutter'],
     data () {
       return {
-        prefix: `${ this.$LEO.prefix }-carousels-item`
+        prefix: `${ this.$prefix }-carousels-item`
       }
     },
     computed: {
