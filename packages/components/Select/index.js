@@ -2,8 +2,8 @@ import Select from './Select.vue';
 
 /* istanbul ignore next */
 Select.install = Vue => {
-    if (!Vue.prototype.$prefix) {
-        Vue.prototype.$prefix = 'leo';
+    if (!Vue.prototype.$PrefixCls) {
+        Vue.prototype.$PrefixCls = 'leo';
     }
     Vue.component(Select.name, Select);
 };

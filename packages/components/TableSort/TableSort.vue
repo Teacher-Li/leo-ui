@@ -6,7 +6,7 @@
 
     <o-icon
       :type="order ? 'sort-ascending' : 'sort-descending'"
-      :class="`${ prefix }-icon`"
+      :class="`${ prefixCls }-icon`"
       size="16">
     </o-icon>
 
@@ -31,13 +31,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-table-sort`
+        prefixCls: `${ this.$PrefixCls }-table-sort`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           {
             active : this.active
           }

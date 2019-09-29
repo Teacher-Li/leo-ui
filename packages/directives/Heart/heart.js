@@ -55,7 +55,7 @@ export default {
 
     el.__color     = '';
     el.__custom    = false;
-    el.__className = `${ self.$prefix }-heart`;
+    el.__className = `${ self.$PrefixCls }-heart`;
     if (typeof value !== 'undefined') {
       el.__color = value['color'];
       if (value['custom']) {
@@ -76,7 +76,7 @@ export default {
 
     el.__color     = '';
     el.__custom    = false;
-    el.__className = `${ self.$prefix }-heart`;
+    el.__className = `${ self.$PrefixCls }-heart`;
     if (typeof value !== 'undefined') {
       el.__color = value['color'];
       if (value['custom']) {
@@ -87,7 +87,7 @@ export default {
   },
   unbind (el, {}, vnode) {
     let self  = vnode.context;
-    let nodes = document.querySelectorAll(`div.${ self.$prefix }-heart`);
+    let nodes = document.querySelectorAll(`div.${ self.$PrefixCls }-heart`);
     nodes.forEach(node => { document.body.removeChild(node) });
 
     el.removeEventListener('click', el.__click);

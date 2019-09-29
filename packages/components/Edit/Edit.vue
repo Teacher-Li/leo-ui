@@ -1,8 +1,8 @@
 <template>
-  <div :class="`${ $prefix }-edit`">
-    <div :class="`${ $prefix }-animation ${ align }`" :style="{ height: height + 'px' }">
-      <transition :name="`${ $prefix }-shove-right`">
-        <div v-if="edit" :class="`${ $prefix }-animation-item`" key="action">
+  <div :class="`${ $PrefixCls }-edit`">
+    <div :class="`${ $PrefixCls }-animation ${ align }`" :style="{ height: height + 'px' }">
+      <transition :name="`${ $PrefixCls }-shove-right`">
+        <div v-if="edit" :class="`${ $PrefixCls }-animation-item`" key="action">
 
           <o-button-group :size="size" :align="align">
             <o-button
@@ -24,7 +24,7 @@
           </o-button-group>
 
         </div>
-        <div v-else :class="`${ $prefix }-animation-item`" key="edit">
+        <div v-else :class="`${ $PrefixCls }-animation-item`" key="edit">
 
           <o-button
             :icon="type === 'text' ? '' : btnIcon[0]"

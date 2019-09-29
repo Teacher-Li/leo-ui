@@ -48,7 +48,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-checkbox`,
+        prefixCls: `${ this.$PrefixCls }-checkbox`,
 
         isBoolean: true
       }
@@ -56,7 +56,7 @@
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           {
             disabled : this.disabled
           }

@@ -45,13 +45,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-button-group`
+        prefixCls: `${ this.$PrefixCls }-button-group`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.type,
           this.custom,
           this.long ? '' : this.align,

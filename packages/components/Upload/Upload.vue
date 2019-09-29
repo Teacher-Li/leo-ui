@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${ prefix }`" @click.stop="handleClick">
+  <div :class="`${ prefixCls }`" @click.stop="handleClick">
     <template v-if="dragable">
       <div
         @dragleave.prevent="dragOver = false"
@@ -10,13 +10,13 @@
         :class="dragClasses">
 
           <o-icon
-            :class="`${ prefix }-icon`"
+            :class="`${ prefixCls }-icon`"
             :size="iconSize"
             type="upload">
           </o-icon>
 
       </div>
-      <div :class="`${ prefix }-text`"><slot></slot></div>
+      <div :class="`${ prefixCls }-text`"><slot></slot></div>
     </template>
     <template v-else>
       <div :class="selectClasses">
@@ -24,7 +24,7 @@
         {{ fileName }}
 
         <o-icon
-          :class="`${ prefix }-icon`"
+          :class="`${ prefixCls }-icon`"
           :size="iconSize"
           type="upload">
         </o-icon>
@@ -77,7 +77,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-upload`,
+        prefixCls: `${ this.$PrefixCls }-upload`,
 
         dragOver: false,
         fileName: null
@@ -86,7 +86,7 @@
     computed: {
       dragClasses () {
         return [
-          `${ this.prefix }-drag`,
+          `${ this.prefixCls }-drag`,
           {
             active: this.dragOver
           }
@@ -94,7 +94,7 @@
       },
       selectClasses () {
         return [
-          `${ this.prefix }-select`,
+          `${ this.prefixCls }-select`,
           this.form ? this.form.size : this.size
         ]
       },

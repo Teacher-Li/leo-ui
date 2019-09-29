@@ -32,7 +32,7 @@
     </template>
 
     <o-icon
-      :class="`${ prefix }-icon`"
+      :class="`${ prefixCls }-icon`"
       @on-click="handleClear"
       v-if="showIcon"
       type="clear">
@@ -116,13 +116,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-input`
+        prefixCls: `${ this.$PrefixCls }-input`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.type === 'textarea'
             ? ''
             : this.form

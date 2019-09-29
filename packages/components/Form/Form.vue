@@ -38,13 +38,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-form`
+        prefixCls: `${ this.$PrefixCls }-form`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.labelPlacement,
           this.size,
           {

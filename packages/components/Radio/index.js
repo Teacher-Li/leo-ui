@@ -2,8 +2,8 @@ import Radio from './Radio.vue';
 
 /* istanbul ignore next */
 Radio.install = Vue => {
-    if (!Vue.prototype.$prefix) {
-        Vue.prototype.$prefix = 'leo';
+    if (!Vue.prototype.$PrefixCls) {
+        Vue.prototype.$PrefixCls = 'leo';
     }
     Vue.component(Radio.name, Radio);
 };

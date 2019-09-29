@@ -18,7 +18,7 @@ export default {
         div.setAttribute('tooltip-name', name);
 
         div.innerHTML = html;
-        div.className = `${ self.$prefix }-tooltip` + (binding.modifiers['small'] ? ' small' : '');
+        div.className = `${ self.$PrefixCls }-tooltip` + (binding.modifiers['small'] ? ' small' : '');
         div.classList.add(theme);
         document.body.appendChild(div);
 
@@ -54,7 +54,7 @@ export default {
       let name      = el.getAttribute('data-name');
 
       let node;
-      let nodes = document.querySelectorAll(`div.${ self.$prefix }-tooltip`);
+      let nodes = document.querySelectorAll(`div.${ self.$PrefixCls }-tooltip`);
 
       for (let i = 0; i < nodes.length; i++) {
         if (nodes[i].getAttribute('tooltip-name') === name) {
@@ -76,7 +76,7 @@ export default {
   },
   unbind (el, {}, vnode) {
     let self  = vnode.context;
-    let nodes = document.querySelectorAll(`div.${ self.$prefix }-tooltip`);
+    let nodes = document.querySelectorAll(`div.${ self.$PrefixCls }-tooltip`);
     nodes.forEach(node => { document.body.removeChild(node) });
 
     el.removeEventListener('mouseout', el.__mouseout);

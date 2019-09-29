@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${ prefix }`" :style="styles">
+  <div :class="`${ prefixCls }`" :style="styles">
     <slot></slot>
   </div>
 </template>
@@ -12,7 +12,7 @@
     inject: ['gutter'],
     data () {
       return {
-        prefix: `${ this.$prefix }-carousels-item`
+        prefixCls: `${ this.$PrefixCls }-carousels-item`
       }
     },
     computed: {

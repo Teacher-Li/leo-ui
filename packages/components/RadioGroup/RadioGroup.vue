@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${ prefix }`">
+  <div :class="`${ prefixCls }`">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,7 @@
     name: 'oRadioGroup',
     data () {
       return {
-        prefix: `${ this.$prefix }-radio-group`
+        prefixCls: `${ this.$PrefixCls }-radio-group`
       }
     }
   }

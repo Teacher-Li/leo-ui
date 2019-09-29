@@ -1,7 +1,7 @@
 <template>
-  <div :class="`${ prefix }`">
+  <div :class="`${ prefixCls }`">
     <div
-      :class="`${ prefix }-wrap`"
+      :class="`${ prefixCls }-wrap`"
       :style="wrapStyles"
       v-masonry>
       <slot></slot>
@@ -29,7 +29,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-masonry`,
+        prefixCls: `${ this.$PrefixCls }-masonry`,
 
         top: [],
         left: [],

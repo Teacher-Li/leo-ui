@@ -1,6 +1,6 @@
 <template>
-  <div :class="`${ prefix } ${ size } ${ align }`">
-    <div :class="`${ prefix }-total`" v-show="showTotal">
+  <div :class="`${ prefixCls } ${ size } ${ align }`">
+    <div :class="`${ prefixCls }-total`" v-show="showTotal">
       共 {{ total || 0 }} 条
     </div>
 
@@ -9,14 +9,14 @@
       :disabled="!canPrevPage"
       @on-click="prevPage"
       :size="size">
-      <i :class="`${ $prefix }-button-icon`" deg="270">&nbsp;</i>
+      <i :class="`${ $PrefixCls }-button-icon`" deg="270">&nbsp;</i>
     </o-button>
 
     <template v-if="simple">
       <template v-for="page in pages">
         <div
           v-if="typeof page === 'string'"
-          :class="`${ prefix }-ellipsis`">
+          :class="`${ prefixCls }-ellipsis`">
 
           <o-icon type="ellipsis" size="16"></o-icon>
 
@@ -36,7 +36,7 @@
       <template v-for="page in pages">
         <div
           v-if="typeof page === 'string'"
-          :class="`${ prefix }-ellipsis`">
+          :class="`${ prefixCls }-ellipsis`">
 
           <o-icon type="ellipsis" size="16"></o-icon>
 
@@ -57,10 +57,10 @@
       :disabled="!canNextPage"
       @on-click="nextPage"
       :size="size">
-      <i :class="`${ $prefix }-button-icon`" deg="90">&nbsp;</i>
+      <i :class="`${ $PrefixCls }-button-icon`" deg="90">&nbsp;</i>
     </o-button>
 
-    <div v-show="showSizer" :class="`${ prefix }-sizer`">
+    <div v-show="showSizer" :class="`${ prefixCls }-sizer`">
 
       <o-select
         @on-change="changePageSize"
@@ -72,7 +72,7 @@
       </o-select>
 
     </div>
-    <div v-show="showElevator" :class="`${ prefix }-elevator`">
+    <div v-show="showElevator" :class="`${ prefixCls }-elevator`">
       跳至
 
       <o-input
@@ -164,7 +164,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-page`,
+        prefixCls: `${ this.$PrefixCls }-page`,
 
         currentPage: this.current,
         currentPageSize: this.pageSize

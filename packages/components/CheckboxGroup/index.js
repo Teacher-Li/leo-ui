@@ -2,8 +2,8 @@ import CheckboxGroup from './CheckboxGroup.vue';
 
 /* istanbul ignore next */
 CheckboxGroup.install = Vue => {
-    if (!Vue.prototype.$prefix) {
-        Vue.prototype.$prefix = 'leo';
+    if (!Vue.prototype.$PrefixCls) {
+        Vue.prototype.$PrefixCls = 'leo';
     }
     Vue.component(CheckboxGroup.name, CheckboxGroup);
 };

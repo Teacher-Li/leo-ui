@@ -2,8 +2,8 @@ import Form from './Form.vue';
 
 /* istanbul ignore next */
 Form.install = Vue => {
-    if (!Vue.prototype.$prefix) {
-        Vue.prototype.$prefix = 'leo';
+    if (!Vue.prototype.$PrefixCls) {
+        Vue.prototype.$PrefixCls = 'leo';
     }
     Vue.component(Form.name, Form);
 };

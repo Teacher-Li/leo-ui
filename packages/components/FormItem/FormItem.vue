@@ -1,14 +1,14 @@
 <template>
-  <div :class="`${ prefix }-item`">
+  <div :class="`${ prefixCls }-item`">
     <label
       v-if="label || $slots.label"
       :class="labelClasses"
       :style="labelStyles">
       <slot name="label">{{ label }}</slot>
     </label>
-    <div :class="`${ prefix }-value`" :style="valueStyles">
+    <div :class="`${ prefixCls }-value`" :style="valueStyles">
       <template v-if="ganged">
-        <transition :name="`${ $prefix }-zoom`" mode="out-in">
+        <transition :name="`${ $PrefixCls }-zoom`" mode="out-in">
           <slot v-if="editable"></slot>
           <span v-else :class="{ empty: !value }">{{ value || emptyText }}</span>
         </transition>
@@ -48,7 +48,7 @@
     inject: ['form'],
     data () {
       return {
-        prefix: `${ this.$prefix }-form`,
+        prefixCls: `${ this.$PrefixCls }-form`,
 
         ganged: !this.editable
       }
@@ -56,7 +56,7 @@
     computed: {
       labelClasses () {
         return [
-          `${ this.prefix }-label`,
+          `${ this.prefixCls }-label`,
           {
             required : this.editable && this.required
           }

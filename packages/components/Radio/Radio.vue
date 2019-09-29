@@ -33,13 +33,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-radio`
+        prefixCls: `${ this.$PrefixCls }-radio`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           {
             'disabled': this.disabled
           }

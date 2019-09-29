@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${ prefix }`" :style="styles">
+  <div :class="`${ prefixCls }`" :style="styles">
     <slot></slot>
   </div>
 </template>
@@ -15,7 +15,7 @@
     inject: ['masonry'],
     data () {
       return {
-        prefix: `${ this.$prefix }-masonry-item`,
+        prefixCls: `${ this.$PrefixCls }-masonry-item`,
 
         height: 0
       }

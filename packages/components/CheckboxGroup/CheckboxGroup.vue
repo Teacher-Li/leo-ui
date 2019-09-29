@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${ prefix }`">
+  <div :class="`${ prefixCls }`">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,7 @@
     name: 'oCheckboxGroup',
     data () {
       return {
-        prefix: `${ this.$prefix }-checkbox-group`
+        prefixCls: `${ this.$PrefixCls }-checkbox-group`
       }
     }
   }

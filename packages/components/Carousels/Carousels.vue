@@ -1,10 +1,10 @@
 <template>
-  <div :class="`${ prefix } ${ placement }`" v-carousels="carousels">
-    <div :class="`${ prefix }-track`" :style="trackStyles">
+  <div :class="`${ prefixCls } ${ placement }`" v-carousels="carousels">
+    <div :class="`${ prefixCls }-track`" :style="trackStyles">
       <slot></slot>
     </div>
     <template v-if="placement === 'center'">
-      <div :class="`${ prefix }-icon left`">
+      <div :class="`${ prefixCls }-icon left`">
 
         <o-button
           @on-click="carousels(true, width)"
@@ -15,7 +15,7 @@
         </o-button>
 
       </div>
-      <div :class="`${ prefix }-icon right`">
+      <div :class="`${ prefixCls }-icon right`">
 
         <o-button
           :disabled="translateX + trackWidth <= width + gutter"
@@ -27,8 +27,8 @@
 
       </div>
     </template>
-    <div v-else :class="`${ prefix }-arrows`">
-      <div :class="`${ prefix }-icon`">
+    <div v-else :class="`${ prefixCls }-arrows`">
+      <div :class="`${ prefixCls }-icon`">
 
         <o-button
           @on-click="carousels(true, width)"
@@ -39,7 +39,7 @@
         </o-button>
 
       </div>
-      <div :class="`${ prefix }-icon`">
+      <div :class="`${ prefixCls }-icon`">
 
         <o-button
           :disabled="translateX + trackWidth <= width + gutter"
@@ -83,7 +83,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-carousels`,
+        prefixCls: `${ this.$PrefixCls }-carousels`,
 
         width: 0,
 

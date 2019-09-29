@@ -5,12 +5,11 @@
     :font-size="size"
     :class="classes"
     :style="styles">
-    <use :xlink:href="`#${ prefix }-${ type }`"></use>
+    <use :xlink:href="`#${ prefixCls }-${ type }`"></use>
   </svg>
 </template>
 
 <script>
-
   export default {
     name: 'oIcon',
     props: {
@@ -40,13 +39,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-icon`
+        prefixCls: `${ this.$PrefixCls }-icon`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.custom,
           {
             rotate  : this.rotate,

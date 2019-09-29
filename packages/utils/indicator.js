@@ -28,9 +28,14 @@ const indicator = {
     const { custom, color } = this;
 
     this.instance = new Vue({
+      data () {
+        return {
+          prefixCls: `${ this.$PrefixCls || 'leo' }-indicator`
+        }
+      },
       render (h) {
         return h('div', {
-          class: `leo-indicator ${ custom || color ? custom : 'primary' }`,
+          class: `${ this.prefixCls } ${ custom || color ? custom : 'primary' }`,
           style: custom
               || {
                    backgroundImage: `linear-gradient(to right top, ${ color } 50%, transparent 50%)`

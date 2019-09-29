@@ -1,10 +1,10 @@
 <template>
   <div :class="classes">
     <table>
-      <thead :class="`${ prefix }-head ${ custom }`">
+      <thead :class="`${ prefixCls }-head ${ custom }`">
         <slot name="thead"></slot>
       </thead>
-      <tbody :class="`${ prefix }-body`">
+      <tbody :class="`${ prefixCls }-body`">
         <slot></slot>
       </tbody>
     </table>
@@ -30,13 +30,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-table`
+        prefixCls: `${ this.$PrefixCls }-table`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.size,
           {
             rotate  : this.rotate,

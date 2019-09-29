@@ -74,13 +74,13 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-button`
+        prefixCls: `${ this.$PrefixCls }-button`
       }
     },
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.type,
           this.form ? this.form.size : this.size,
           this.disabled && !this.type ? '' : this.custom,

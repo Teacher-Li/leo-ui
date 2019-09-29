@@ -3,7 +3,7 @@ export default {
     let self = vnode.context;
     let div  = document.createElement('div');
 
-    div.className = `${ self.$prefix }-drag-select`;
+    div.className = `${ self.$PrefixCls }-drag-select`;
     el.appendChild(div);
 
     let step = 0;
@@ -68,7 +68,7 @@ export default {
   },
   unbind (el, {}, vnode) {
     let self = vnode.context;
-    let node = document.querySelector(`div.${ self.$prefix }-drag-select`);
+    let node = document.querySelector(`div.${ self.$PrefixCls }-drag-select`);
     el.removeChild(node);
 
     el.removeEventListener('mousemove', el.__mousemove);

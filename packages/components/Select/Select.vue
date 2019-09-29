@@ -14,18 +14,18 @@
         type="clear">
       </o-icon>
 
-      <o-icon type="down" :class="`${ prefix }-icon arrows`" :size="12"></o-icon>
+      <o-icon type="down" :class="`${ prefixCls }-icon arrows`" :size="12"></o-icon>
 
     </div>
-    <transition :name="`${ $prefix }-drop`">
-      <div :class="`${ prefix }-list`" v-show="visible">
+    <transition :name="`${ $PrefixCls }-drop`">
+      <div :class="`${ prefixCls }-list`" v-show="visible">
         <div
-          :class="[`${ prefix }-item`, { active: item.value === value }]"
+          :class="[`${ prefixCls }-item`, { active: item.value === value }]"
           @click="handleChange(item.value)"
           v-for="item in list">
           {{ item.label }}
         </div>
-        <div v-if="!list.length" :class="`${ prefix }-text`">{{ notFoundText }}</div>
+        <div v-if="!list.length" :class="`${ prefixCls }-text`">{{ notFoundText }}</div>
       </div>
     </transition>
   </div>
@@ -83,7 +83,7 @@
     },
     data () {
       return {
-        prefix: `${ this.$prefix }-select`,
+        prefixCls: `${ this.$PrefixCls }-select`,
 
         visible: false
       }
@@ -91,7 +91,7 @@
     computed: {
       classes () {
         return [
-          this.prefix,
+          this.prefixCls,
           this.placement,
           this.form ? this.form.size : this.size,
           {
@@ -102,7 +102,7 @@
       },
       valueClasses () {
         return [
-          `${ this.prefix }-value`,
+          `${ this.prefixCls }-value`,
           {
             disabled: this.disabled
           }
@@ -110,7 +110,7 @@
       },
       clearClasses () {
         return [
-          `${ this.prefix }-icon`,
+          `${ this.prefixCls }-icon`,
           {
             clear: this.canClear
           }

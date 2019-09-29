@@ -28,6 +28,7 @@ import Heart from './directives/Heart';
 import Tooltip from './directives/Tooltip';
 
 import CSV from './utils/csv';
+import Preview from './utils/preview';
 import Indicator from './utils/indicator';
 
 const components = [
@@ -74,8 +75,9 @@ const install = (Vue, opts = {}) => {
   });
 
   Vue.prototype.$CSV = CSV;
+  Vue.prototype.$Preview = Preview;
   Vue.prototype.$Indicator = Indicator;
-  Vue.prototype.$prefix = opts.prefix || 'leo';
+  Vue.prototype.$PrefixCls = opts.prefixCls || 'leo';
 };
 
 // auto install
@@ -111,6 +113,7 @@ export {
   DragSelect,
 
   CSV,
+  Preview,
   Indicator,
 };
 
