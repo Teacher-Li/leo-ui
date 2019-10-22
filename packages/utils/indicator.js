@@ -5,8 +5,8 @@
 import Vue from 'vue';
 
 const indicator = {
-  color: '',
-  custom: '',
+  color: null,
+  custom: null,
   instance: null,
 
   init () {
@@ -23,6 +23,13 @@ const indicator = {
       this.custom = 'primary';
     }
     return this;
+  },
+  destroy () {
+    this.instance && document.body.removeChild(this.instance.$el);
+
+    this.color = null;
+    this.custom = null;
+    this.instance = null;
   },
   newInstance () {
     const { custom, color } = this;

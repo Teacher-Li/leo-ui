@@ -1,6 +1,6 @@
 const path    = require('path');
 const webpack = require('webpack');
-const package = require('./package.json');
+const { version } = require('./package.json');
 
 module.exports = {
   pages: {
@@ -13,7 +13,7 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
-        'process.env.VERSION': `'${ package.version }'`
+        'process.env.VERSION': `'${ version }'`
       })
     ]
   },

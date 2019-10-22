@@ -29,6 +29,7 @@ import Tooltip from './directives/Tooltip';
 
 import CSV from './utils/csv';
 import Preview from './utils/preview';
+import Barrage from './utils/barrage';
 import Indicator from './utils/indicator';
 
 const components = [
@@ -76,6 +77,7 @@ const install = (Vue, opts = {}) => {
 
   Vue.prototype.$CSV = CSV;
   Vue.prototype.$Preview = Preview;
+  Vue.prototype.$Barrage = Barrage;
   Vue.prototype.$Indicator = Indicator;
   Vue.prototype.$PrefixCls = opts.prefixCls || 'leo';
 };
@@ -114,6 +116,7 @@ export {
 
   CSV,
   Preview,
+  Barrage,
   Indicator,
 };
 

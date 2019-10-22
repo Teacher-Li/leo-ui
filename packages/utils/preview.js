@@ -13,18 +13,17 @@ const preview = {
   instance: null,
   galleryPicLoading: false,
 
-  config (options = {}) {
-    this.options = { ...options };
-    return this;
-  },
   init () {
     this.instance || this.newInstance();
   },
+  config (options = {}) {
+    this.options = { ...this.options, ...options };
+    return this;
+  },
   destroy () {
     const pswpElement = document.querySelectorAll('.pswp')[0];
-    document.body.removeChild(pswpElement);
+    pswpElement && document.body.removeChild(pswpElement);
 
-    this.options = {};
     this.instance = null;
     this.galleryPicLoading = false;
   },
