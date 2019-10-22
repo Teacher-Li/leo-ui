@@ -1,0 +1,25 @@
+.motion-common(@time) {
+    animation-fill-mode: both;
+    animation-duration: @time;
+}
+
+.base-motion(@className, @keyframeName, @time: @animation-time-small) {
+    .@{className}-enter-active, .@{className}-appear {
+        .motion-common(@time);
+        animation-play-state: paused;
+    }
+    .@{className}-leave-active {
+        .motion-common(@time);
+        animation-play-state: paused;
+    }
+    .@{className}-enter-active, .@{className}-appear {
+        animation-name: ~"@{keyframeName}In";
+        animation-play-state: running;
+    }
+    .@{className}-leave-active {
+        animation-name: ~"@{keyframeName}Out";
+        animation-play-state: running;
+    }
+}
+
+@import "stack";

@@ -1,37 +1,35 @@
-# leo-ui
+# leo-ui-document
 
-> 一个基于Vue.js的UI组件库
+> leo-ui组件库使用文档
 
-## Usage
-
-Using npm:
-``` sh
-npm install leo-ui --save
+## Project setup
 ```
-```javascript
-import Vue from 'vue';
-import leo from 'leo-ui';
-import 'leo-ui/lib/leo-ui.css';
-
-Vue.use(leo);
-
-// 按需引用
-import { Button, Select } from 'leo-ui';
-import 'leo-ui/lib/leo-ui.css';
-
-Vue.use(Button);
-Vue.use(Select);
-```
-Using cdn:
-``` html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leo-ui/lib/leo-ui.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leo-ui/lib/leo-ui.umd.min.js"></script>
+npm install
 ```
 
-## Docs
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-[1.x](https://teacher-li.github.io/leo-ui/)
+### Compiles and minifies for production
+```
+npm run build
+```
 
-## License
-
-[MIT](https://opensource.org/licenses/MIT)
+## Links
+- [Button 按钮](https://teacher-li.github.io/leo-ui/#/button)
+- [Input 输入框](https://teacher-li.github.io/leo-ui/#/input)
+- [Select 选择器](https://teacher-li.github.io/leo-ui/#/select)
+- [Upload 上传](https://teacher-li.github.io/leo-ui/#/upload)
+- [Edit 编辑](https://teacher-li.github.io/leo-ui/#/edit)
+- [Form 表单](https://teacher-li.github.io/leo-ui/#/form)
+- [Table 表格](https://teacher-li.github.io/leo-ui/#/table)
+- [Page 分页](https://teacher-li.github.io/leo-ui/#/page)
+- [Load 加载](https://teacher-li.github.io/leo-ui/#/load)
+- [Carousels 传送带](https://teacher-li.github.io/leo-ui/#/carousels)
+- [Masonry 瀑布流](https://teacher-li.github.io/leo-ui/#/masonry)
+- [Heart 比心](https://teacher-li.github.io/leo-ui/#/heart)
+- [Tooltip 文字提示](https://teacher-li.github.io/leo-ui/#/tooltip)
+- [DragSelect 框选](https://teacher-li.github.io/leo-ui/#/drag-select)
+- [Barrage 弹幕](https://teacher-li.github.io/leo-ui/#/barrage)

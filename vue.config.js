@@ -1,39 +1,81 @@
-const path    = require('path');
-const webpack = require('webpack');
-const { version } = require('./package.json');
+const path = require('path');
+const chalk = require('chalk');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+
+const DIST_DIR = 'dist';
+const OUTPUT_DIR = `${DIST_DIR}/`;
+
+const productionPrerender = false;
 
 module.exports = {
-  pages: {
-    index: {
-      entry: 'examples/main.js'
+  productionSourceMap: false,
+
+  publicPath: productionPrerender ? `/` : './',
+  outputDir: OUTPUT_DIR,
+  assetsDir: 'static',
+
+  configureWebpack: config => {
+    const configure = {};
+
+    if (process.env.NODE_ENV === 'production') {
+      configure.plugins = [];
+      productionPrerender && configure.plugins.push(
+        new PrerenderSPAPlugin({
+          staticDir: path.resolve(__dirname, DIST_DIR),
+          outputDir: path.resolve(__dirname, OUTPUT_DIR),
+          indexPath: path.resolve(__dirname, OUTPUT_DIR + 'index.html'),
+          routes: [
+            '/button',
+            '/input',
+            '/select',
+            '/upload',
+            '/edit',
+            '/form',
+            '/table',
+            '/page',
+            '/load',
+            '/carousels',
+            '/masonry',
+            '/heart',
+            '/tooltip',
+            '/drag-select'
+          ],
+          minify: {
+            collapseBooleanAttributes: true,
+            collapseWhitespace: true,
+            decodeEntities: true,
+            keepClosingSlash: true,
+            sortAttributes: true
+          },
+          postProcess (renderedRoute) {
+            renderedRoute.html = renderedRoute.html.replace(
+                /<script[^<]*chunk-[a-z0-9]{8}\.[a-z0-9]{8}.js[^<]*><\/script>/g,
+                target => {
+                  console.log(chalk.bgRed('\n\n剔除的懒加载标签:'), chalk.magenta(target))
+                  return ''
+                }
+            )
+            return renderedRoute;
+          }
+        })
+      )
     }
+
+    return configure;
   },
 
-  // 扩展 webpack 配置
-  configureWebpack: {
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env.VERSION': `'${ version }'`
-      })
-    ]
-  },
   chainWebpack: config => {
-    // @ 默认指向 src 目录，这里要改成 examples
-    // 另外也可以新增一个 ~ 指向 packages
-    config.resolve.alias
-      .set('@', path.resolve('examples'))
-      .set('~', path.resolve('packages'))
+    config.plugins.delete('prefetch');
+  },
 
-    // 把 packages 和 examples 加入编译，因为新增的文件默认是不被 webpack 处理的
-    config.module
-      .rule('js')
-      .include.add(/examples/).end()
-      .include.add(/packages/).end()
-      .use('babel')
-      .loader('babel-loader')
-      .tap(options => {
-         // 修改它的选项...
-         return options
-      })
+  devServer: {
+    host: 'localhost',
+    port: 1024,
+    https: false,
+    open: false,
+    hotOnly: false,
+    proxy: null,
+    before: app => {
+    }
   }
-}
+};

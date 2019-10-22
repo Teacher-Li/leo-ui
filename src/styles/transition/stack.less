@@ -1,0 +1,36 @@
+.stack-motion(@keyframeName) {
+  @className: ~"@{css-prefix}-stack";
+
+  .base-motion(@className, @keyframeName, @animation-time);
+  .@{className}-enter-active, .@{className}-appear {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  .@{className}-leave-active {
+    animation-timing-function: ease-in-out;
+  }
+}
+
+.stack-motion(stack);
+
+@keyframes stackIn {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stackOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+}
