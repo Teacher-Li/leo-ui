@@ -31,10 +31,10 @@ const barrage = {
     this.el = el;
     this.canvas = document.createElement('canvas');
 
-    this.canvas.style.zIndex = 9999;
-    this.canvas.style.position = 'fixed';
+    this.el.style.position = 'relative';
+    this.canvas.style.position = 'absolute';
     this.canvas.style.pointerEvents = 'none';
-    document.body.appendChild(this.canvas);
+    this.el.appendChild(this.canvas);
 
     this.resize();
     this.draw();
@@ -62,7 +62,7 @@ const barrage = {
     this.ctx.clearRect(0, 0, width, height);
   },
   destroy () {
-    this.canvas && document.body.removeChild(this.canvas);
+    this.canvas && this.el.removeChild(this.canvas);
 
     this.el = null;
     this.canvas = null;
