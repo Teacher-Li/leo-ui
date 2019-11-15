@@ -40,19 +40,19 @@
           上传属性设置
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -98,7 +98,7 @@
     name: 'Upload',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         size: '',
 
@@ -152,58 +152,58 @@
           }
         ],
 
-        html1: `<o-form :label-width="60">
-                        <o-form-item label="尺寸">
-                          <o-radio-group>
-                            <template v-for="x in sizeOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="size">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="状态">
-                          <o-checkbox-group>
-                            <o-checkbox v-model="dragable">dragable</o-checkbox>
-                          </o-checkbox-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <o-upload
-                        @on-success="handlerSuccess"
-                        :suffix="['xlsx', 'csv']"
-                        @on-error="handlerError"
-                        :dragable="dragable"
-                        :size="size">
-                        Click or drag files here to upload
-                      </o-upload>`,
+        html: `<o-form :label-width="60">
+  <o-form-item label="尺寸">
+    <o-radio-group>
+      <template v-for="x in sizeOptions">
+        <o-radio
+          :current="x.value"
+          v-model="size">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="状态">
+    <o-checkbox-group>
+      <o-checkbox v-model="dragable">dragable</o-checkbox>
+    </o-checkbox-group>
+  </o-form-item>
+</o-form>
+<br>
+<o-upload
+  @on-success="handlerSuccess"
+  :suffix="['xlsx', 'csv']"
+  @on-error="handlerError"
+  :dragable="dragable"
+  :size="size">
+  Click or drag files here to upload
+</o-upload>`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            size: '',
+        java: `export default {
+  data () {
+    return {
+      size: '',
 
-                            dragable: false,
+      dragable: false,
 
-                            sizeOptions: [
-                              { label: 'large', value: 'large' },
-                              { label: 'small', value: 'small' },
-                              { label: 'mini', value: 'mini' },
-                              { label: 'default', value: '' }
-                            ]
-                          }
-                        },
-                        methods: {
-                          handlerSuccess (res) {
-                            console.log(res)
-                          },
-                          handlerError () {
-                            console.log('文件格式错误，请上传后缀名为 xlsx 或者 csv 的文件')
-                          }
-                        }
-                      }`
+      sizeOptions: [
+        { label: 'large', value: 'large' },
+        { label: 'small', value: 'small' },
+        { label: 'mini', value: 'mini' },
+        { label: 'default', value: '' }
+      ]
+    }
+  },
+  methods: {
+    handlerSuccess (res) {
+      console.log(res)
+    },
+    handlerError () {
+      console.log('文件格式错误，请上传后缀名为 xlsx 或者 csv 的文件')
+    }
+  }
+}`
 
       }
     },

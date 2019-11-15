@@ -38,19 +38,19 @@
           文字提示属性设置
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -85,7 +85,7 @@
     name: 'Tooltip',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         theme: 'light',
 
@@ -128,49 +128,49 @@
           }
         ],
 
-        html1: `<o-form :label-width="60">
-                        <o-form-item label="主题">
-                          <o-radio-group>
-                            <template v-for="x in themeOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="theme">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <span v-tooltip="{ name: 'default', theme: theme, length: 20 }">
-                        设置文字最大长度值，超出部分由省略号代替，鼠标悬停之后，会弹出全部文字窗口。
-                      </span>
-                      <br>
-                      <span v-tooltip.small="{ name: 'small', theme: theme, length: 20 }">
-                        设置文字最大长度值，超出部分由省略号代替，鼠标悬停之后，会弹出全部文字窗口。
-                      </span>
-                      <br>
-                      <span v-tooltip.original="{ name: 'original', length: 20 }">
-                        设置文字最大长度值，超出部分由省略号代替，鼠标悬停之后，会弹出全部文字窗口。
-                      </span>`,
+        html: `<o-form :label-width="60">
+  <o-form-item label="主题">
+    <o-radio-group>
+      <template v-for="x in themeOptions">
+        <o-radio
+          :current="x.value"
+          v-model="theme">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+</o-form>
+<br>
+<span v-tooltip="{ name: 'default', theme: theme, length: 20 }">
+  设置文字最大长度值，超出部分由省略号代替，鼠标悬停之后，会弹出全部文字窗口。
+</span>
+<br>
+<span v-tooltip.small="{ name: 'small', theme: theme, length: 20 }">
+  设置文字最大长度值，超出部分由省略号代替，鼠标悬停之后，会弹出全部文字窗口。
+</span>
+<br>
+<span v-tooltip.original="{ name: 'original', length: 20 }">
+  设置文字最大长度值，超出部分由省略号代替，鼠标悬停之后，会弹出全部文字窗口。
+</span>`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            theme: 'light',
+        java: `export default {
+  data () {
+    return {
+      theme: 'light',
 
-                            themeOptions: [
-                              { label: 'primary', value: 'primary' },
-                              { label: 'info', value: 'info' },
-                              { label: 'success', value: 'success' },
-                              { label: 'warning', value: 'warning' },
-                              { label: 'error', value: 'error' },
-                              { label: 'dark', value: 'dark' },
-                              { label: 'light', value: 'light' }
-                            ]
-                          }
-                        }
-                      }`
+      themeOptions: [
+        { label: 'primary', value: 'primary' },
+        { label: 'info', value: 'info' },
+        { label: 'success', value: 'success' },
+        { label: 'warning', value: 'warning' },
+        { label: 'error', value: 'error' },
+        { label: 'dark', value: 'dark' },
+        { label: 'light', value: 'light' }
+      ]
+    }
+  }
+}`
       }
     }
   }

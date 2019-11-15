@@ -32,19 +32,19 @@
           比心属性设置
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -68,7 +68,7 @@
     name: 'Tooltip',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         custom: '',
 
@@ -86,38 +86,38 @@
           }
         ],
 
-        html1: `<o-form :label-width="60">
-                        <o-form-item label="颜色">
-                          <o-radio-group>
-                            <template v-for="x in customOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="custom">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <div v-heart="{ custom: custom }"></div>`,
+        html: `<o-form :label-width="60">
+  <o-form-item label="颜色">
+    <o-radio-group>
+      <template v-for="x in customOptions">
+        <o-radio
+          :current="x.value"
+          v-model="custom">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+</o-form>
+<br>
+<div v-heart="{ custom: custom }"></div>`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            custom: '',
+        java: `export default {
+  data () {
+    return {
+      custom: '',
 
-                            customOptions: [
-                              { label: 'primary', value: 'primary' },
-                              { label: 'info', value: 'info' },
-                              { label: 'success', value: 'success' },
-                              { label: 'warning', value: 'warning' },
-                              { label: 'error', value: 'error' },
-                              { label: 'default', value: '' }
-                            ]
-                          }
-                        }
-                      }`
+      customOptions: [
+        { label: 'primary', value: 'primary' },
+        { label: 'info', value: 'info' },
+        { label: 'success', value: 'success' },
+        { label: 'warning', value: 'warning' },
+        { label: 'error', value: 'error' },
+        { label: 'default', value: '' }
+      ]
+    }
+  }
+}`
       }
     }
   }

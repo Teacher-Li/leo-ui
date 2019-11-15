@@ -63,19 +63,19 @@
           编辑属性设置
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -110,7 +110,7 @@
     name: 'Button',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         type: '',
         size: '',
@@ -180,95 +180,95 @@
           }
         ],
 
-        html1: `<o-form :label-width="60">
-                        <o-form-item label="类型">
-                          <o-radio-group>
-                            <template v-for="x in typeOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="type">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="布局">
-                          <o-radio-group>
-                            <template v-for="x in alignOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="align">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="尺寸">
-                          <o-radio-group>
-                            <template v-for="x in sizeOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="size">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="状态">
-                          <o-checkbox-group>
-                            <o-checkbox v-model="canConfirm">canConfirm</o-checkbox>
-                          </o-checkbox-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <o-edit
-                        @on-confirm="handlerConfirm"
-                        @on-cancel="handlerCancel"
-                        :disabled="!canConfirm"
-                        v-model="edit"
-                        :align="align"
-                        :size="size"
-                        :type="type">
-                      </o-edit>`,
+        html: `<o-form :label-width="60">
+  <o-form-item label="类型">
+    <o-radio-group>
+      <template v-for="x in typeOptions">
+        <o-radio
+          :current="x.value"
+          v-model="type">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="布局">
+    <o-radio-group>
+      <template v-for="x in alignOptions">
+        <o-radio
+          :current="x.value"
+          v-model="align">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="尺寸">
+    <o-radio-group>
+      <template v-for="x in sizeOptions">
+        <o-radio
+          :current="x.value"
+          v-model="size">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="状态">
+    <o-checkbox-group>
+      <o-checkbox v-model="canConfirm">canConfirm</o-checkbox>
+    </o-checkbox-group>
+  </o-form-item>
+</o-form>
+<br>
+<o-edit
+  @on-confirm="handlerConfirm"
+  @on-cancel="handlerCancel"
+  :disabled="!canConfirm"
+  v-model="edit"
+  :align="align"
+  :size="size"
+  :type="type">
+</o-edit>`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            type: '',
-                            size: '',
-                            align: 'left',
+        java: `export default {
+  data () {
+    return {
+      type: '',
+      size: '',
+      align: 'left',
 
-                            edit: false,
-                            canConfirm: false,
+      edit: false,
+      canConfirm: false,
 
-                            typeOptions: [
-                              { label: '文字', value: 'text' },
-                              { label: '图标', value: 'icon' },
-                              { label: 'default', value: '' }
-                            ],
-                            sizeOptions: [
-                              { label: 'large', value: 'large' },
-                              { label: 'small', value: 'small' },
-                              { label: 'mini', value: 'mini' },
-                              { label: 'default', value: '' }
-                            ],
-                            alignOptions: [
-                              { label: 'left', value: 'left' },
-                              { label: 'right', value: 'right' }
-                            ]
-                          }
-                        },
-                        methods: {
-                          handlerConfirm () {
-                            this.edit = false;
-                            console.log('confirm')
-                          },
-                          handlerCancel () {
-                            this.edit = false;
-                            console.log('cancel')
-                          }
-                        }
-                      }`
+      typeOptions: [
+        { label: '文字', value: 'text' },
+        { label: '图标', value: 'icon' },
+        { label: 'default', value: '' }
+      ],
+      sizeOptions: [
+        { label: 'large', value: 'large' },
+        { label: 'small', value: 'small' },
+        { label: 'mini', value: 'mini' },
+        { label: 'default', value: '' }
+      ],
+      alignOptions: [
+        { label: 'left', value: 'left' },
+        { label: 'right', value: 'right' }
+      ]
+    }
+  },
+  methods: {
+    handlerConfirm () {
+      this.edit = false;
+      console.log('confirm')
+    },
+    handlerCancel () {
+      this.edit = false;
+      console.log('cancel')
+    }
+  }
+}`
       }
     },
     methods: {

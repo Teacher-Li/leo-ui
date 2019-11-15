@@ -37,19 +37,19 @@
           传送带属性设置
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -84,7 +84,7 @@
     name: 'Carousels',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         placement: 'center',
 
@@ -145,66 +145,66 @@
           }
         ],
 
-        html1: `<o-form :label-width="60">
-                        <o-form-item label="布局">
-                          <o-radio-group>
-                            <template v-for="x in placementOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="placement">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <o-carousels :gutter="10" :placement="placement">
-                        <template v-for="item in list">
-                          <o-carousels-item>
-                            <div :style="{ backgroundColor: item['color'] }"></div>
-                          </o-carousels-item>
-                        </template>
-                      </o-carousels>`,
+        html: `<o-form :label-width="60">
+  <o-form-item label="布局">
+    <o-radio-group>
+      <template v-for="x in placementOptions">
+        <o-radio
+          :current="x.value"
+          v-model="placement">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+</o-form>
+<br>
+<o-carousels :gutter="10" :placement="placement">
+  <template v-for="item in list">
+    <o-carousels-item>
+      <div :style="{ backgroundColor: item['color'] }"></div>
+    </o-carousels-item>
+  </template>
+</o-carousels>`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            placement: 'center',
+        java: `export default {
+  data () {
+    return {
+      placement: 'center',
 
-                            list: [
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
-                              { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) }
-                            ],
+      list: [
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) },
+        { color: '#' + (~~ (Math.random() * (1 << 24))).toString(16) }
+      ],
 
-                            placementOptions: [
-                              { label: 'top-left', value: 'top-left' },
-                              { label: 'top-right', value: 'top-right' },
-                              { label: 'center', value: 'center' },
-                              { label: 'bottom-right', value: 'bottom-right' },
-                              { label: 'bottom-left', value: 'bottom-left' }
-                            ]
-                          }
-                        }
-                      }`
+      placementOptions: [
+        { label: 'top-left', value: 'top-left' },
+        { label: 'top-right', value: 'top-right' },
+        { label: 'center', value: 'center' },
+        { label: 'bottom-right', value: 'bottom-right' },
+        { label: 'bottom-left', value: 'bottom-left' }
+      ]
+    }
+  }
+}`
 
       }
     }

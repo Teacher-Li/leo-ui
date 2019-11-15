@@ -152,6 +152,16 @@
         margin: 8px 0;
         font-size: 16px;
       }
+      pre {
+        margin: 0;
+        &[bg] {
+          background-color: #f7f7f7;
+        }
+        code {
+          display: block;
+        }
+      }
+
       .article {
         padding: 15px;
         text-align: center;
@@ -244,7 +254,6 @@
         &:hover {
           box-shadow: @shadow-down;
           border-color: transparent;
-
         }
 
         .demo {
@@ -274,13 +283,6 @@
           }
           .description {
             line-height: 24px;
-            code {
-              padding: 2px 8px;
-              color: rgb(102, 102, 102);
-              background: rgb(247, 247, 247);
-              border-radius: @border-radius-base;
-              border: 1px solid rgb(238, 238, 238);
-            }
           }
         }
         .code {
@@ -289,14 +291,6 @@
           overflow: hidden;
           padding: 30px 20px;
           position: relative;
-          textarea {
-            width: 0;
-            height: 0;
-            opacity: 0;
-            right: 15px;
-            bottom: 10px;
-            position: absolute;
-          }
           a {
             top: 10px;
             right: 15px;
@@ -306,13 +300,18 @@
               color: @success-color
             }
           }
-          pre {
-            overflow: hidden;
-            margin: 0 0 0 -120px;
+          textarea {
+            width: 0;
+            height: 0;
+            opacity: 0;
+            right: 15px;
+            bottom: 10px;
+            position: absolute;
           }
         }
       }
 
+      .code,
       table {
         em {
           font-style: normal;

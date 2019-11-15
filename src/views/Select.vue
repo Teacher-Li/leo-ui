@@ -55,19 +55,19 @@
           选择器属性设置
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -102,7 +102,7 @@
     name: 'Select',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         value: '',
 
@@ -170,72 +170,72 @@
           }
         ],
 
-        html1: `<o-form :label-width="60">
-                        <o-form-item label="尺寸">
-                          <o-radio-group>
-                            <template v-for="x in sizeOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="size">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="方向">
-                          <o-radio-group>
-                            <template v-for="x in placementOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="placement">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="状态">
-                          <o-checkbox-group>
-                            <o-checkbox v-model="clearable">clearable</o-checkbox>
-                            <o-checkbox v-model="disabled">disabled</o-checkbox>
-                          </o-checkbox-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <o-select
-                        :placement="placement"
-                        :clearable="clearable"
-                        :disabled="disabled"
-                        :options="options"
-                        v-model="value"
-                        :size="size">
-                      </o-select>
-                      {{ value }}`,
+        html: `<o-form :label-width="60">
+  <o-form-item label="尺寸">
+    <o-radio-group>
+      <template v-for="x in sizeOptions">
+        <o-radio
+          :current="x.value"
+          v-model="size">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="方向">
+    <o-radio-group>
+      <template v-for="x in placementOptions">
+        <o-radio
+          :current="x.value"
+          v-model="placement">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="状态">
+    <o-checkbox-group>
+      <o-checkbox v-model="clearable">clearable</o-checkbox>
+      <o-checkbox v-model="disabled">disabled</o-checkbox>
+    </o-checkbox-group>
+  </o-form-item>
+</o-form>
+<br>
+<o-select
+  :placement="placement"
+  :clearable="clearable"
+  :disabled="disabled"
+  :options="options"
+  v-model="value"
+  :size="size">
+</o-select>
+{{ value }}`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            value: '',
+        java: `export default {
+  data () {
+    return {
+      value: '',
 
-                            size: '',
-                            placement: 'bottom',
+      size: '',
+      placement: 'bottom',
 
-                            disabled: false,
-                            clearable: false,
+      disabled: false,
+      clearable: false,
 
-                            options: ['New York', 'London', 'Sydney', 'Ottawa', 'Paris', 'Canberra'],
-                            sizeOptions: [
-                              { label: 'large', value: 'large' },
-                              { label: 'small', value: 'small' },
-                              { label: 'mini', value: 'mini' },
-                              { label: 'default', value: '' }
-                            ],
-                            placementOptions: [
-                              { label: 'top', value: 'top' },
-                              { label: 'bottom', value: 'bottom' }
-                            ]
-                          }
-                        }
-                      }`
+      options: ['New York', 'London', 'Sydney', 'Ottawa', 'Paris', 'Canberra'],
+      sizeOptions: [
+        { label: 'large', value: 'large' },
+        { label: 'small', value: 'small' },
+        { label: 'mini', value: 'mini' },
+        { label: 'default', value: '' }
+      ],
+      placementOptions: [
+        { label: 'top', value: 'top' },
+        { label: 'bottom', value: 'bottom' }
+      ]
+    }
+  }
+}`
 
       }
     }

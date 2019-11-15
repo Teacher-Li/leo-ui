@@ -77,14 +77,14 @@
       </div>
       <div class="code" :class="{ visible : visible1 }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html1"></textarea>
+          <pre><code v-html="HLHTML(html1)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java1"></textarea>
+          <pre><code v-html="HTJAVA(java1)"></code></pre>
         </div>
       </div>
       <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
@@ -112,14 +112,14 @@
       </div>
       <div class="code" :class="{ visible : visible2 }">
         <div class="html">
-          <textarea type="text" :value="html2" id="html2"></textarea>
-          <a @click="copy($event, 'html2')">Copy</a>
-          <pre>                    {{ html2 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html2"></textarea>
+          <pre><code v-html="HLHTML(html2)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java2" id="java2"></textarea>
-          <a @click="copy($event, 'java2')">Copy</a>
-          <pre>                    {{ java2 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java2"></textarea>
+          <pre><code v-html="HTJAVA(java2)"></code></pre>
         </div>
       </div>
       <div class="more" :class="{ open: visible2 }" @click="visible2 = !visible2"></div>
@@ -242,131 +242,131 @@
         ],
 
         html1: `<o-form :label-width="80">
-                        <o-form-item label="尺寸">
-                          <o-radio-group>
-                            <template v-for="x in sizeOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="size">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="对齐方式">
-                          <o-radio-group>
-                            <template v-for="x in placementOptions">
-                              <o-radio
-                                :current="x.value"
-                                v-model="placement">
-                                {{ x.label }}
-                              </o-radio>
-                            </template>
-                          </o-radio-group>
-                        </o-form-item>
-                        <o-form-item label="宽度">
-                          <o-input
-                            formatter="number"
-                            v-model="width">
-                          </o-input>
-                        </o-form-item>
-                        <o-form-item label="状态">
-                          <o-checkbox-group>
-                            <o-checkbox v-model="inline">inline</o-checkbox>
-                          </o-checkbox-group>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <o-form
-                        :label-placement="placement"
-                        :label-width="width"
-                        :inline="inline"
-                        :size="size">
-                        <o-form-item label="名称">
-                          <o-input></o-input>
-                        </o-form-item>
-                        <o-form-item label="性别">
-                          <o-select
-                            :options="['男', '女']"
-                            v-model="sex">
-                          </o-select>
-                        </o-form-item>
-                        <o-form-item label="简介">
-                          <o-input type="textarea"></o-input>
-                        </o-form-item>
-                        <o-form-item>
-                          <o-button type="shadow">确定</o-button>
-                        </o-form-item>
-                      </o-form>`,
+  <o-form-item label="尺寸">
+    <o-radio-group>
+      <template v-for="x in sizeOptions">
+        <o-radio
+          :current="x.value"
+          v-model="size">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="对齐方式">
+    <o-radio-group>
+      <template v-for="x in placementOptions">
+        <o-radio
+          :current="x.value"
+          v-model="placement">
+          {{ x.label }}
+        </o-radio>
+      </template>
+    </o-radio-group>
+  </o-form-item>
+  <o-form-item label="宽度">
+    <o-input
+      formatter="number"
+      v-model="width">
+    </o-input>
+  </o-form-item>
+  <o-form-item label="状态">
+    <o-checkbox-group>
+      <o-checkbox v-model="inline">inline</o-checkbox>
+    </o-checkbox-group>
+  </o-form-item>
+</o-form>
+<br>
+<o-form
+  :label-placement="placement"
+  :label-width="width"
+  :inline="inline"
+  :size="size">
+  <o-form-item label="名称">
+    <o-input></o-input>
+  </o-form-item>
+  <o-form-item label="性别">
+    <o-select
+      :options="['男', '女']"
+      v-model="sex">
+    </o-select>
+  </o-form-item>
+  <o-form-item label="简介">
+    <o-input type="textarea"></o-input>
+  </o-form-item>
+  <o-form-item>
+    <o-button type="shadow">确定</o-button>
+  </o-form-item>
+</o-form>`,
 
         html2: `<o-edit
-                        @on-confirm="handlerConfirm"
-                        @on-cancel="handlerCancel"
-                        :disabled="!canConfirm"
-                        v-model="edit">
-                      </o-edit>
-                      <br>
-                      <o-form :label-width="60">
-                        <o-form-item label="名称" :value="oldValue" :editable="edit">
-                          <o-input v-model="value"></o-input>
-                        </o-form-item>
-                      </o-form>`,
+  @on-confirm="handlerConfirm"
+  @on-cancel="handlerCancel"
+  :disabled="!canConfirm"
+  v-model="edit">
+</o-edit>
+<br>
+<o-form :label-width="60">
+  <o-form-item label="名称" :value="oldValue" :editable="edit">
+    <o-input v-model="value"></o-input>
+  </o-form-item>
+</o-form>`,
 
         java1: `export default {
-                        data () {
-                          return {
-                            size: '',
-                            width: 100,
-                            placement: 'right',
+  data () {
+    return {
+      size: '',
+      width: 100,
+      placement: 'right',
 
-                            inline: false,
+      inline: false,
 
-                            sex: '',
+      sex: '',
 
-                            sizeOptions: [
-                              { label: 'large', value: 'large' },
-                              { label: 'small', value: 'small' },
-                              { label: 'mini', value: 'mini' },
-                              { label: 'default', value: '' }
-                            ],
-                            placementOptions: [
-                              { label: 'left', value: 'left' },
-                              { label: 'top-left', value: 'top-left' },
-                              { label: 'top', value: 'top' },
-                              { label: 'top-right', value: 'top-right' },
-                              { label: 'right', value: 'right' },
-                              { label: 'bottom-right', value: 'bottom-right' },
-                              { label: 'bottom-left', value: 'bottom-left' }
-                            ]
-                          }
-                        }
-                      }`,
+      sizeOptions: [
+        { label: 'large', value: 'large' },
+        { label: 'small', value: 'small' },
+        { label: 'mini', value: 'mini' },
+        { label: 'default', value: '' }
+      ],
+      placementOptions: [
+        { label: 'left', value: 'left' },
+        { label: 'top-left', value: 'top-left' },
+        { label: 'top', value: 'top' },
+        { label: 'top-right', value: 'top-right' },
+        { label: 'right', value: 'right' },
+        { label: 'bottom-right', value: 'bottom-right' },
+        { label: 'bottom-left', value: 'bottom-left' }
+      ]
+    }
+  }
+}`,
 
         java2: `export default {
-                        data () {
-                          return {
-                            value: '',
-                            oldValue: '',
+  data () {
+    return {
+      value: '',
+      oldValue: '',
 
-                            edit: false
-                          }
-                        },
-                        computed: {
-                          canConfirm () {
-                            return this.value === 'leo-ui'
-                          }
-                        },
-                        methods: {
-                          handlerConfirm () {
-                            this.edit = false;
-                            this.oldValue = this.value
-                          },
-                          handlerCancel () {
-                            this.edit = false;
-                            this.value = this.oldValue
-                          }
-                        }
-                      }`
+      edit: false
+    }
+  },
+  computed: {
+    canConfirm () {
+      return this.value === 'leo-ui'
+    }
+  },
+  methods: {
+    handlerConfirm () {
+      this.edit = false;
+      this.oldValue = this.value
+    },
+    handlerCancel () {
+      this.edit = false;
+      this.value = this.oldValue
+    }
+  }
+}`
       }
     },
     computed: {

@@ -54,10 +54,10 @@ export default {
     }
   },
   methods: {
-    copy (e, id) {
+    copy (e) {
       let tag = e.target;
       if (!tag.className) {
-        document.querySelector('#' + id).select();
+        tag.nextSibling.select();
         document.execCommand("Copy");
 
         tag.innerHTML = 'Copied';
@@ -67,6 +67,38 @@ export default {
           tag.innerHTML = 'Copy';
         }, 5000);
       }
+    },
+    HLHTML (value) {
+      return value
+      .replace(/</g, '&lt;')
+      .replace(/&lt;[^>]*>/g, val => `<em>${ val }</em>`)
+      .replace(
+          /\s[^=<>"]+>/g,
+          val => `${ val.charAt(0) }<em error>${ val.slice(1, -1) }</em>>`
+      )
+      .replace(/"[^"]*"/g, val => `<em success>${ val }</em>`)
+      .replace(
+          /\s[^\s]+=/g,
+          val => `${ val.charAt(0) }<em error>${ val.slice(1, -1) }</em>=`
+      );
+    },
+    HTJAVA (value) {
+      const val = value
+      .replace(
+          /if|else|var|let|const|this|true|false|return/g,
+          val => `<em error>${ val }</em>`
+      )
+      .replace(
+          /\s\d+/g,
+          val => `${ val.charAt(0) }<em success>${ val.slice(1) }</em>`
+      )
+      .replace(/export default/g, val => `<em warning>${ val }</em>`)
+      .replace(
+          /\s[a-zA-Z][\w]*\s\(/g,
+          val => `${ val.charAt(0) }<em warning>${ val.slice(1, -2) }</em> (`
+      );
+
+      return `<em>${ val }</em>`;
     }
   }
 }

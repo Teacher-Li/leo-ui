@@ -23,19 +23,19 @@
           框选基本用法
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -59,7 +59,7 @@
     name: 'DragSelect',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         valueTbody: [
           {
@@ -75,28 +75,28 @@
           }
         ],
 
-        html1: `<div
-                        v-drag-select="{ selector: 'div.test-item', className: ['active'] }"
-                        class="test">
-                        <div
-                          v-for="(item, i) in list"
-                          class="test-item">
-                          测试-{{ i }}
-                        </div>
-                      </div>`,
+        html: `<div
+  v-drag-select="{ selector: 'div.test-item', className: ['active'] }"
+  class="test">
+  <div
+    v-for="(item, i) in list"
+    class="test-item">
+    测试-{{ i }}
+  </div>
+</div>`,
 
-        java1: `export default {
-                        computed: {
-                          list () {
-                            return new Array(10).fill(null)
-                          }
-                        },
-                        methods: {
-                          dragSelected (elements) {
-                            console.log(elements)
-                          }
-                        }
-                      }`
+        java: `export default {
+  computed: {
+    list () {
+      return new Array(10).fill(null)
+    }
+  },
+  methods: {
+    dragSelected (elements) {
+      console.log(elements)
+    }
+  }
+}`
       }
     },
     computed: {

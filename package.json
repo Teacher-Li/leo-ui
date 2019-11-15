@@ -1,13 +1,13 @@
 {
   "name": "leo-ui-document",
-  "version": "1.3.6",
+  "version": "1.3.8",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "leo-ui": "^1.3.6",
+    "leo-ui": "^1.3.8",
     "vue": "^2.5.17",
     "vue-router": "^3.0.2"
   },

@@ -28,19 +28,19 @@
           弹幕基本用法
         </div>
       </div>
-      <div class="code" :class="{ visible : visible1 }">
+      <div class="code" :class="{ visible : visible }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html"></textarea>
+          <pre><code v-html="HLHTML(html)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java"></textarea>
+          <pre><code v-html="HTJAVA(java)"></code></pre>
         </div>
       </div>
-      <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
+      <div class="more" :class="{ open: visible }" @click="visible = !visible"></div>
     </div>
     <div class="anchor">
       <h2>API</h2>
@@ -75,7 +75,7 @@
     name: 'Barrage',
     data () {
       return {
-        visible1: false,
+        visible: false,
 
         value: '',
 
@@ -136,40 +136,40 @@
           }
         ],
 
-        html1: `<div ref="live" class="live">
-                        <div class="live-form">
-                          <o-form size="small" :labelWidth="0">
-                            <o-form-item>
-                              <o-input v-model="value" @on-enter="handlerSend"></o-input>
-                              <o-button
-                                  @on-click="handlerSend"
-                                  custom="primary"
-                                  type="text">
-                                发送
-                              </o-button>
-                            </o-form-item>
-                          </o-form>
-                        </div>
-                      </div>`,
+        html: `<div ref="live" class="live">
+  <div class="live-form">
+    <o-form size="small" :labelWidth="0">
+      <o-form-item>
+        <o-input v-model="value" @on-enter="handlerSend"></o-input>
+        <o-button
+            @on-click="handlerSend"
+            custom="primary"
+            type="text">
+          发送
+        </o-button>
+      </o-form-item>
+    </o-form>
+  </div>
+</div>`,
 
-        java1: `export default {
-                        data () {
-                          return {
-                            value: ''
-                          }
-                        },
-                        methods: {
-                          handlerSend () {
-                            if (this.value) {
-                              this.$Barrage.shoot(this.value, true);
-                              this.value = '';
-                            }
-                          }
-                        },
-                        mounted () {
-                          this.$Barrage.init(this.$refs.live);
-                        }
-                      }`
+        java: `export default {
+  data () {
+    return {
+      value: ''
+    }
+  },
+  methods: {
+    handlerSend () {
+      if (this.value) {
+        this.$Barrage.shoot(this.value, true);
+        this.value = '';
+      }
+    }
+  },
+  mounted () {
+    this.$Barrage.init(this.$refs.live);
+  }
+}`
       }
     },
     methods: {

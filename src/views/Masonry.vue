@@ -25,14 +25,14 @@
       </div>
       <div class="code" :class="{ visible : visible1 }">
         <div class="html">
-          <textarea type="text" :value="html1" id="html1"></textarea>
-          <a @click="copy($event, 'html1')">Copy</a>
-          <pre>                    {{ html1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html1"></textarea>
+          <pre><code v-html="HLHTML(html1)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java1" id="java1"></textarea>
-          <a @click="copy($event, 'java1')">Copy</a>
-          <pre>                    {{ java1 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java1"></textarea>
+          <pre><code v-html="HTJAVA(java1)"></code></pre>
         </div>
       </div>
       <div class="more" :class="{ open: visible1 }" @click="visible1 = !visible1"></div>
@@ -76,14 +76,14 @@
       </div>
       <div class="code" :class="{ visible : visible2 }">
         <div class="html">
-          <textarea type="text" :value="html2" id="html2"></textarea>
-          <a @click="copy($event, 'html2')">Copy</a>
-          <pre>                    {{ html2 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="html2"></textarea>
+          <pre><code v-html="HLHTML(html2)"></code></pre>
         </div>
         <div class="js">
-          <textarea type="text" :value="java2" id="java2"></textarea>
-          <a @click="copy($event, 'java2')">Copy</a>
-          <pre>                    {{ java2 }}</pre>
+          <a @click="copy">Copy</a>
+          <textarea :value="java2"></textarea>
+          <pre><code v-html="HTJAVA(java2)"></code></pre>
         </div>
       </div>
       <div class="more" :class="{ open: visible2 }" @click="visible2 = !visible2"></div>
@@ -153,137 +153,137 @@
         ],
 
         html1: `<o-masonry :gutter="10">
-                        <template v-for="item in list">
-                          <o-masonry-item>
-                            <div :style="{ backgroundColor: item['color'], height: item['height'] + 'px' }">
-                            </div>
-                          </o-masonry-item>
-                        </template>
-                      </o-masonry>`,
+  <template v-for="item in list">
+    <o-masonry-item>
+      <div :style="{ backgroundColor: item['color'], height: item['height'] + 'px' }">
+      </div>
+    </o-masonry-item>
+  </template>
+</o-masonry>`,
 
         html2: `<o-load :visible="loading" fix></o-load>
-                      <o-form :label-width="60" inline>
-                        <o-form-item label="关键词">
-                          <o-input
-                            @on-enter="handlerSearch"
-                            v-model="word">
-                          </o-input>
-                        </o-form-item>
-                        <o-form-item>
-                          <o-button
-                            @on-click="handlerClear"
-                            custom="warning"
-                            type="shadow">
-                            清空所有
-                          </o-button>
-                        </o-form-item>
-                      </o-form>
-                      <br>
-                      <o-masonry :width="200" :gutter="10">
-                        <template v-for="image in images">
-                          <o-masonry-item>
-                            <img :src="image" alt="图片" style="width: 100%">
-                          </o-masonry-item>
-                        </template>
-                      </o-masonry>`,
+<o-form :label-width="60" inline>
+  <o-form-item label="关键词">
+    <o-input
+      @on-enter="handlerSearch"
+      v-model="word">
+    </o-input>
+  </o-form-item>
+  <o-form-item>
+    <o-button
+      @on-click="handlerClear"
+      custom="warning"
+      type="shadow">
+      清空所有
+    </o-button>
+  </o-form-item>
+</o-form>
+<br>
+<o-masonry :width="200" :gutter="10">
+  <template v-for="image in images">
+    <o-masonry-item>
+      <img :src="image" alt="图片" style="width: 100%">
+    </o-masonry-item>
+  </template>
+</o-masonry>`,
 
         java1: `export default {
-                        computed: {
-                          list () {
-                            return new Array(20).fill(null).map(() => {
-                              return {
-                                height: 50 + ~~ (Math.random() * 100),
-                                color: '#' + (~~ (Math.random() * (1 << 24))).toString(16)
-                              }
-                            })
-                          }
-                        }
-                      }`,
+  computed: {
+    list () {
+      return new Array(20).fill(null).map(() => {
+        return {
+          height: 50 + ~~ (Math.random() * 100),
+          color: '#' + (~~ (Math.random() * (1 << 24))).toString(16)
+        }
+      })
+    }
+  }
+}`,
 
         java2: `export default {
-                        data () {
-                          return {
-                            loading: false,
+  data () {
+    return {
+      loading: false,
 
-                            word: '赵丽颖',
+      word: '赵丽颖',
 
-                            images: [],
-                            page: 0
-                          }
-                        },
-                        methods: {
-                          handlerSearch () {
-                            this.loading = true;
+      images: [],
+      page: 0
+    }
+  },
+  methods: {
+    handlerSearch () {
+      this.loading = true;
 
-                            this.ajax({
-                              method: 'GET',
-                              url: 'http://112.74.174.31:5235/api/image/',
-                              data: {
-                                num: 10,
-                                word: this.word,
-                                page: ++this.page
-                              },
-                              success: res => { this.showImages(res['Data']) }
-                            })
-                          },
-                          ajax (opt) {
-                            opt = opt || {};
-                            opt.method = opt.method.toUpperCase() || 'POST';
-                            opt.url = opt.url || '';
-                            opt.async = opt.async || true;
-                            opt.data = opt.data || null;
-                            opt.success = opt.success || function () {};
+      this.ajax({
+        method: 'GET',
+        url: 'http://112.74.174.31:5235/api/image/',
+        data: {
+          num: 10,
+          word: this.word,
+          page: ++this.page
+        },
+        success: res => { this.showImages(res['Data']) }
+      })
+    },
+    ajax (opt) {
+      opt = opt || {};
+      opt.method = opt.method.toUpperCase() || 'POST';
+      opt.url = opt.url || '';
+      opt.async = opt.async || true;
+      opt.data = opt.data || null;
+      opt.success = opt.success || function () {};
 
-                            let xmlHttp = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-                            let params = [];
+      let xmlHttp = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+      let params = [];
 
-                            for (let key in opt.data) params.push(key + '=' + opt.data[key]);
+      for (let key in opt.data) params.push(key + '=' + opt.data[key]);
 
-                            let postData = params.join('&');
-                            if (opt.method.toUpperCase() === 'POST') {
-                              xmlHttp.open(opt.method, opt.url, opt.async);
-                              xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
-                              xmlHttp.send(postData);
-                            } else if (opt.method.toUpperCase() === 'GET') {
-                              xmlHttp.open(opt.method, opt.url + '?' + postData, opt.async);
-                              xmlHttp.send(null);
-                            }
+      let postData = params.join('&');
+      if (opt.method.toUpperCase() === 'POST') {
+        xmlHttp.open(opt.method, opt.url, opt.async);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+        xmlHttp.send(postData);
+      } else if (opt.method.toUpperCase() === 'GET') {
+        xmlHttp.open(opt.method, opt.url + '?' + postData, opt.async);
+        xmlHttp.send(null);
+      }
 
-                            xmlHttp.onreadystatechange = () => {
-                              xmlHttp.readyState === 4
-                              && xmlHttp.status === 200
-                              && opt.success(JSON.parse(xmlHttp.responseText))
-                            }
-                          },
-                          showImages (images, list, index) {
-                            list  = list || [];
-                            index = index || 0;
+      xmlHttp.onreadystatechange = () => {
+        xmlHttp.readyState === 4
+        && xmlHttp.status === 200
+        && opt.success(JSON.parse(xmlHttp.responseText))
+      }
+    },
+    showImages (images, list, index) {
+      list  = list || [];
+      index = index || 0;
 
-                            if (index < images.length) {
-                              console.log('第'+ (index + 1) +'张图片');
+      if (index < images.length) {
+        console.log('第'+ (index + 1) +'张图片');
 
-                              let img = new Image();
-                              img.src = images[index];
+        let img = new Image();
+        img.src = images[index];
 
-                              img.onerror = () => {
-                                console.log('加载失败');
-                                this.showImages(images, list, ++index)
-                              };
-                              img.onload = () => {
-                                list.push(images[index]);
-                                this.showImages(images, list, ++index)
-                              }
-                            } else {
-                              this.loading = false;
-                              this.images.unshift(...list)
-                            }
-                          },
-                          handlerClear () {
-                            this.page = 0;
-                            this.images = []
-                          }
-                        }
-                      }`
+        img.onerror = () => {
+          console.log('加载失败');
+          this.showImages(images, list, ++index)
+        };
+        img.onload = () => {
+          list.push(images[index]);
+          this.showImages(images, list, ++index)
+        }
+      } else {
+        this.loading = false;
+        this.images.unshift(...list)
+      }
+    },
+    handlerClear () {
+      this.page = 0;
+      this.images = []
+    }
+  }
+}`
 
       }
     },
