@@ -31,9 +31,12 @@ const barrage = {
     this.el = el;
     this.canvas = document.createElement('canvas');
 
-    this.el.style.position = 'relative';
+    this.canvas.style.top = '0px';
+    this.canvas.style.left = '0px';
     this.canvas.style.position = 'absolute';
     this.canvas.style.pointerEvents = 'none';
+
+    this.el.style.position = 'relative';
     this.el.appendChild(this.canvas);
 
     this.resize();
@@ -48,8 +51,6 @@ const barrage = {
 
     this.canvas.width = rect.width;
     this.canvas.height = rect.height;
-    this.canvas.style.top = `${ rect.top }px`;
-    this.canvas.style.left = `${ rect.left }px`;
 
     this.ctx = this.canvas.getContext('2d');
     this.ctx.font = this.options.font;
